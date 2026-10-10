@@ -1,3 +1,36 @@
+.App {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 100svh;
+}
+
+.App > main {
+  display: grid;
+  min-width: 0;
+}
+
+.hero-gallery {
+  padding-block: clamp(2rem, 6svh, 5rem);
+}
+
+.hero-gallery-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-gallery-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-gallery-image.is-active {
+  opacity: 0.5;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -182,4 +215,3 @@
     border-right-color: var(--border);
   }
 }
-
