@@ -1,32 +1,25 @@
-# React + TypeScript + Vite
+# Illini Creative Impact
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+[![License: MIT](https://shields.io)](https://opensource.org)
+[![PRs Welcome](https://shields.io)](http://makeapullrequest.com)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Welcome to the official repository for the **Illini Creative Impact** website! This platform serves as our central hub to showcase club events, manage member resources, highlight projects, and introduce our team.
 
-## React Compiler
+🌐 **Live Website:** [https://your-club-url.com](https://your-club-url.com)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- **Frontend:** [React.js](https://react.dev) / [Next.js](https://nextjs.org) / [Tailwind CSS](https://tailwindcss.com)
+- **Backend:** [Node.js](https://nodejs.org) / [Express](https://expressjs.com)
+- **Database:** [MongoDB](https://mongodb.com) / [PostgreSQL](https://postgresql.org)
+- **Hosting:** [Vercel](https://vercel.com) / [Netlify](https://netlify.com)
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+---
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 👑 Leadership & Core Maintainers
+
+- **Alex Zhang** - Club President - [@github_username](https://github.com)
+- **Catherine Zou** - VP Internal - [@zoucatherine](https://github.com/zoucatherine)
