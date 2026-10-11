@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import HomeBody from './components/HomeBody';
+import EventsPage from './pages/EventsPage';
 import { StarterPage } from './pages/Pages';
 import './index.css';
 import './App.css';
@@ -31,6 +32,8 @@ function App() {
             <Hero />
             <HomeBody />
           </>
+        ) : currentPath === '/events' ? (
+          <EventsPage />
         ) : (
           <StarterPage path={currentPath} />
         )}

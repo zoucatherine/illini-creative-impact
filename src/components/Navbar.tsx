@@ -13,6 +13,7 @@ const navLinks = [
 export const Navbar: React.FC<NavbarProps> = () => {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isHomePage, setIsHomePage] = React.useState(window.location.pathname === '/');
 
   const navigate = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     event.preventDefault();
@@ -23,17 +24,25 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
   React.useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleRouteChange = () => setIsHomePage(window.location.pathname === '/');
 
     handleScroll();
+    handleRouteChange();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('popstate', handleRouteChange);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('popstate', handleRouteChange);
+    };
   }, []);
+
+  const shouldShowSolidBackground = isScrolled || !isHomePage;
 
   return (
     <nav
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
-        isScrolled
-          ? 'border-white/10 bg-[#131E38]/90 backdrop-blur-md'
+        shouldShowSolidBackground
+          ? 'border-slate-800 bg-[#131E38]'
           : 'border-transparent bg-transparent'
       }`}
     >
