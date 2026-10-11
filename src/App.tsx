@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Hero from './components/Hero';
 import HomeBody from './components/HomeBody';
 import EventsPage from './pages/EventsPage';
+import AboutPage from './pages/AboutPage';
 import { StarterPage } from './pages/Pages';
 import './index.css';
 import './App.css';
@@ -34,6 +35,8 @@ function App() {
           </>
         ) : currentPath === '/events' ? (
           <EventsPage />
+        ) : currentPath === '/about' ? (
+          <AboutPage />
         ) : (
           <StarterPage path={currentPath} />
         )}
