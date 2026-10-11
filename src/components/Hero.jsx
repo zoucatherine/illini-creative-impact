@@ -53,7 +53,7 @@ export default function Hero() {
           </p>
           <h1
             id="hero-title"
-            className="max-w-2xl text-5xl font-extrabold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-8xl"
+            className="max-w-2xl font-editorial text-5xl font-extrabold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-8xl"
           >
             Creativity meets <span className="italic">impact.</span>
           </h1>

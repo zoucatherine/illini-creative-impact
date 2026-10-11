@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
+import HomeBody from './components/HomeBody';
 import { StarterPage } from './pages/Pages';
 import './index.css';
 import './App.css';
@@ -26,7 +27,10 @@ function App() {
       <Navbar />
       <main>
         {isHomePage ? (
-          <Hero />
+          <>
+            <Hero />
+            <HomeBody />
+          </>
         ) : (
           <StarterPage path={currentPath} />
         )}

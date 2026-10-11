@@ -7,6 +7,10 @@ export default {
         primaryNavy: '#131E38',
         illiniOrange: '#E87722',
       },
+      fontFamily: {
+        sans: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        editorial: ['Fraunces', 'Georgia', 'serif'],
+      },
     },
   },
   plugins: [],
