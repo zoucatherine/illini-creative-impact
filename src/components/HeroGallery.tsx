@@ -32,7 +32,7 @@ export const HeroGalleryBehind: React.FC<HeroGalleryBehindProps> = ({
   }, [images.length]);
 
   return (
-    <section className="hero-gallery relative flex w-full min-w-0 items-center justify-center overflow-hidden bg-zinc-950">
+    <section className="hero-gallery relative flex w-full min-w-0 items-center justify-center overflow-hidden bg-white">
       <div className="hero-gallery-frame absolute inset-0 z-0" aria-hidden="true">
         {images.map((image, imageIndex) => (
           <img
@@ -46,16 +46,16 @@ export const HeroGalleryBehind: React.FC<HeroGalleryBehindProps> = ({
         ))}
       </div>
 
-      <div className="absolute inset-0 z-10 bg-black/50 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 z-10 bg-white/5 backdrop-blur-[1px]" />
 
       <div className="relative z-20 max-w-3xl px-6 text-center">
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white drop-shadow-lg md:text-6xl">
+        <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-black drop-shadow-lg md:text-6xl">
           {title}
         </h1>
-        <p className="mb-8 text-lg text-zinc-300 drop-shadow-md md:text-xl">
+        <p className="mb-8 text-lg text-zinc-800 drop-shadow-md md:text-xl">
           {subtitle}
         </p>
-        <button className="cursor-pointer rounded-full bg-white px-6 py-3 font-semibold text-zinc-950 shadow-lg transition-colors hover:bg-zinc-200">
+        <button className="cursor-pointer rounded-full bg-black px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-zinc-800">
           Explore Gallery
         </button>
       </div>

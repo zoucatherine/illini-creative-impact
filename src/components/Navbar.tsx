@@ -3,21 +3,28 @@ import React from 'react';
 interface NavbarProps {}
 
 const navLinks = [
-  { href: "#about", label: "About Us" },
-  { href: "#join", label: "Join" },
-  { href: "#events", label: "Events" },
-  { href: "#media", label: "Media" },
-  { href: "#contact", label: "Contact" }
+  { href: '/about', label: 'About Us' },
+  { href: '/join', label: 'Join' },
+  { href: '/events', label: 'Events' },
+  { href: '/media', label: 'Media' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = () => {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
 
+  const navigate = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    window.history.pushState({}, '', href);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    setIsNavOpen(false);
+  };
+
   return (
     <nav className="navbar">
-      <div className="logo">
+      <a className="logo" href="/" onClick={(event) => navigate(event, '/')}>
         Illini Creative Impact
-      </div>
+      </a>
 
         {/* Navigation toggle button for mobile view */}
       <button
@@ -32,7 +39,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
         {/* Navigation links */}
       <div className={`nav-links ${isNavOpen ? 'active' : ''}`}>
         {navLinks.map((link) => (
-          <a key={link.href} href={link.href}>
+          <a key={link.href} href={link.href} onClick={(event) => navigate(event, link.href)}>
             {link.label}
           </a>
         ))}
