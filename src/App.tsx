@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import HomeBody from './components/HomeBody';
 import EventsPage from './pages/EventsPage';
 import AboutPage from './pages/AboutPage';
+import MediaPage from './pages/MediaPage';
 import { StarterPage } from './pages/Pages';
 import './index.css';
 import './App.css';
@@ -37,6 +38,8 @@ function App() {
           <EventsPage />
         ) : currentPath === '/about' ? (
           <AboutPage />
+        ) : currentPath === '/media' ? (
+          <MediaPage />
         ) : (
           <StarterPage path={currentPath} />
         )}
