@@ -60,10 +60,10 @@ export const events: ClubEvent[] = [
   },
   {
     id: 'noshbox-event',
-    title: 'Community event with Noshbox',
+    title: 'Community event with NoshBox',
     status: 'in-development',
     description:
-      'A creative event for the community that we are exploring with Noshbox. Format and timing are still being planned.',
+      'A creative event for the community that we are exploring with NoshBox. Format and timing are still being planned.',
     link: { href: '/work/noshbox', label: 'About the collaboration' },
   },
   {

@@ -174,15 +174,16 @@ export const projects: Project[] = [
   },
   {
     slug: 'noshbox',
-    title: 'Noshbox Collaboration',
+    title: 'NoshBox Collaboration',
     category: 'Local partnership',
     status: 'in-development',
-    partner: 'Noshbox',
+    partner: 'NoshBox',
     summary:
-      'A developing partnership with Noshbox to explore creative events and experiences centered on the community. Details are still being worked out.',
-    cover: { placeholder: 'Photo from Noshbox or a planning session' },
+      'A developing partnership with NoshBox, a pickup app for restaurants in Champaign and Urbana, to explore creative events and experiences centered on the community. Details are still being worked out.',
+    cover: { photo: photos.noshboxLogo },
+    link: { href: 'https://www.noshboxapp.com/', label: 'Visit NoshBox' },
     overview:
-      'ICI and Noshbox are exploring how to create creative events together that center the community. This initiative is in development, and the format, dates, and scope have not been finalized.',
+      'ICI and NoshBox are exploring how to create creative events together that center the community. This initiative is in development, and the format, dates, and scope have not been finalized.',
     need:
       'Local businesses can be gathering places. This collaboration is looking at how a creative event could bring students and neighbors into the same room around something they make or experience together.',
     contributions: [
@@ -192,7 +193,7 @@ export const projects: Project[] = [
     ],
     gallery: [{ placeholder: 'Planning or event photos' }],
     involvement:
-      'Initiatives at an early stage are a good place to have real influence on what gets built. If you want to help shape this one, mention Noshbox in the interest form.',
+      'Initiatives at an early stage are a good place to have real influence on what gets built. If you want to help shape this one, mention NoshBox in the interest form.',
   },
 ];
 

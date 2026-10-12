@@ -25,9 +25,11 @@ export const partners: Partner[] = [
     url: 'https://visionaryarts.net',
   },
   {
-    name: 'Noshbox',
+    name: 'NoshBox',
     status: 'in-development',
-    description: 'Exploring creative events for the community together. Details are still being planned.',
+    description:
+      'A pickup app for restaurants in Champaign and Urbana. We are exploring creative events for the community together; details are still being planned.',
     projectSlug: 'noshbox',
+    url: 'https://www.noshboxapp.com/',
   },
 ];

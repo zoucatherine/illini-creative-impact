@@ -9,6 +9,7 @@ import drawingTable from '../assets/photos/drawing-table.webp';
 import certificates from '../assets/photos/certificates.webp';
 import studentExpo from '../assets/photos/student-expo.webp';
 import valentinesSocial from '../assets/photos/valentines-social.webp';
+import noshboxLogo from '../assets/photos/noshbox-logo.webp';
 import trinityFlyer from '../assets/photos/trinity-flyer.webp';
 import trinityFlyerProcess from '../assets/photos/trinity-flyer-process.webp';
 
@@ -19,6 +20,8 @@ export interface Photo {
   position?: string;
   /** 'contain' shows the whole image (for flyers and artwork) instead of cropping. */
   fit?: 'cover' | 'contain';
+  /** Frame background behind a 'contain' image, e.g. white for logos. */
+  background?: 'white';
 }
 
 export const photos = {
@@ -69,5 +72,11 @@ export const photos = {
     src: trinityFlyerProcess,
     alt: 'Two versions of the Snack Bag Food Drive flyer side by side: a grayscale draft and the final color design',
     fit: 'contain',
+  },
+  noshboxLogo: {
+    src: noshboxLogo,
+    alt: 'NoshBox logo',
+    fit: 'contain',
+    background: 'white',
   },
 } satisfies Record<string, Photo>;

@@ -120,7 +120,7 @@ export function PhotoFrame({
 }) {
   if (slot.photo) {
     return (
-      <figure className={`relative overflow-hidden bg-sand ${className}`}>
+      <figure className={`relative overflow-hidden ${slot.photo.background === 'white' ? 'bg-white' : 'bg-sand'} ${className}`}>
         <img
           src={slot.photo.src}
           alt={slot.photo.alt}
@@ -128,7 +128,7 @@ export function PhotoFrame({
           decoding="async"
           sizes={sizes}
           style={{ objectPosition: slot.photo.position }}
-          className={`h-full w-full ${slot.photo.fit === 'contain' ? 'object-contain p-4 sm:p-6' : 'object-cover'}`}
+          className={`h-full w-full ${slot.photo.fit === 'contain' ? (slot.photo.background === 'white' ? 'object-contain p-10 sm:p-14' : 'object-contain p-4 sm:p-6') : 'object-cover'}`}
         />
         {showCaption && slot.caption && (
           <figcaption className="absolute bottom-3 left-3 rounded-full bg-primaryNavy/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
