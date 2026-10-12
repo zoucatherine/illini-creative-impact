@@ -19,6 +19,14 @@ function clean(value, max) {
     .slice(0, max);
 }
 
+/**
+ * Neutralizes Discord markdown in user-submitted text so it renders literally: no masked
+ * links ([text](url)), headings, bold, spoilers, code blocks, quotes, or <@mention> tags.
+ */
+export function escapeMarkdown(text) {
+  return text.replace(/[\\*_~`|<>#[\]()-]/g, (char) => `\\${char}`);
+}
+
 function json(status, body) {
   return new Response(JSON.stringify(body), {
     status,
@@ -50,12 +58,13 @@ export function parsePitch(body) {
 
 /** Builds the Discord message. Mentions are disabled so submissions can't ping @everyone. */
 export function discordMessage(data) {
+  // Everything people typed is escaped; support labels come from our own fixed list.
   const fields = [
-    { name: 'From', value: `${data.name} (${data.email})` },
-    { name: 'What they hope to accomplish', value: data.goal },
+    { name: 'From', value: `${escapeMarkdown(data.name)} (${escapeMarkdown(data.email)})` },
+    { name: 'What they hope to accomplish', value: escapeMarkdown(data.goal) },
   ];
   if (data.support.length > 0) fields.push({ name: 'Looking for', value: data.support.join(', ') });
-  if (data.supportDetails) fields.push({ name: 'Details', value: data.supportDetails });
+  if (data.supportDetails) fields.push({ name: 'Details', value: escapeMarkdown(data.supportDetails) });
 
   return {
     username: 'ICI Website',
