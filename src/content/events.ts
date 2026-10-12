@@ -9,6 +9,7 @@
 //
 // Leave `date` / `location` / `link` empty until confirmed; the card shows "to be announced".
 import { photos, type Photo } from './photos';
+import { site } from './site';
 
 export type EventStatus = 'upcoming' | 'dates-tba' | 'recurring' | 'in-development' | 'past';
 
@@ -46,7 +47,7 @@ export const events: ClubEvent[] = [
     status: 'recurring',
     description:
       'Relaxed nights to make something, meet members, and hear what projects are coming up. A good first event if you are new.',
-    link: { href: 'https://discord.com/invite/9uBHgdJbQK', label: 'Get dates on Discord' },
+    link: { href: site.social.discord, label: 'Get dates on Discord' },
     photo: photos.quadSelfie,
   },
   {

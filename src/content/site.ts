@@ -5,9 +5,8 @@ export const site = {
   belief: 'We believe creativity can drive change in our communities.',
   url: 'https://illini-creative-impact.vercel.app',
   social: {
-    discord: 'https://discord.com/invite/9uBHgdJbQK',
-    // TODO: update if the Instagram handle changes with the rebrand.
-    instagram: 'https://www.instagram.com/iabc_uiuc/',
+    discord: 'https://discord.gg/9uBHgdJbQK',
+    instagram: 'https://www.instagram.com/uiuc_creativeimpact/',
   },
   forms: {
     // See .env.example. Empty values disable submission with an explanatory notice.
