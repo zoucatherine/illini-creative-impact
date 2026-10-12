@@ -1,0 +1,101 @@
+// Vercel serverless function: receives "Pitch an Idea" submissions from /pitch and posts them
+// to a Discord channel. The webhook URL stays on the server (DISCORD_PITCH_WEBHOOK env var),
+// so it never ships in the website's code.
+
+const LIMITS = { name: 100, email: 120, idea: 200, goal: 1000, supportDetails: 800 };
+
+const SUPPORT_LABELS = {
+  teammates: 'People to work with',
+  design: 'Design or visual help',
+  outreach: 'Marketing & outreach',
+  events: 'Event planning',
+  partners: 'A partner organization',
+  advice: 'Advice on next steps',
+};
+
+function clean(value, max) {
+  return String(value ?? '')
+    .trim()
+    .slice(0, max);
+}
+
+function json(status, body) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
+/** Validates a submission. Returns { data } or { error }. Exported for testing. */
+export function parsePitch(body) {
+  if (!body || typeof body !== 'object') return { error: 'Invalid request.' };
+  // Spam trap: real people never see or fill this field.
+  if (body._gotcha) return { spam: true };
+
+  const data = {
+    name: clean(body.name, LIMITS.name),
+    email: clean(body.email, LIMITS.email),
+    idea: clean(body.idea, LIMITS.idea),
+    goal: clean(body.goal, LIMITS.goal),
+    supportDetails: clean(body.supportDetails, LIMITS.supportDetails),
+    support: Array.isArray(body.support)
+      ? body.support.map((value) => SUPPORT_LABELS[value]).filter(Boolean)
+      : [],
+  };
+
+  if (!data.name || !data.idea || !data.goal) return { error: 'Missing required fields.' };
+  if (!/^[^\s@]+@illinois\.edu$/i.test(data.email)) return { error: 'An @illinois.edu email is required.' };
+  return { data };
+}
+
+/** Builds the Discord message. Mentions are disabled so submissions can't ping @everyone. */
+export function discordMessage(data) {
+  const fields = [
+    { name: 'From', value: `${data.name} (${data.email})` },
+    { name: 'What they hope to accomplish', value: data.goal },
+  ];
+  if (data.support.length > 0) fields.push({ name: 'Looking for', value: data.support.join(', ') });
+  if (data.supportDetails) fields.push({ name: 'Details', value: data.supportDetails });
+
+  return {
+    username: 'ICI Website',
+    allowed_mentions: { parse: [] },
+    embeds: [
+      {
+        title: `💡 New idea: ${data.idea}`.slice(0, 256),
+        color: 0xe87722,
+        fields: fields.map((field) => ({ ...field, value: field.value.slice(0, 1024) })),
+        footer: { text: `Reply to ${data.email}` },
+        timestamp: new Date().toISOString(),
+      },
+    ],
+  };
+}
+
+export async function POST(request) {
+  const webhook = process.env.DISCORD_PITCH_WEBHOOK;
+  if (!webhook) return json(500, { error: 'Pitch submissions are not configured.' });
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json(400, { error: 'Invalid request.' });
+  }
+
+  const result = parsePitch(body);
+  if (result.spam) return json(200, { ok: true });
+  if (result.error) return json(400, { error: result.error });
+
+  const response = await fetch(webhook, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(discordMessage(result.data)),
+  });
+
+  if (!response.ok) {
+    console.error('Discord webhook failed', response.status, await response.text());
+    return json(502, { error: 'Could not deliver the pitch.' });
+  }
+  return json(200, { ok: true });
+}

@@ -13,10 +13,8 @@ export const site = {
     // See .env.example. Empty values disable submission with an explanatory notice.
     joinEndpoint: import.meta.env.VITE_JOIN_FORM_ENDPOINT as string | undefined,
     partnerEndpoint: import.meta.env.VITE_PARTNER_FORM_ENDPOINT as string | undefined,
-    // Idea pitches fall back to the membership endpoint so one Formspree form can collect both.
-    ideaEndpoint: (import.meta.env.VITE_IDEA_FORM_ENDPOINT || import.meta.env.VITE_JOIN_FORM_ENDPOINT) as
-      | string
-      | undefined,
+    // Idea pitches go to our own relay (api/pitch.js), which posts them to Discord.
+    ideaEndpoint: (import.meta.env.VITE_IDEA_FORM_ENDPOINT as string | undefined) || '/api/pitch',
   },
 };
 
