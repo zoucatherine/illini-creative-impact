@@ -30,6 +30,8 @@ export interface ProjectSection {
 export interface Project {
   slug: string;
   title: string;
+  /** A word in the title to render with the autumn treatment (see AccentTitle). */
+  titleAccent?: string;
   category: string;
   status: ProjectStatus;
   /** Overrides the default status label, e.g. "Fall semester event". */
@@ -135,17 +137,18 @@ export const projects: Project[] = [
   },
   {
     slug: 'fall-exhibition',
-    title: 'Fall Exhibition & Community Art',
-    category: 'Exhibition & art market',
+    title: 'It’s Okay to Fall',
+    titleAccent: 'Fall',
+    category: 'Fall exhibition & art market',
     status: 'recurring',
     // TODO: confirm whether this runs every fall.
     statusLabel: 'Fall semester event',
     summary:
       'An exhibition and art market centered on mental health awareness, built around a collaborative artwork that attendees help create.',
-    // TODO: confirm this photo is from the Fall Exhibition.
-    cover: { photo: photos.exhibitGroup, caption: 'Members preparing artwork' },
+    // Chosen to reflect the theme (making art together, no pressure), not taken at the exhibition.
+    cover: { photo: photos.drawingTable, caption: 'Making art together' },
     overview:
-      'The Fall Exhibition pairs a student art exhibition with an art market, organized around mental health awareness. At its center is a collaborative community artwork: a piece that attendees add to themselves.',
+      'It’s Okay to Fall is our fall exhibition and art market, organized around mental health awareness. The name plays on the season and on the idea that it’s okay to stumble. At its center is a collaborative community artwork: a piece that attendees add to themselves.',
     need:
       'Mental health is easier to talk about when there is a shared, easy way in. Making something together, and seeing what others contributed, opens that conversation. The art market also gives student artists a place to sell their work.',
     contributions: [
@@ -175,7 +178,7 @@ export const projects: Project[] = [
   {
     slug: 'noshbox',
     title: 'NoshBox Collaboration',
-    category: 'Local partnership',
+    category: 'Partnership in development',
     status: 'in-development',
     partner: 'NoshBox',
     summary:

@@ -23,7 +23,7 @@ const faqs = [
   {
     question: 'I have an idea for a project. What happens next?',
     answer:
-      'Tell us about it in the form below. We’ll talk it through with you, and if it fits, help you find members to build it with.',
+      'Pitch it on our Pitch an Idea page. We’ll talk it through with you, and if it fits, help you find members to build it with.',
   },
 ];
 
@@ -42,10 +42,10 @@ export default function GetInvolvedPage({ search }: { search: string }) {
         eyebrow="Get involved"
         title={
           <>
-            Find something <span className="italic text-illiniOrange">real</span> to work on.
+            Find your place at <span className="italic text-illiniOrange">ICI.</span>
           </>
         }
-        intro="Join a project team, help bring an event to life, or start something of your own. Every major and experience level is welcome."
+        intro="Join a project, help organize an event, or bring an idea of your own. There’s no single way to get involved, and every major and experience level is welcome."
       />
 
       <section aria-label="Ways to participate" className="bg-cream py-20 sm:py-24">

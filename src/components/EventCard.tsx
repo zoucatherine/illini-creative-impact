@@ -1,5 +1,5 @@
 import { eventStatusLabel, type ClubEvent } from '../content/events';
-import { ArrowLink, StatusBadge } from './ui';
+import { AccentTitle, ArrowLink, StatusBadge } from './ui';
 
 function formatDate(iso: string) {
   const date = new Date(iso);
@@ -80,7 +80,7 @@ export function EventCard({ event, tone = 'light' }: { event: ClubEvent; tone?: 
           )}
         </div>
         <h3 className={`mt-4 font-editorial text-2xl font-bold ${dark ? 'text-white' : 'text-primaryNavy'}`}>
-          {event.title}
+          <AccentTitle text={event.title} accent={event.titleAccent} />
         </h3>
         <dl className={`mt-3 space-y-1 text-sm ${dark ? 'text-white/70' : 'text-slate-600'}`}>
           <div className="flex gap-2">

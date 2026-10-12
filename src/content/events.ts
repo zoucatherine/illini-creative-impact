@@ -23,6 +23,8 @@ export const eventStatusLabel: Record<EventStatus, string> = {
 export interface ClubEvent {
   id: string;
   title: string;
+  /** A word in the title to render with the autumn treatment (see AccentTitle). */
+  titleAccent?: string;
   status: EventStatus;
   description: string;
   /** ISO date-time, only once confirmed. */
@@ -40,14 +42,15 @@ export interface ClubEvent {
 export const events: ClubEvent[] = [
   {
     id: 'fall-exhibition',
-    title: 'Fall Exhibition & Art Market',
+    title: 'It’s Okay to Fall: Exhibition & Art Market',
+    titleAccent: 'Fall',
     status: 'dates-tba',
     flagship: true,
     when: 'Fall semester',
     description:
       'An exhibition and art market centered on mental health awareness, with a collaborative artwork attendees help create.',
     link: { href: '/work/fall-exhibition', label: 'About the exhibition' },
-    photo: photos.exhibitGroup,
+    photo: photos.drawingTable,
   },
   {
     id: 'creative-socials',
@@ -56,7 +59,7 @@ export const events: ClubEvent[] = [
     description:
       'Relaxed nights to make something, meet members, and hear what projects are coming up. A good first event if you are new.',
     link: { href: 'https://discord.com/invite/9uBHgdJbQK', label: 'Get dates on Discord' },
-    photo: photos.drawingTable,
+    photo: photos.quadSelfie,
   },
   {
     id: 'noshbox-event',

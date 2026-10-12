@@ -34,3 +34,28 @@ html {
     transparent 1px 14px
   );
 }
+
+/* Autumn treatment for the word "Fall" in It’s Okay to Fall. */
+.autumn-text {
+  background-image: linear-gradient(100deg, #b7410e 0%, #e87722 45%, #d4a017 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .falling-leaf {
+    animation: leaf-drift 5s ease-in-out infinite;
+    transform-origin: 50% 0;
+  }
+}
+
+@keyframes leaf-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-18deg);
+  }
+  50% {
+    transform: translate(-0.08em, 0.12em) rotate(14deg);
+  }
+}

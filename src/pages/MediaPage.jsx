@@ -5,13 +5,6 @@ import { joinHref } from '../content/site';
 import { useDocumentMeta } from '../lib/router';
 import { PageHeader } from './Pages';
 
-const neededPhotos = [
-  'Projects in progress',
-  'Student artwork',
-  'Fall Exhibition',
-  'Trinity Community Food Pantry work',
-];
-
 // Served at /community (and the older /media URL).
 export default function MediaPage() {
   useDocumentMeta(
@@ -50,18 +43,8 @@ export default function MediaPage() {
                 </Reveal>
               </li>
             ))}
-            {neededPhotos.map((label) => (
-              <li
-                key={label}
-                className="placeholder-hatch mb-4 flex aspect-[4/3] break-inside-avoid flex-col items-center justify-center rounded-2xl border border-dashed border-primaryNavy/25 p-6 text-center"
-              >
-                <span className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Photo needed</span>
-                <span className="mt-2 text-sm text-slate-600">{label}</span>
-              </li>
-            ))}
           </ul>
 
-          <h2 className="mt-20 font-editorial text-3xl font-bold text-primaryNavy sm:text-4xl">Member stories</h2>
           <MemberStories />
 
           <div className="mt-16">

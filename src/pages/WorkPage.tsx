@@ -1,7 +1,7 @@
 import { ProjectShowcase } from '../components/ProjectShowcase';
 import { FinalCTA } from '../components/sections';
 import { ArrowLink, Container } from '../components/ui';
-import { proposeHref } from '../content/site';
+import { pitchHref } from '../content/site';
 import { useDocumentMeta } from '../lib/router';
 import { PageHeader } from './Pages';
 
@@ -23,7 +23,7 @@ export default function WorkPage() {
         intro="Each project starts with a need: a partner who could use help, or a community that deserves a better event. Students take it from there."
       >
         <div className="mt-8">
-          <ArrowLink href={proposeHref} tone="dark">
+          <ArrowLink href={pitchHref} tone="dark">
             Have an idea for the next one?
           </ArrowLink>
         </div>

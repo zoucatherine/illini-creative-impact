@@ -1,4 +1,4 @@
-import { joinHref, partnerHref, proposeHref, site } from '../content/site';
+import { joinHref, partnerHref, pitchHref, site } from '../content/site';
 
 const columns = [
   {
@@ -14,7 +14,7 @@ const columns = [
     title: 'Participate',
     links: [
       ['Join ICI', joinHref],
-      ['Propose an idea', proposeHref],
+      ['Pitch an idea', pitchHref],
       ['Partner with ICI', partnerHref],
     ],
   },

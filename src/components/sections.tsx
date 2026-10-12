@@ -1,7 +1,12 @@
 import { communityPhotos, memberStories } from '../content/community';
 import { partners } from '../content/partners';
-import { joinHref, partnerHref, proposeHref, site } from '../content/site';
+import { photos } from '../content/photos';
+import { joinHref, partnerHref, pitchHref, site } from '../content/site';
 import { ArrowLink, ButtonLink, Container, Eyebrow, Reveal, SectionHeading } from './ui';
+
+// ---------------------------------------------------------------------------
+// Get Involved page pathways
+// ---------------------------------------------------------------------------
 
 const pathways = [
   {
@@ -14,16 +19,16 @@ const pathways = [
   {
     title: 'Bring events to life',
     body: 'Help plan and run the things people actually show up to.',
-    examples: ['Exhibitions', 'Art competitions', 'Socials', 'Community experiences'],
+    examples: ['Exhibitions', 'Art contests', 'Socials', 'Community experiences'],
     href: '/get-involved?interest=events#join',
     cta: 'I want to help with events',
   },
   {
     title: 'Start an initiative',
-    body: 'Have an idea for a cause, partnership, or project? Propose it, and we will help you find a team.',
+    body: 'Have an idea for a cause, partnership, or project? Pitch it, and find people to build it with.',
     examples: ['A cause you care about', 'A partner you know', 'An event you wish existed'],
-    href: proposeHref,
-    cta: 'I have an idea',
+    href: pitchHref,
+    cta: 'Pitch an idea',
   },
 ];
 
@@ -60,103 +65,271 @@ export function Pathways({ headingLevel = 'h3' }: { headingLevel?: 'h2' | 'h3' }
   );
 }
 
-export function GetInvolvedSection() {
+// ---------------------------------------------------------------------------
+// Homepage: partner strip under Our Work
+// ---------------------------------------------------------------------------
+
+export function PartnerStrip() {
   return (
-    <section id="get-involved" aria-labelledby="get-involved-title" className="bg-white py-24 sm:py-32">
+    <div className="mt-20 flex flex-col gap-5 border-t border-primaryNavy/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
+      <p className="text-slate-600">
+        <span className="mr-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Working with</span>
+        {partners.map((partner, index) => (
+          <span key={partner.name}>
+            {index > 0 && (
+              <span className="mx-2 text-slate-300" aria-hidden="true">
+                /
+              </span>
+            )}
+            <a
+              href={partner.projectSlug ? `/work/${partner.projectSlug}` : (partner.url ?? partnerHref)}
+              className="font-semibold text-primaryNavy underline-offset-4 hover:text-orangeInk hover:underline"
+            >
+              {partner.name}
+            </a>
+          </span>
+        ))}
+      </p>
+      <ArrowLink href={partnerHref}>Representing an organization? Partner with ICI</ArrowLink>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Homepage: your idea, our community
+// ---------------------------------------------------------------------------
+
+const ideaNotes = [
+  { kind: 'Start a community project', idea: 'A documentary about an issue in town', tone: 'cream', tilt: '-rotate-2' },
+  { kind: 'Organize an event', idea: 'The campus event you wish already existed', tone: 'orange', tilt: 'rotate-1' },
+  { kind: 'Support a local cause', idea: 'Better outreach for a local nonprofit', tone: 'white', tilt: 'rotate-2' },
+  { kind: 'Launch a creative initiative', idea: 'A mental health awareness campaign', tone: 'sand', tilt: '-rotate-1' },
+] as const;
+
+const noteTone = {
+  cream: 'bg-cream',
+  orange: 'bg-illiniOrange',
+  white: 'bg-white',
+  sand: 'bg-sand',
+};
+
+export function IdeaSection() {
+  return (
+    <section
+      id="ideas"
+      aria-labelledby="ideas-title"
+      className="overflow-hidden bg-primaryNavy py-24 text-white sm:py-32"
+    >
       <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
-            <SectionHeading
-              id="get-involved-title"
-              eyebrow="Get involved"
-              title={
-                <>
-                  Joining means <span className="italic text-orangeInk">doing</span> something.
-                </>
-              }
-              intro="Pick what interests you and jump in. These are starting points, not departments, so you can work across more than one."
-            />
+        <div className="grid items-center gap-16 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <Eyebrow tone="dark">Your idea, our community</Eyebrow>
+            <h2 id="ideas-title" className="font-editorial text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl">
+              What do you want to make <span className="italic text-illiniOrange">happen?</span>
+            </h2>
+            <p className="mt-7 text-lg leading-8 text-white/80">
+              Have a cause you care about? An event you wish existed? An idea you’ve never had the people to pursue?
+            </p>
+            <p className="mt-4 text-lg leading-8 text-white/80">
+              Bring it to ICI. Find collaborators, build a team, and see what you can create together.
+            </p>
+            <ButtonLink href={pitchHref} className="mt-9">
+              Pitch an Idea
+            </ButtonLink>
+            <p className="mt-5 max-w-md text-sm leading-6 text-white/60">
+              Rough ideas are welcome. No proposal or business plan needed. We can’t promise funding, but we’ll help you
+              find people and figure out next steps.
+            </p>
           </div>
-          <ul className="space-y-3 text-primaryNavy lg:col-span-4">
-            {['Every major is welcome', 'No experience needed', 'Work across as many projects as you like'].map((item) => (
-              <li key={item} className="flex items-center gap-3 font-semibold">
-                <span className="h-2 w-2 rounded-full bg-illiniOrange" aria-hidden="true" />
-                {item}
+
+          {/* Idea board: example initiatives pinned up like notes. */}
+          <div className="lg:col-span-7">
+            <ul className="grid gap-5 sm:grid-cols-2" aria-label="Examples of initiatives students could start">
+              {ideaNotes.map((note, index) => (
+                <li key={note.kind}>
+                  <Reveal delay={index * 0.07}>
+                    <div
+                      className={`relative rounded-md p-6 text-primaryNavy shadow-xl shadow-black/30 transition-transform duration-300 hover:rotate-0 sm:p-7 ${noteTone[note.tone]} ${note.tilt}`}
+                    >
+                      <span
+                        className="absolute left-1/2 top-3 h-3 w-3 -translate-x-1/2 rounded-full bg-primaryNavy/70 ring-4 ring-primaryNavy/10"
+                        aria-hidden="true"
+                      />
+                      <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-primaryNavy/75">{note.kind}</p>
+                      <p className="mt-3 font-editorial text-2xl font-semibold italic leading-snug">{note.idea}</p>
+                    </div>
+                  </Reveal>
+                </li>
+              ))}
+              <li>
+                <Reveal delay={0.3}>
+                  <figure className="rotate-1 rounded-md bg-white p-3 pb-4 shadow-xl shadow-black/30">
+                    <img
+                      src={photos.valentinesSocial.src}
+                      alt={photos.valentinesSocial.alt}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                    <figcaption className="mt-3 text-center font-editorial text-base italic text-primaryNavy">
+                      Ideas start at a table like this
+                    </figcaption>
+                  </figure>
+                </Reveal>
               </li>
-            ))}
-          </ul>
-        </div>
-        <div className="mt-14">
-          <Pathways />
-        </div>
-        <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-          <ButtonLink href={joinHref}>Get Involved</ButtonLink>
-          <p className="text-sm text-slate-600">Takes about a minute.</p>
+              <li>
+                <Reveal delay={0.36} className="h-full">
+                  <a
+                    href={pitchHref}
+                    className="flex h-full min-h-40 -rotate-1 flex-col justify-center rounded-md border-2 border-dashed border-white/40 p-7 transition-colors hover:border-illiniOrange hover:bg-white/5"
+                  >
+                    <span className="text-xs font-bold uppercase tracking-[0.16em] text-white/60">Your turn</span>
+                    <span className="mt-3 font-editorial text-2xl font-semibold italic text-white">
+                      Your idea goes here.
+                    </span>
+                    <span className="mt-4 font-bold text-illiniOrange">Pitch it →</span>
+                  </a>
+                </Reveal>
+              </li>
+            </ul>
+          </div>
         </div>
       </Container>
     </section>
   );
 }
 
-export function PartnersSection() {
+// ---------------------------------------------------------------------------
+// Homepage: every kind of creative
+// ---------------------------------------------------------------------------
+
+const creatives = [
+  {
+    name: 'Artists & Designers',
+    body: 'Create visuals, exhibitions, installations, and materials for community partners.',
+    example: { label: 'A food drive flyer for Trinity Community Food Pantry', href: '/work/trinity-community-food-pantry' },
+  },
+  {
+    name: 'Filmmakers & Photographers',
+    body: 'Capture stories, document events, and help organizations communicate visually.',
+  },
+  {
+    name: 'Writers & Storytellers',
+    body: 'Develop campaigns, tell community stories, and help causes reach more people.',
+  },
+  {
+    name: 'Marketers & Strategists',
+    body: 'Help organizations connect with audiences, plan outreach, and tackle communication challenges.',
+  },
+  {
+    name: 'Organizers & Leaders',
+    body: 'Coordinate events, lead teams, build partnerships, and turn ambitious ideas into real experiences.',
+    example: { label: 'The Earth Day Every Day exhibition', href: '/work/earth-day-every-day' },
+  },
+  {
+    name: 'Entrepreneurs & Problem Solvers',
+    body: 'Spot opportunities, propose initiatives, and find new ways to serve communities.',
+    example: { label: 'Exploring community events with NoshBox', href: '/work/noshbox' },
+  },
+];
+
+const interests = [
+  'Illustration',
+  'Graphic design',
+  'Photography',
+  'Film & video',
+  'Writing',
+  'Marketing',
+  'Entrepreneurship',
+  'Strategy',
+  'Event production',
+  'Community organizing',
+];
+
+export function CreativesSection() {
   return (
-    <section id="partners" aria-labelledby="partners-title" className="bg-sand py-24 sm:py-32">
+    <section id="creatives" aria-labelledby="creatives-title" className="bg-white py-24 sm:py-32">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
             <SectionHeading
-              id="partners-title"
-              eyebrow="Community partners"
-              title="Who we work with."
-              intro="A lot of our work starts with organizations beyond campus that could use a hand. We listen to what they need, then figure out what students can take on."
+              id="creatives-title"
+              eyebrow="Every kind of creative"
+              title={
+                <>
+                  There’s more than one way to <span className="italic text-orangeInk">create.</span>
+                </>
+              }
+              intro="Whether you’re behind a camera, designing something new, building a campaign, organizing an event, or coming up with the next big idea, there’s a place for you here."
             />
-            <div className="mt-8 rounded-2xl bg-primaryNavy p-7 text-white">
-              <h3 className="font-editorial text-2xl font-bold">Partner with ICI</h3>
-              <p className="mt-3 leading-7 text-white/80">
-                Local nonprofits, community organizations, and other groups can reach out with a project, a need, or
-                an idea to collaborate. We’re a student organization, so we’ll be upfront about what we can take on.
-              </p>
-              <ButtonLink href={partnerHref} className="mt-6">
-                Partner With ICI
-              </ButtonLink>
-            </div>
           </div>
-          <ul className="space-y-5 lg:col-span-7 lg:pt-16">
-            {partners.map((partner) => (
-              <li key={partner.name}>
-                <Reveal>
-                  <article className="rounded-2xl bg-cream p-7 ring-1 ring-primaryNavy/10">
-                    <h3 className="font-editorial text-2xl font-bold text-primaryNavy sm:text-3xl">{partner.name}</h3>
-                    <p className="mt-3 leading-7 text-slate-600">{partner.description}</p>
-                    {(partner.projectSlug || partner.url) && (
-                      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-                        {partner.projectSlug && (
-                          <ArrowLink href={`/work/${partner.projectSlug}`}>See the project</ArrowLink>
-                        )}
-                        {partner.url && <ArrowLink href={partner.url}>Visit their website</ArrowLink>}
-                      </div>
-                    )}
-                  </article>
-                </Reveal>
+          <ul className="flex flex-wrap gap-2 lg:col-span-5 lg:justify-end" aria-label="Creative interests">
+            {interests.map((interest, index) => (
+              <li
+                key={interest}
+                className={`rounded-full px-4 py-2 text-sm font-semibold ${
+                  index % 3 === 0
+                    ? 'bg-illiniOrange text-primaryNavy'
+                    : index % 3 === 1
+                      ? 'bg-primaryNavy text-white'
+                      : 'bg-sand text-primaryNavy'
+                }`}
+              >
+                {interest}
               </li>
             ))}
-            <li className="rounded-2xl border border-dashed border-primaryNavy/25 p-7 text-slate-600">
-              <p className="font-editorial text-xl font-bold text-primaryNavy">Your organization?</p>
-              <p className="mt-2 leading-7">
-                We’re always looking for new ways to help.{' '}
-                <a href={partnerHref} className="font-bold text-orangeInk underline-offset-4 hover:underline">
-                  Tell us what you’re working on.
-                </a>
-              </p>
+            <li className="rounded-full px-4 py-2 text-sm font-semibold text-primaryNavy ring-1 ring-inset ring-primaryNavy/30">
+              Whatever you’re into
             </li>
           </ul>
         </div>
+
+        <ul className="mt-16 grid gap-x-16 md:grid-cols-2">
+          {creatives.map((creative) => (
+            <li key={creative.name} className="border-t border-primaryNavy/15 py-7">
+              <h3 className="font-editorial text-2xl font-bold text-primaryNavy sm:text-3xl">{creative.name}</h3>
+              <p className="mt-2 leading-7 text-slate-600">{creative.body}</p>
+              {creative.example && (
+                <p className="mt-3 text-sm">
+                  <span className="mr-2 font-bold uppercase tracking-[0.14em] text-slate-500">In action</span>
+                  <a href={creative.example.href} className="font-semibold text-orangeInk underline-offset-4 hover:underline">
+                    {creative.example.label}
+                  </a>
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+        <p className="border-t border-primaryNavy/15 pt-7 font-editorial text-xl italic text-primaryNavy">
+          These are examples, not departments. All majors and experience levels are welcome.
+        </p>
+
+        {/* Find your place: the conversion step right after seeing where you fit. */}
+        <div className="mt-16 grid items-center gap-8 rounded-3xl bg-cream p-8 ring-1 ring-primaryNavy/10 sm:p-12 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <h2 className="font-editorial text-4xl font-bold leading-tight text-primaryNavy sm:text-5xl">
+              Find your place at ICI.
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+              Join a project, help organize an event, or bring an idea of your own. There’s no single way to get
+              involved.
+            </p>
+          </div>
+          <div className="flex flex-col items-start gap-4 lg:col-span-4 lg:items-end">
+            <ButtonLink href={joinHref}>Join ICI</ButtonLink>
+            <ArrowLink href={pitchHref}>Or pitch an idea</ArrowLink>
+          </div>
+        </div>
       </Container>
     </section>
   );
 }
 
-export function CommunitySection({ limit = 5 }: { limit?: number }) {
+// ---------------------------------------------------------------------------
+// Homepage: life at ICI
+// ---------------------------------------------------------------------------
+
+export function LifeSection({ limit = 5 }: { limit?: number }) {
   const shown = communityPhotos.slice(0, limit);
   return (
     <section id="community" aria-labelledby="community-title" className="bg-cream py-24 sm:py-32">
@@ -164,11 +337,14 @@ export function CommunitySection({ limit = 5 }: { limit?: number }) {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             id="community-title"
-            eyebrow="Our community"
+            eyebrow="Life at ICI"
             title="The people behind the work."
-            intro="Projects are what we do. This is who does them, and what it looks like when we get together."
+            intro="Socials, tabling on the Quad, fundraisers, exhibitions, and a lot of making things together."
           />
-          <ArrowLink href="/community">See more photos</ArrowLink>
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
+            <ArrowLink href="/community">More photos</ArrowLink>
+            <ArrowLink href="/events">Events & socials</ArrowLink>
+          </div>
         </div>
 
         <ul className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-2">
@@ -200,40 +376,53 @@ export function CommunitySection({ limit = 5 }: { limit?: number }) {
   );
 }
 
+/** Real member quotes only. Renders nothing until stories are added in src/content/community.ts. */
 export function MemberStories() {
-  if (memberStories.length > 0) {
-    return (
-      <ul className="mt-14 grid gap-6 md:grid-cols-3">
-        {memberStories.map((story) => (
-          <li key={story.name}>
-            <figure className="h-full rounded-2xl bg-white p-7 ring-1 ring-primaryNavy/10">
-              <blockquote className="font-editorial text-xl leading-8 text-primaryNavy">“{story.quote}”</blockquote>
-              <figcaption className="mt-5 text-sm text-slate-600">
-                <span className="font-bold text-primaryNavy">{story.name}</span> · {story.detail}
-              </figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
+  if (memberStories.length === 0) return null;
   return (
-    <div className="mt-14 grid gap-4 md:grid-cols-3">
-      {['Member story', 'Member story', 'Member story'].map((label, index) => (
-        <div
-          key={index}
-          className="placeholder-hatch rounded-2xl border border-dashed border-primaryNavy/25 p-7 text-sm leading-6 text-slate-600"
-        >
-          <p className="font-bold uppercase tracking-[0.16em] text-slate-500">{label}: content needed</p>
-          <p className="mt-2">
-            A short quote from a member about a project they worked on. Add in <code>src/content/community.ts</code>.
-          </p>
-        </div>
+    <ul className="mt-14 grid gap-6 md:grid-cols-3">
+      {memberStories.map((story) => (
+        <li key={story.name}>
+          <figure className="h-full rounded-2xl bg-white p-7 ring-1 ring-primaryNavy/10">
+            <blockquote className="font-editorial text-xl leading-8 text-primaryNavy">“{story.quote}”</blockquote>
+            <figcaption className="mt-5 text-sm text-slate-600">
+              <span className="font-bold text-primaryNavy">{story.name}</span> · {story.detail}
+            </figcaption>
+          </figure>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Partner page: full partner list
+// ---------------------------------------------------------------------------
+
+export function PartnerList() {
+  return (
+    <ul className="grid gap-5 md:grid-cols-3">
+      {partners.map((partner) => (
+        <li key={partner.name}>
+          <article className="flex h-full flex-col rounded-2xl bg-white p-7 ring-1 ring-primaryNavy/10">
+            <h3 className="font-editorial text-2xl font-bold text-primaryNavy">{partner.name}</h3>
+            <p className="mt-3 flex-1 leading-7 text-slate-600">{partner.description}</p>
+            {(partner.projectSlug || partner.url) && (
+              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+                {partner.projectSlug && <ArrowLink href={`/work/${partner.projectSlug}`}>See the project</ArrowLink>}
+                {partner.url && <ArrowLink href={partner.url}>Website</ArrowLink>}
+              </div>
+            )}
+          </article>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Final call to action
+// ---------------------------------------------------------------------------
 
 export function FinalCTA() {
   return (
@@ -250,19 +439,15 @@ export function FinalCTA() {
             There’s always more good to be <span className="italic">done.</span>
           </h2>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-primaryNavy/85 sm:text-xl">
-            Bring your ideas, your curiosity, and your willingness to contribute. We’ll find something meaningful to
-            build together.
+            Have an idea? Bring it. Looking for something to be part of? Find it here. Join students creating new ways
+            to support our communities.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <ButtonLink href={joinHref} variant="navy">
-              Join Illini Creative Impact
+              Join ICI
             </ButtonLink>
-            <ButtonLink
-              href={proposeHref}
-              variant="secondary"
-              className="border-primaryNavy/40 hover:bg-primaryNavy/5"
-            >
-              Propose an Idea
+            <ButtonLink href={pitchHref} variant="secondary" className="border-primaryNavy/40 hover:bg-primaryNavy/5">
+              Pitch an Idea
             </ButtonLink>
           </div>
         </div>

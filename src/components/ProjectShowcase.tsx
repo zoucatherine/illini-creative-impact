@@ -1,10 +1,13 @@
 import { projects, type Project } from '../content/projects';
-import { ArrowLink, PhotoFrame, Reveal } from './ui';
+import { AccentTitle, ArrowLink, PhotoFrame, Reveal } from './ui';
 
-/** Editorial, alternating rows: the main showcase on the homepage and /work. */
-export function ProjectShowcase({ items = projects }: { items?: Project[] }) {
+/**
+ * Editorial, alternating rows: the main showcase on the homepage and /work.
+ * `compact` (homepage) keeps rows short; contribution details live on /work and project pages.
+ */
+export function ProjectShowcase({ items = projects, compact = false }: { items?: Project[]; compact?: boolean }) {
   return (
-    <ol className="mt-16 space-y-20 lg:space-y-28">
+    <ol className={`mt-16 ${compact ? 'space-y-16 lg:space-y-20' : 'space-y-20 lg:space-y-28'}`}>
       {items.map((project, index) => {
         const flip = index % 2 === 1;
         return (
@@ -35,25 +38,27 @@ export function ProjectShowcase({ items = projects }: { items?: Project[] }) {
                   </div>
                   <h3 className="mt-4 font-editorial text-3xl font-bold leading-tight tracking-tight text-primaryNavy sm:text-4xl">
                     <a href={`/work/${project.slug}`} className="hover:text-orangeInk">
-                      {project.title}
+                      <AccentTitle text={project.title} accent={project.titleAccent} />
                     </a>
                   </h3>
                   <p className="mt-4 text-lg leading-8 text-slate-600">{project.summary}</p>
-                  <div className="mt-6 border-t border-primaryNavy/10 pt-5">
-                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
-                      What students contribute
-                    </p>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {project.contributions.slice(0, 3).map((item) => (
-                        <li
-                          key={item}
-                          className="rounded-full bg-white px-3 py-1.5 text-sm text-primaryNavy ring-1 ring-primaryNavy/10"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  {!compact && (
+                    <div className="mt-6 border-t border-primaryNavy/10 pt-5">
+                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
+                        What students contribute
+                      </p>
+                      <ul className="mt-3 flex flex-wrap gap-2">
+                        {project.contributions.slice(0, 3).map((item) => (
+                          <li
+                            key={item}
+                            className="rounded-full bg-white px-3 py-1.5 text-sm text-primaryNavy ring-1 ring-primaryNavy/10"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   <div className="mt-7">
                     <ArrowLink href={`/work/${project.slug}`}>
                       <span>
@@ -82,7 +87,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
         <h3 className="mt-3 font-editorial text-2xl font-bold text-primaryNavy">
           <a href={`/work/${project.slug}`} className="after:absolute after:inset-0 hover:text-orangeInk">
-            {project.title}
+            <AccentTitle text={project.title} accent={project.titleAccent} />
           </a>
         </h3>
         <p className="mt-3 flex-1 leading-7 text-slate-600">{project.summary}</p>

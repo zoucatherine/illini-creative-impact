@@ -214,3 +214,40 @@ export function SectionHeading({
     </div>
   );
 }
+
+/** A small leaf that drifts beside the word "Fall". Decorative only. */
+function FallingLeaf() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="falling-leaf absolute -right-[0.5em] top-[0.42em] h-[0.6em] w-[0.6em]"
+    >
+      <path
+        fill="currentColor"
+        d="M12 2l1.6 3.6 2.6-1.2-.6 3.4 3.4-.8-1.6 3 2.6 1.2-3.6 1.6.8 2.4-3.4-1-.4 3.4-1.4-1.8V22h-1v-4.2l-1.4 1.8-.4-3.4-3.4 1 .8-2.4L4 13.2l2.6-1.2-1.6-3 3.4.8-.6-3.4 2.6 1.2z"
+      />
+    </svg>
+  );
+}
+
+/**
+ * Renders a title, giving `accent` (e.g. "Fall") an autumn gradient and a drifting leaf.
+ * Used for It’s Okay to Fall, where the word means both the season and stumbling.
+ */
+export function AccentTitle({ text, accent }: { text: string; accent?: string }) {
+  if (!accent || !text.includes(accent)) return <>{text}</>;
+  const [before, after] = text.split(accent);
+  return (
+    <>
+      {before}
+      <span className="relative inline-block pr-[0.45em]">
+        <span className="autumn-text inline-block pr-[0.1em] italic">{accent}</span>
+        <span className="text-[#D9480F]">
+          <FallingLeaf />
+        </span>
+      </span>
+      {after}
+    </>
+  );
+}

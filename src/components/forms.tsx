@@ -519,3 +519,149 @@ export function PartnerForm() {
     </form>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Idea pitch
+// ---------------------------------------------------------------------------
+
+const ideaSupportOptions = [
+  { value: 'teammates', label: 'People to work with', description: 'Students who want to help build it' },
+  { value: 'design', label: 'Design or visual help', description: 'Posters, branding, photo, video' },
+  { value: 'outreach', label: 'Marketing & outreach', description: 'Getting the word out' },
+  { value: 'events', label: 'Event planning', description: 'Logistics, venues, running the day' },
+  { value: 'partners', label: 'A partner organization', description: 'A nonprofit or group to work with' },
+  { value: 'advice', label: 'Advice on next steps', description: 'Help figuring out where to start' },
+];
+
+export function IdeaForm() {
+  const endpoint = site.forms.ideaEndpoint;
+  const configured = Boolean(endpoint);
+  const [status, setStatus] = React.useState<Status>('idle');
+  const [errors, setErrors] = React.useState<Errors>({});
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const value = (key: string) => String(data.get(key) ?? '').trim();
+
+    const nextErrors: Errors = {};
+    if (!value('name')) nextErrors.name = 'Please enter your name.';
+    if (!value('email')) nextErrors.email = 'Please enter your Illinois email.';
+    else if (!/^[^\s@]+@illinois\.edu$/i.test(value('email'))) nextErrors.email = 'Use your @illinois.edu email address.';
+    if (!value('idea')) nextErrors.idea = 'Give your idea a name or a one line description.';
+    if (!value('goal')) nextErrors.goal = 'Tell us a little about what you hope it does.';
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
+      focusFirstError(form, nextErrors);
+      return;
+    }
+    if (!endpoint || data.get('_gotcha')) return;
+
+    setStatus('submitting');
+    try {
+      await submitJson(endpoint, {
+        form: 'Idea pitch',
+        name: value('name'),
+        email: value('email'),
+        idea: value('idea'),
+        goal: value('goal'),
+        support: data.getAll('support').map(String),
+        supportDetails: value('supportDetails'),
+      });
+      setStatus('success');
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    }
+  };
+
+  if (status === 'success') {
+    return (
+      <SuccessMessage title="Thanks for pitching your idea.">
+        <p>
+          We’ll read it and reach out to your Illinois email to talk it through. In the meantime, you can share it with
+          members on our{' '}
+          <a href={site.social.discord} target="_blank" rel="noopener noreferrer" className="font-bold text-orangeInk underline">
+            Discord
+          </a>
+          .
+        </p>
+      </SuccessMessage>
+    );
+  }
+
+  return (
+    <form noValidate onSubmit={handleSubmit} className="space-y-8">
+      {honeypot}
+      <div className="grid gap-6 sm:grid-cols-2">
+        <Field name="name" label="Name" required error={errors.name}>
+          {(props) => <input {...props} type="text" autoComplete="name" className={inputClass} />}
+        </Field>
+        <Field name="email" label="Illinois email" required error={errors.email}>
+          {(props) => (
+            <input {...props} type="email" autoComplete="email" placeholder="netid@illinois.edu" className={inputClass} />
+          )}
+        </Field>
+      </div>
+      <Field
+        name="idea"
+        label="Your idea"
+        hint="A name or a one line description is plenty."
+        required
+        error={errors.idea}
+      >
+        {(props) => (
+          <input {...props} type="text" placeholder="e.g. A photo series on local food access" className={inputClass} />
+        )}
+      </Field>
+      <Field
+        name="goal"
+        label="What do you hope to accomplish?"
+        hint="Who would it help, and what would be different if it happened? Rough thoughts are fine."
+        required
+        error={errors.goal}
+      >
+        {(props) => <textarea {...props} rows={5} className={inputClass} />}
+      </Field>
+      <CheckboxGroup
+        name="support"
+        legend="What kind of collaborators or support are you looking for?"
+        options={ideaSupportOptions}
+      />
+      <Field name="supportDetails" label="Anything specific?">
+        {(props) => <textarea {...props} rows={3} className={inputClass} />}
+      </Field>
+
+      <FormStatus
+        status={status}
+        configured={configured}
+        notConfiguredMessage={
+          <>
+            Online pitches aren’t connected yet. For now, share your idea on our{' '}
+            <a href={site.social.discord} target="_blank" rel="noopener noreferrer" className="font-bold underline">
+              Discord
+            </a>{' '}
+            or message us on{' '}
+            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="font-bold underline">
+              Instagram
+            </a>
+            .
+          </>
+        }
+        errorMessage={
+          <>
+            Something went wrong and your pitch wasn’t sent. Please try again, or share it on our{' '}
+            <a href={site.social.discord} target="_blank" rel="noopener noreferrer" className="font-bold underline">
+              Discord
+            </a>
+            .
+          </>
+        }
+      />
+      <SubmitButton status={status} configured={configured}>
+        Send my idea
+      </SubmitButton>
+    </form>
+  );
+}

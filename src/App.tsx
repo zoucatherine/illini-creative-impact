@@ -10,6 +10,7 @@ import WorkPage from './pages/WorkPage';
 import ProjectPage from './pages/ProjectPage';
 import GetInvolvedPage from './pages/GetInvolvedPage';
 import PartnerPage from './pages/PartnerPage';
+import PitchPage from './pages/PitchPage';
 import { NotFoundPage } from './pages/Pages';
 import { useDocumentMeta, useLocation } from './lib/router';
 import './index.css';
@@ -45,6 +46,9 @@ function renderRoute(path: string, search: string) {
     case '/teams':
     case '/faq':
       return <GetInvolvedPage search={search} />;
+    case '/pitch':
+    case '/propose':
+      return <PitchPage />;
     case '/partner':
     case '/contact':
       return <PartnerPage />;

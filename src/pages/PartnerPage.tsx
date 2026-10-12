@@ -1,6 +1,6 @@
 import { PartnerForm } from '../components/forms';
 import { Container, Eyebrow } from '../components/ui';
-import { partners } from '../content/partners';
+import { PartnerList } from '../components/sections';
 import { useDocumentMeta } from '../lib/router';
 import { PageHeader } from './Pages';
 
@@ -24,7 +24,6 @@ export default function PartnerPage() {
     'Partner With ICI',
     'Local nonprofits and community organizations can reach out to Illini Creative Impact with projects, needs, and ideas to collaborate.',
   );
-  const activePartners = partners.filter((partner) => partner.status === 'active');
 
   return (
     <>
@@ -59,22 +58,10 @@ export default function PartnerPage() {
             professional agency. We can’t guarantee we’ll take on every request, and timelines depend on the academic
             calendar. What we can promise is to take your need seriously and be straightforward with you.
           </div>
-          {activePartners.length > 0 && (
-            <p className="mt-8 text-slate-600">
-              Current partners:{' '}
-              {activePartners.map((partner, index) => (
-                <span key={partner.name}>
-                  {index > 0 && ', '}
-                  <a
-                    href={partner.projectSlug ? `/work/${partner.projectSlug}` : '/#partners'}
-                    className="font-bold text-orangeInk underline-offset-4 hover:underline"
-                  >
-                    {partner.name}
-                  </a>
-                </span>
-              ))}
-            </p>
-          )}
+          <h2 className="mt-16 font-editorial text-3xl font-bold text-primaryNavy">Organizations we work with</h2>
+          <div className="mt-8">
+            <PartnerList />
+          </div>
         </Container>
       </section>
 

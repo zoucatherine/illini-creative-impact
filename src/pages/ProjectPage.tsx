@@ -1,5 +1,5 @@
 import { ProjectCard } from '../components/ProjectShowcase';
-import { ArrowLink, ButtonLink, Container, ContentNeeded, Eyebrow, PhotoFrame, Reveal } from '../components/ui';
+import { AccentTitle, ArrowLink, ButtonLink, Container, ContentNeeded, Eyebrow, PhotoFrame, Reveal } from '../components/ui';
 import { getProject, projects } from '../content/projects';
 import { useDocumentMeta } from '../lib/router';
 import { NotFoundPage } from './Pages';
@@ -28,7 +28,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
                 </span>
               </div>
               <h1 className="mt-5 font-editorial text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-                {project.title}
+                <AccentTitle text={project.title} accent={project.titleAccent} />
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80 sm:text-xl">{project.summary}</p>
               {project.link && (
