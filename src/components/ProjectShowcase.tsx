@@ -41,7 +41,9 @@ export function ProjectShowcase({ items = projects, compact = false }: { items?:
                       <AccentTitle text={project.title} accent={project.titleAccent} />
                     </a>
                   </h3>
-                  <p className="mt-4 text-lg leading-8 text-slate-600">{project.summary}</p>
+                  <p className="mt-4 text-lg leading-8 text-slate-600">
+                    {compact ? (project.teaser ?? project.summary) : project.summary}
+                  </p>
                   {!compact && (
                     <div className="mt-6 border-t border-primaryNavy/10 pt-5">
                       <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">

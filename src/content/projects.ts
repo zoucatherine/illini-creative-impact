@@ -38,6 +38,8 @@ export interface Project {
   statusLabel?: string;
   /** One or two sentences for cards and the showcase. */
   summary: string;
+  /** One short line for the homepage showcase. */
+  teaser?: string;
   cover: PhotoSlot;
   overview: string;
   /** The community need or opportunity being addressed. */
@@ -61,6 +63,7 @@ export const projects: Project[] = [
     category: 'Community partnership',
     status: 'active',
     partner: 'Trinity Community Food Pantry',
+    teaser: 'Branding, posters, and signage for a local food pantry.',
     summary:
       'Students take on the pantry’s creative and promotional needs: branding, posters, signage, and the materials that help neighbors find and use it.',
     cover: { photo: photos.trinityFlyer, caption: 'Food drive flyer by Jasmine Liu' },
@@ -96,6 +99,7 @@ export const projects: Project[] = [
     statusLabel: 'Online gallery open',
     partner: 'Visionary Arts',
     link: { href: 'https://earthdayeveryday.artcall.org/pages/web-gallery', label: 'View the online gallery' },
+    teaser: 'An environmental art contest we started with Visionary Arts. It spread across the United States and into Europe.',
     summary:
       'An Earth Day art movement we helped start with Visionary Arts. It grew into a contest and exhibition with artists across the United States and in Europe.',
     // TODO: confirm this photo is from the Earth Day Every Day exhibition.
@@ -143,6 +147,7 @@ export const projects: Project[] = [
     status: 'recurring',
     // TODO: confirm whether this runs every fall.
     statusLabel: 'Fall semester event',
+    teaser: 'Our upcoming mental health exhibition and art market, built around a community artwork everyone adds to.',
     summary:
       'An exhibition and art market centered on mental health awareness, built around a collaborative artwork that attendees help create.',
     // Chosen to reflect the theme (making art together, no pressure), not taken at the exhibition.
@@ -181,6 +186,7 @@ export const projects: Project[] = [
     category: 'Partnership in development',
     status: 'in-development',
     partner: 'NoshBox',
+    teaser: 'Exploring creative community events with a local restaurant pickup app.',
     summary:
       'A developing partnership with NoshBox, a pickup app for restaurants in Champaign and Urbana, to explore creative events and experiences centered on the community. Details are still being worked out.',
     cover: { photo: photos.noshboxLogo },

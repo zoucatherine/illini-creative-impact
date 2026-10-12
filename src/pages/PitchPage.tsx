@@ -54,9 +54,9 @@ export default function PitchPage() {
             ))}
           </ol>
           <p className="mt-10 max-w-3xl rounded-2xl bg-sand p-6 leading-7 text-primaryNavy">
-            <strong>Being upfront:</strong> ICI is a student organization. We can’t promise funding or a ready made team,
-            and not every idea will be a fit. What we can offer is encouragement, people who care, and a community to
-            organize with.
+            <strong>Being upfront:</strong> ICI is a student organization. We help you explore whether an idea is
+            feasible, find interested collaborators, and organize a team. We can’t guarantee funding, staffing, or that
+            every idea moves forward.
           </p>
         </Container>
       </section>

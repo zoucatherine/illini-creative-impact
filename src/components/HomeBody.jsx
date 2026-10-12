@@ -1,25 +1,24 @@
 import { ProjectShowcase } from './ProjectShowcase';
-import { CreativesSection, FinalCTA, IdeaSection, LifeSection, PartnerStrip } from './sections';
-import { ArrowLink, Container, SectionHeading } from './ui';
+import { CreativesSection, FinalCTA, IdeaSection, InDevelopmentStrip, LifeSection } from './sections';
+import { Container, SectionHeading } from './ui';
+import { projects } from '../content/projects';
 
-// Homepage story: proof (our work), invitation (your idea), belonging (every kind of creative,
-// find your place), people (life at ICI), then join.
+// Homepage story: what we do (work), what you can do (ideas, creatives), who you'll do it with (life), join.
+const featuredProjects = projects.filter((project) => project.status !== 'in-development');
+
 export default function HomeBody() {
   return (
     <>
       <section id="work" aria-labelledby="work-title" className="bg-cream py-24 sm:py-32">
         <Container>
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading
-              id="work-title"
-              eyebrow="Our work"
-              title="What we’re building."
-              intro="Partnerships, events, and initiatives run by students. Each one started with a real need."
-            />
-            <ArrowLink href="/work">All projects</ArrowLink>
-          </div>
-          <ProjectShowcase compact />
-          <PartnerStrip />
+          <SectionHeading
+            id="work-title"
+            eyebrow="Our work"
+            title="What we’re building."
+            intro="Every project is student led, from first idea to finished work."
+          />
+          <ProjectShowcase items={featuredProjects} compact />
+          <InDevelopmentStrip />
         </Container>
       </section>
 

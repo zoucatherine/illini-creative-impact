@@ -62,8 +62,7 @@ export default function Hero() {
             Creativity can change our <span className="italic text-illiniOrange">communities.</span>
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl sm:leading-9">
-            Join students putting their creativity to work for our communities. Partner with local organizations,
-            bring events to life, or start an initiative of your own.
+            Join students turning their ideas into action, from community partnerships to initiatives of their own.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
