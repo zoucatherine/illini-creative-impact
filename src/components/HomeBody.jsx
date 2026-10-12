@@ -16,7 +16,10 @@ export default function HomeBody() {
             <p className="max-w-5xl font-editorial text-3xl font-medium leading-[1.25] tracking-tight text-primaryNavy sm:text-4xl lg:text-5xl">
               {site.belief.replace('.', '')}
               <span className="text-illiniOrange">.</span>{' '}
-              <span className="text-slate-500">Art is one tool. So are strategy, design, and organizing.</span>
+              <span className="text-slate-500">
+                Whether you’re an artist, writer, filmmaker, or marketer, there’s a place here for anyone looking to
+                make an impact.
+              </span>
             </p>
           </Reveal>
 
