@@ -1,7 +1,6 @@
 export const site = {
   name: 'Illini Creative Impact',
   shortName: 'ICI',
-  formerName: 'Illini Art & Business Collective',
   belief: 'We believe creativity can drive change in our communities.',
   url: 'https://illini-creative-impact.vercel.app',
   social: {

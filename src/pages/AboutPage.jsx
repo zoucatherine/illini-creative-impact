@@ -183,7 +183,6 @@ export default function AboutPage() {
               If you’re a business student looking for practical experience that matters, you’ll find it here. If
               you’re not, you’re just as welcome. Every major, no experience required.
             </p>
-            <p className="text-base text-slate-500">Formerly the {site.formerName}.</p>
           </div>
           <div className="flex flex-col gap-4 lg:col-span-4 lg:col-start-9">
             <ButtonLink href={joinHref}>Join ICI</ButtonLink>

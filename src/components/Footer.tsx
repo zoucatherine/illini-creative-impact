@@ -64,7 +64,7 @@ export const Footer = () => {
         ))}
       </div>
       <div className="mx-auto max-w-7xl border-t border-white/10 px-6 py-6 text-sm text-slate-400 sm:px-10 lg:px-16">
-        &copy; {new Date().getFullYear()} {site.name}. Formerly the {site.formerName}.
+        &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
       </div>
     </footer>
   );
