@@ -17,9 +17,21 @@ export const partners: Partner[] = [
     projectSlug: 'trinity-community-food-pantry',
   },
   {
+    // TODO: describe what ICI and Visionary Arts do together.
+    name: 'Visionary Arts',
+    status: 'active',
+    description: 'A local art studio we partner with.',
+  },
+  {
+    // TODO: confirm full name and describe the collaboration.
+    name: 'College of Fine + Applied Arts (FAA)',
+    status: 'active',
+    description: 'The University of Illinois college for art, design, and the creative disciplines.',
+  },
+  {
     name: 'Noshbox',
     status: 'in-development',
-    description: 'Exploring community-centered creative events together. Details are still being planned.',
+    description: 'Exploring creative events for the community together. Details are still being planned.',
     projectSlug: 'noshbox',
   },
 ];

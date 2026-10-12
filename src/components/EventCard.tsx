@@ -24,7 +24,7 @@ const statusTone = {
 
 /**
  * Event card. `tone="dark"` is used on navy sections.
- * Shows only confirmed details — missing dates and locations read "to be announced".
+ * Shows only confirmed details; missing dates and locations read "to be announced".
  */
 export function EventCard({ event, tone = 'light' }: { event: ClubEvent; tone?: 'light' | 'dark' }) {
   const date = event.date ? formatDate(event.date) : null;

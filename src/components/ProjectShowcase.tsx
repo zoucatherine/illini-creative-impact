@@ -10,7 +10,7 @@ export function ProjectStatusBadge({ project }: { project: Project }) {
   );
 }
 
-/** Editorial, alternating rows — the main showcase on the homepage and /work. */
+/** Editorial, alternating rows: the main showcase on the homepage and /work. */
 export function ProjectShowcase({ items = projects }: { items?: Project[] }) {
   return (
     <ol className="mt-16 space-y-20 lg:space-y-28">

@@ -99,7 +99,7 @@ export default function EventsPage() {
             Come make something <span className="italic text-illiniOrange">with us.</span>
           </>
         }
-        intro="Exhibitions, competitions, socials, and community events — and the easiest way to meet us."
+        intro="Exhibitions, competitions, socials, and community events. They’re also the easiest way to meet us."
       />
 
       <div className="bg-cream py-20 sm:py-24">

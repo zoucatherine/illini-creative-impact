@@ -171,8 +171,8 @@ export default function AboutPage() {
           <div className="space-y-6 text-lg leading-8 text-slate-700 lg:col-span-7">
             <p>
               Illini Creative Impact is a student organization at the University of Illinois Urbana-Champaign. We
-              look for places where students can be genuinely useful — a nonprofit that needs promotional materials, a
-              campus that could use a better art event, a cause that deserves more attention — and then we do the work.
+              look for places where students can be genuinely useful (a nonprofit that needs promotional materials, a
+              campus that could use a better art event, a cause that deserves more attention) and then we do the work.
             </p>
             <p>
               Creativity, to us, isn’t limited to art. It’s problem solving, entrepreneurship, strategy, organizing,
@@ -180,8 +180,8 @@ export default function AboutPage() {
               borrow from all three and keep the door open to anyone who wants to contribute.
             </p>
             <p>
-              If you’re a business student looking for hands-on experience that matters, you’ll find it here. If
-              you’re not, you’re just as welcome — every major, no experience required.
+              If you’re a business student looking for practical experience that matters, you’ll find it here. If
+              you’re not, you’re just as welcome. Every major, no experience required.
             </p>
             <p className="text-base text-slate-500">Formerly the {site.formerName}.</p>
           </div>
@@ -203,7 +203,7 @@ export default function AboutPage() {
               Teams that keep things <span className="text-orangeInk">moving.</span>
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-700">
-              Officers lead these teams, but members aren’t locked into one — you can help wherever a project needs you.
+              Officers lead these teams, but members aren’t locked into one, so you can help wherever a project needs you.
             </p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -228,7 +228,7 @@ export default function AboutPage() {
               The people behind the <span className="italic">work.</span>
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-700">
-              The student leaders who coordinate our projects, events, and partnerships. Reach out directly — we’re happy to talk.
+              The student leaders who coordinate our projects, events, and partnerships. Reach out directly; we’re happy to talk.
             </p>
           </div>
 

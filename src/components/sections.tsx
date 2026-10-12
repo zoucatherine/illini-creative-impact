@@ -74,7 +74,7 @@ export function GetInvolvedSection() {
                   Joining means <span className="italic text-orangeInk">doing</span> something.
                 </>
               }
-              intro="Pick what interests you and jump in. These are starting points, not departments — you can work across more than one."
+              intro="Pick what interests you and jump in. These are starting points, not departments, so you can work across more than one."
             />
           </div>
           <ul className="space-y-3 text-primaryNavy lg:col-span-4">
@@ -169,7 +169,7 @@ export function CommunitySection({ limit = 5 }: { limit?: number }) {
             id="community-title"
             eyebrow="Our community"
             title="The people behind the work."
-            intro="Projects are what we do. This is who does them — and what it looks like when we get together."
+            intro="Projects are what we do. This is who does them, and what it looks like when we get together."
           />
           <ArrowLink href="/community">See more photos</ArrowLink>
         </div>
@@ -228,7 +228,7 @@ export function MemberStories() {
           key={index}
           className="placeholder-hatch rounded-2xl border border-dashed border-primaryNavy/25 p-7 text-sm leading-6 text-slate-600"
         >
-          <p className="font-bold uppercase tracking-[0.16em] text-slate-500">{label} — content needed</p>
+          <p className="font-bold uppercase tracking-[0.16em] text-slate-500">{label}: content needed</p>
           <p className="mt-2">
             A short quote from a member about a project they worked on. Add in <code>src/content/community.ts</code>.
           </p>

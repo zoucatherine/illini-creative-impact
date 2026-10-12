@@ -6,7 +6,7 @@ import { useDocumentMeta } from '../lib/router';
 import { PageHeader } from './Pages';
 
 const neededPhotos = [
-  'Behind-the-scenes project work',
+  'Projects in progress',
   'Student artwork',
   'Fall Exhibition',
   'Trinity Community Food Pantry work',

@@ -27,7 +27,7 @@ export default function HomeBody() {
               {site.belief.replace('.', '')}
               <span className="text-illiniOrange">.</span>{' '}
               <span className="text-slate-500">
-                For us, creativity means {creativeWays.slice(0, -1).join(', ')}, and {creativeWays.at(-1)} — any
+                For us, creativity means {creativeWays.slice(0, -1).join(', ')}, and {creativeWays.at(-1)}: any
                 unconventional way to help someone.
               </span>
             </p>
@@ -38,7 +38,7 @@ export default function HomeBody() {
               id="work-title"
               eyebrow="Our work"
               title="What we’re building."
-              intro="Partnerships, events, and initiatives run by students — each one started with a real need."
+              intro="Partnerships, events, and initiatives run by students. Each one started with a real need."
             />
             <ArrowLink href="/work">All projects</ArrowLink>
           </div>

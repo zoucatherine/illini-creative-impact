@@ -8,7 +8,7 @@ import { PageHeader } from './Pages';
 export default function WorkPage() {
   useDocumentMeta(
     'Our Work',
-    'Community partnerships, signature events, and student-led initiatives from Illini Creative Impact at UIUC.',
+    'Community partnerships, signature events, and initiatives led by students from Illini Creative Impact at UIUC.',
   );
 
   return (
@@ -20,7 +20,7 @@ export default function WorkPage() {
             Projects with a <span className="italic text-illiniOrange">purpose.</span>
           </>
         }
-        intro="Each project starts with a need — a partner who could use help, or a community that deserves a better event. Students take it from there."
+        intro="Each project starts with a need: a partner who could use help, or a community that deserves a better event. Students take it from there."
       >
         <div className="mt-8">
           <ArrowLink href={proposeHref} tone="dark">

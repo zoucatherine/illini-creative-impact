@@ -57,12 +57,12 @@ export const projects: Project[] = [
     status: 'active',
     partner: 'Trinity Community Food Pantry',
     summary:
-      'Students take on the pantry’s creative and promotional needs — branding, posters, signage, and the materials that help neighbors find and use it.',
+      'Students take on the pantry’s creative and promotional needs: branding, posters, signage, and the materials that help neighbors find and use it.',
     cover: { placeholder: 'Pantry signage, posters, or students working with pantry staff' },
     overview:
       'ICI works with Trinity Community Food Pantry on the creative side of keeping a pantry running: how it presents itself, how people find it, and how information reaches the neighbors it serves.',
     need:
-      'A food pantry’s volunteers spend their time on food and people. Clear signage, consistent branding, and well-made promotional materials still matter — they help people know when and how to get support — but they are hard to prioritize. That is work students can take on.',
+      'A food pantry’s volunteers spend their time on food and people. Clear signage, consistent branding, and polished promotional materials still matter, because they help people know when and how to get support. They are just hard to prioritize. That is work students can take on.',
     contributions: [
       'Branding and visual identity work',
       'Posters and promotional materials',
@@ -82,7 +82,7 @@ export const projects: Project[] = [
       },
     ],
     involvement:
-      'Join the project team if you want to design, write, or help manage requests from the pantry. No design portfolio required — there is room for people who can organize, communicate, and follow through.',
+      'Join the project team if you want to design, write, or help manage requests from the pantry. No design portfolio required. There is room for people who can organize, communicate, and follow through.',
   },
   {
     slug: 'spring-art-contest',
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     overview:
       'The Spring Art Contest is ICI’s recurring signature event. Student artists submit work, the university community comes to see it, and the strongest pieces are recognized.',
     need:
-      'Plenty of students make art without anywhere to show it. The contest gives them a reason to finish a piece, a public audience, and recognition — and it gives everyone else on campus a reason to show up.',
+      'Plenty of students make art without anywhere to show it. The contest gives them a reason to finish a piece, a public audience, and recognition. It also gives everyone else on campus a reason to show up.',
     contributions: [
       'Planning the contest timeline and rules',
       'Promoting the call for submissions across campus',
@@ -128,7 +128,7 @@ export const projects: Project[] = [
       },
     ],
     involvement:
-      'Help plan the next contest: outreach to artists, promotion, logistics, judging coordination, or event-day setup. Artists who want to enter can watch for the next call for submissions.',
+      'Help plan the next contest: outreach to artists, promotion, logistics, judging coordination, or setup on event day. Artists who want to enter can watch for the next call for submissions.',
   },
   {
     slug: 'fall-exhibition',
@@ -144,12 +144,12 @@ export const projects: Project[] = [
     overview:
       'The Fall Exhibition pairs a student art exhibition with an art market, organized around mental health awareness. At its center is a collaborative community artwork: a piece that attendees add to themselves.',
     need:
-      'Mental health is easier to talk about when there is a shared, low-pressure way in. Making something together — and seeing what others contributed — opens that conversation. The art market also gives student artists a place to sell their work.',
+      'Mental health is easier to talk about when there is a shared, easy way in. Making something together, and seeing what others contributed, opens that conversation. The art market also gives student artists a place to sell their work.',
     contributions: [
       'Curating the exhibition and recruiting student artists',
       'Organizing art market vendors',
       'Designing and facilitating the collaborative artwork',
-      'Promotion, event logistics, and day-of operations',
+      'Promotion, event logistics, and running the event',
     ],
     gallery: [
       { placeholder: 'The collaborative community artwork' },
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     sections: [
       {
         title: 'The community artwork',
-        body: 'Attendees are invited to add to a shared piece during the event. The finished artwork reflects everyone who took part — not a single artist.',
+        body: 'Attendees are invited to add to a shared piece during the event. The finished artwork reflects everyone who took part, not a single artist.',
       },
       {
         title: 'Take part',
@@ -176,10 +176,10 @@ export const projects: Project[] = [
     status: 'in-development',
     partner: 'Noshbox',
     summary:
-      'A developing partnership with Noshbox to explore community-centered creative events and experiences. Details are still being worked out.',
+      'A developing partnership with Noshbox to explore creative events and experiences centered on the community. Details are still being worked out.',
     cover: { placeholder: 'Photo from Noshbox or a planning session' },
     overview:
-      'ICI and Noshbox are exploring how to create community-centered creative events together. This initiative is in development — the format, dates, and scope have not been finalized.',
+      'ICI and Noshbox are exploring how to create creative events together that center the community. This initiative is in development, and the format, dates, and scope have not been finalized.',
     need:
       'Local businesses can be gathering places. This collaboration is looking at how a creative event could bring students and neighbors into the same room around something they make or experience together.',
     contributions: [
@@ -189,7 +189,7 @@ export const projects: Project[] = [
     ],
     gallery: [{ placeholder: 'Planning or event photos' }],
     involvement:
-      'Early-stage initiatives are a good place to have real influence on what gets built. If you want to help shape this one, mention Noshbox in the interest form.',
+      'Initiatives at an early stage are a good place to have real influence on what gets built. If you want to help shape this one, mention Noshbox in the interest form.',
   },
 ];
 

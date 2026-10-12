@@ -46,7 +46,7 @@ export const photos = {
   },
   certificates: {
     src: certificates,
-    alt: 'Four students holding certificates at the front of a wood-paneled hall',
+    alt: 'Four students holding certificates at the front of a hall with wood paneling',
   },
   studentExpo: {
     src: studentExpo,

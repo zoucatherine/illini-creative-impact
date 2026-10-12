@@ -1,11 +1,11 @@
-// Event content. Add, edit, or move events here — the layout updates automatically.
+// Event content. Add, edit, or move events here and the layout updates automatically.
 //
 // status:
-//   'upcoming'       — date confirmed (set `date`, ISO format, e.g. '2027-03-14T18:00:00-05:00')
-//   'dates-tba'      — happening, but no confirmed date yet
-//   'recurring'      — runs regularly (e.g. every semester)
-//   'in-development' — being planned; not confirmed
-//   'past'           — already happened
+//   'upcoming'       : date confirmed (set `date`, ISO format, e.g. '2027-03-14T18:00:00-05:00')
+//   'dates-tba'      : happening, but no confirmed date yet
+//   'recurring'      : runs regularly (e.g. every semester)
+//   'in-development' : being planned; not confirmed
+//   'past'           : already happened
 //
 // Leave `date` / `location` / `link` empty until confirmed; the card shows "to be announced".
 import { photos, type Photo } from './photos';
@@ -65,7 +65,7 @@ export const events: ClubEvent[] = [
     title: 'Creative Socials',
     status: 'recurring',
     description:
-      'Low-key nights to make something, meet members, and hear what projects are coming up. A good first event if you are new.',
+      'Relaxed nights to make something, meet members, and hear what projects are coming up. A good first event if you are new.',
     link: { href: 'https://discord.com/invite/9uBHgdJbQK', label: 'Get dates on Discord' },
     photo: photos.drawingTable,
   },
@@ -74,7 +74,7 @@ export const events: ClubEvent[] = [
     title: 'Community event with Noshbox',
     status: 'in-development',
     description:
-      'A community-centered creative event we are exploring with Noshbox. Format and timing are still being planned.',
+      'A creative event for the community that we are exploring with Noshbox. Format and timing are still being planned.',
     link: { href: '/work/noshbox', label: 'About the collaboration' },
   },
   {
@@ -90,7 +90,7 @@ export const events: ClubEvent[] = [
     id: 'valentines-social',
     title: 'Valentine’s Social',
     status: 'past',
-    description: 'A paper-crafts social — an easy way to meet members and make something together.',
+    description: 'A paper crafts social. An easy way to meet members and make something together.',
     photo: photos.valentinesSocial,
   },
   {

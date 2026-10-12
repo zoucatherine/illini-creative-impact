@@ -9,12 +9,12 @@ const faqs = [
   {
     question: 'Who can join?',
     answer:
-      'Any UIUC student, in any major. Business, art, engineering, or anything else — what matters is that you want to contribute.',
+      'Any UIUC student, in any major. Business, art, engineering, or anything else. What matters is that you want to contribute.',
   },
   {
     question: 'Do I need experience?',
     answer:
-      'No. You’ll learn by working alongside other members on real projects. Curiosity and follow-through count for more than a portfolio.',
+      'No. You’ll learn by working alongside other members on real projects. Curiosity and following through count for more than a portfolio.',
   },
   {
     question: 'Do I have to pick one team?',
@@ -64,7 +64,7 @@ export default function GetInvolvedPage({ search }: { search: string }) {
                   Join Illini Creative Impact
                 </h2>
                 <p className="mt-5 text-lg leading-8 text-slate-600">
-                  Tell us a little about yourself and what you’d like to do. This isn’t an application — it just helps
+                  Tell us a little about yourself and what you’d like to do. This isn’t an application; it just helps
                   us connect you with the right people and projects.
                 </p>
                 <p className="mt-6 text-slate-600">

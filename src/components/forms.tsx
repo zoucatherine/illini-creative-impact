@@ -210,7 +210,7 @@ const involvementOptions = [
   { value: 'projects', label: 'Project teams', description: 'Marketing, design, outreach, strategy, partnerships' },
   { value: 'events', label: 'Event planning', description: 'Exhibitions, the art contest, socials' },
   { value: 'initiative', label: 'Proposing an initiative', description: 'You have an idea to bring to life' },
-  { value: 'general', label: 'General involvement', description: 'Not sure yet — show me around' },
+  { value: 'general', label: 'General involvement', description: 'Not sure yet? We’ll show you around' },
 ];
 
 const skillOptions = [
@@ -244,7 +244,7 @@ export function JoinForm({ initialInterest, initialProject }: { initialInterest?
     if (!name) nextErrors.name = 'Please enter your name.';
     if (!email) nextErrors.email = 'Please enter your Illinois email.';
     else if (!/^[^\s@]+@illinois\.edu$/i.test(email)) nextErrors.email = 'Use your @illinois.edu email address.';
-    if (involvement.length === 0) nextErrors.involvement = 'Pick at least one — you can change your mind later.';
+    if (involvement.length === 0) nextErrors.involvement = 'Pick at least one. You can change your mind later.';
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
       focusFirstError(form, nextErrors);
@@ -273,7 +273,7 @@ export function JoinForm({ initialInterest, initialProject }: { initialInterest?
 
   if (status === 'success') {
     return (
-      <SuccessMessage title="Thanks — you’re on our list.">
+      <SuccessMessage title="Thanks, you’re on our list.">
         <p>
           We’ll reach out to your Illinois email with next steps. In the meantime, the fastest way to meet everyone is
           our{' '}
@@ -305,7 +305,7 @@ export function JoinForm({ initialInterest, initialProject }: { initialInterest?
           )}
         </Field>
       </div>
-      <Field name="majorYear" label="Major / year" hint="Every major is welcome — this just helps us introduce you to people.">
+      <Field name="majorYear" label="Major / year" hint="Every major is welcome. This just helps us introduce you to people.">
         {(props) => <input {...props} type="text" placeholder="e.g. Marketing, sophomore" className={inputClass} />}
       </Field>
 
@@ -338,7 +338,7 @@ export function JoinForm({ initialInterest, initialProject }: { initialInterest?
       <Field
         name="message"
         label={proposing ? 'Tell us about your idea' : 'Anything else?'}
-        hint={proposing ? 'A cause, a partner, an event — a few sentences is plenty.' : undefined}
+        hint={proposing ? 'A cause, a partner, an event. A few sentences is plenty.' : undefined}
       >
         {(props) => <textarea {...props} rows={proposing ? 6 : 4} className={inputClass} />}
       </Field>
@@ -348,7 +348,7 @@ export function JoinForm({ initialInterest, initialProject }: { initialInterest?
         configured={configured}
         notConfiguredMessage={
           <>
-            Online sign-up isn’t connected yet. For now, the best way to get involved is to{' '}
+            Online signups aren’t connected yet. For now, the best way to get involved is to{' '}
             <a href={site.social.discord} target="_blank" rel="noopener noreferrer" className="font-bold underline">
               join our Discord
             </a>{' '}

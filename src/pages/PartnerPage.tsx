@@ -35,7 +35,7 @@ export default function PartnerPage() {
             Have a need? <span className="italic text-illiniOrange">Let’s talk.</span>
           </>
         }
-        intro="Local nonprofits, community organizations, and other groups can reach out with a project, a need, or an idea to collaborate. We’re a student-led organization, eager to help where we can."
+        intro="Local nonprofits, community organizations, and other groups can reach out with a project, a need, or an idea to collaborate. We’re an organization run by students, eager to help where we can."
       />
 
       <section aria-labelledby="how-it-works" className="bg-cream py-20 sm:py-24">
