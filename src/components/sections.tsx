@@ -134,9 +134,12 @@ export function PartnersSection() {
                       />
                     </div>
                     <p className="mt-3 leading-7 text-slate-600">{partner.description}</p>
-                    {partner.projectSlug && (
-                      <div className="mt-4">
-                        <ArrowLink href={`/work/${partner.projectSlug}`}>See the project</ArrowLink>
+                    {(partner.projectSlug || partner.url) && (
+                      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                        {partner.projectSlug && (
+                          <ArrowLink href={`/work/${partner.projectSlug}`}>See the project</ArrowLink>
+                        )}
+                        {partner.url && <ArrowLink href={partner.url}>Visit their website</ArrowLink>}
                       </div>
                     )}
                   </article>

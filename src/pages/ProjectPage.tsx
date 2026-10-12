@@ -32,6 +32,11 @@ export default function ProjectPage({ slug }: { slug: string }) {
                 {project.title}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80 sm:text-xl">{project.summary}</p>
+              {project.link && (
+                <ButtonLink href={project.link.href} className="mt-8">
+                  {project.link.label}
+                </ButtonLink>
+              )}
             </div>
             <div className="lg:col-span-5">
               <PhotoFrame slot={project.cover} showCaption className="aspect-[4/3] w-full rounded-2xl" />
@@ -98,6 +103,11 @@ export default function ProjectPage({ slug }: { slug: string }) {
                   <div className="mt-4">
                     {section.body && <p className="text-lg leading-8 text-slate-600">{section.body}</p>}
                     {section.placeholder && <ContentNeeded>{section.placeholder}</ContentNeeded>}
+                    {section.link && (
+                      <div className="mt-4">
+                        <ArrowLink href={section.link.href}>{section.link.label}</ArrowLink>
+                      </div>
+                    )}
                   </div>
                 </section>
               ))}

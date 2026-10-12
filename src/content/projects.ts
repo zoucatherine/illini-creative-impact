@@ -22,6 +22,7 @@ export interface PhotoSlot {
 export interface ProjectSection {
   title: string;
   body?: string;
+  link?: { href: string; label: string };
   /** Rendered as a labeled "content needed" block when the section has no real content yet. */
   placeholder?: string;
 }
@@ -47,6 +48,8 @@ export interface Project {
   /** How a student can get involved with this project specifically. */
   involvement: string;
   partner?: string;
+  /** Main external link, e.g. a contest website or gallery. */
+  link?: { href: string; label: string };
 }
 
 export const projects: Project[] = [
@@ -85,50 +88,51 @@ export const projects: Project[] = [
       'Join the project team if you want to design, write, or help manage requests from the pantry. No design portfolio required. There is room for people who can organize, communicate, and follow through.',
   },
   {
-    slug: 'spring-art-contest',
-    title: 'Spring Art Contest',
-    category: 'Signature event',
-    status: 'recurring',
+    slug: 'earth-day-every-day',
+    title: 'Earth Day Every Day Art Contest',
+    category: 'Art contest & exhibition',
+    status: 'active',
+    statusLabel: 'Online gallery open',
+    partner: 'Visionary Arts',
+    link: { href: 'https://earthdayeveryday.artcall.org/pages/web-gallery', label: 'View the online gallery' },
     summary:
-      'Our flagship campus event: a contest that brings student artists together and puts their work in front of the wider university community.',
-    // TODO: confirm this photo is from the Spring Art Contest.
-    cover: { photo: photos.artExhibition, caption: 'Recognizing a student artist' },
+      'An Earth Day art contest and exhibition with Visionary Arts, open to artists of all ages. We brought the exhibition to the University of Illinois in April 2026.',
+    // TODO: confirm this photo is from the Earth Day Every Day exhibition.
+    cover: { photo: photos.artExhibition, caption: 'Exhibition at Illinois' },
     overview:
-      'The Spring Art Contest is ICI’s recurring signature event. Student artists submit work, the university community comes to see it, and the strongest pieces are recognized.',
+      'Earth Day Every Day is an art contest and exhibition run with Visionary Arts, an art academy in San Jose, California. It is open to artists of all ages, and every submission is shown in an online gallery.',
     need:
-      'Plenty of students make art without anywhere to show it. The contest gives them a reason to finish a piece, a public audience, and recognition. It also gives everyone else on campus a reason to show up.',
+      'Earth Day is one day on the calendar. This contest asks artists to keep the planet in view all year, and gives people of every age a public place to share that work, both online and in person.',
     contributions: [
-      'Planning the contest timeline and rules',
-      'Promoting the call for submissions across campus',
-      'Coordinating submissions and judging',
-      'Designing the exhibition and running the event day',
+      'Promoting the call for submissions on campus',
+      'Organizing the exhibition at the University of Illinois',
+      'Coordinating with Visionary Arts',
+      'Running the exhibition days',
     ],
     gallery: [
-      // TODO: confirm these photos are from the Spring Art Contest.
+      // TODO: confirm these photos are from the Earth Day Every Day exhibition.
       { photo: photos.artExhibition, caption: 'Student work on display' },
-      { photo: photos.certificates, caption: 'Recognizing participants' },
-      { placeholder: 'Winning artwork' },
+      { photo: photos.certificates, caption: 'Certificate presentation' },
+      { placeholder: 'Artwork from the exhibition' },
     ],
     sections: [
       {
-        title: 'Artwork gallery',
-        placeholder: 'Add images of submitted and winning pieces, with artist names and permission.',
+        title: 'Online gallery',
+        body: 'Every submission is exhibited online, and visitors can vote for their favorites.',
+        link: { href: 'https://earthdayeveryday.artcall.org/pages/web-gallery', label: 'Browse the gallery' },
       },
       {
-        title: 'Past highlights',
-        placeholder: 'Add past winners, number of submissions, and attendance once confirmed.',
+        title: '2026 exhibitions',
+        body: 'The 2026 artwork was shown at the University of Illinois on April 18 and 19, at Earth Day celebrations in Mountain View and Santa Clara County, and at Visionary Arts in San Jose.',
+        link: { href: 'https://earthdayeveryday.artcall.org/', label: 'Contest website' },
       },
       {
-        title: 'Submissions',
-        placeholder: 'Submission guidelines and the submission link will be posted when the next contest opens.',
-      },
-      {
-        title: 'Next contest',
-        body: 'Dates for the next Spring Art Contest have not been announced. Follow ICI on Instagram or join the Discord to hear first.',
+        title: 'Highlights',
+        placeholder: 'Add winners and standout pieces from the Illinois exhibition, with artist permission.',
       },
     ],
     involvement:
-      'Help plan the next contest: outreach to artists, promotion, logistics, judging coordination, or setup on event day. Artists who want to enter can watch for the next call for submissions.',
+      'Help with the next round: promotion, outreach to student artists, and running the exhibition on campus. Follow ICI on Instagram or join the Discord to hear when it opens.',
   },
   {
     slug: 'fall-exhibition',

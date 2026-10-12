@@ -27,7 +27,7 @@ export interface ClubEvent {
   description: string;
   /** ISO date-time, only once confirmed. */
   date?: string;
-  /** Loose timing when there is no confirmed date, e.g. "Spring semester". */
+  /** Loose timing when there is no confirmed date, e.g. "Fall semester". */
   when?: string;
   location?: string;
   /** Registration or info link. Internal paths (/work/...) or full URLs. */
@@ -38,17 +38,6 @@ export interface ClubEvent {
 }
 
 export const events: ClubEvent[] = [
-  {
-    id: 'spring-art-contest',
-    title: 'Spring Art Contest',
-    status: 'dates-tba',
-    flagship: true,
-    when: 'Spring semester',
-    description:
-      'Our signature campus art competition. Student artists submit work, the university community comes to see it, and standout pieces are recognized.',
-    link: { href: '/work/spring-art-contest', label: 'About the contest' },
-    photo: photos.artExhibition,
-  },
   {
     id: 'fall-exhibition',
     title: 'Fall Exhibition & Art Market',
@@ -76,6 +65,18 @@ export const events: ClubEvent[] = [
     description:
       'A creative event for the community that we are exploring with Noshbox. Format and timing are still being planned.',
     link: { href: '/work/noshbox', label: 'About the collaboration' },
+  },
+  {
+    id: 'earth-day-every-day-2026',
+    title: 'Earth Day Every Day Exhibition',
+    status: 'past',
+    flagship: true,
+    date: '2026-04-18',
+    location: 'University of Illinois',
+    description:
+      'Our Earth Day art contest with Visionary Arts, exhibited on campus April 18 and 19. Every submission is still on view in the online gallery.',
+    link: { href: 'https://earthdayeveryday.artcall.org/pages/web-gallery', label: 'View the online gallery' },
+    photo: photos.artExhibition,
   },
   {
     id: 'quad-day-2026',

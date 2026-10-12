@@ -44,7 +44,7 @@ function EventGroup({ id, title, intro, items }) {
 export default function EventsPage() {
   useDocumentMeta(
     'Events',
-    'Upcoming and past events from Illini Creative Impact: the Spring Art Contest, the Fall Exhibition, creative socials, and community initiatives.',
+    'Upcoming and past events from Illini Creative Impact: the Earth Day Every Day art contest, the Fall Exhibition, creative socials, and community initiatives.',
   );
 
   const calendarId = import.meta.env.VITE_GOOGLE_CALENDAR_ID;

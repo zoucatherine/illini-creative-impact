@@ -5,16 +5,6 @@ import { ProjectShowcase } from './ProjectShowcase';
 import { CommunitySection, FinalCTA, GetInvolvedSection, PartnersSection } from './sections';
 import { ArrowLink, Container, Reveal, SectionHeading } from './ui';
 
-const creativeWays = [
-  'problem solving',
-  'entrepreneurship',
-  'strategy',
-  'organizing',
-  'design',
-  'communication',
-  'art',
-];
-
 export default function HomeBody() {
   const featuredEvents = events.filter((event) => event.status !== 'past').slice(0, 3);
 
@@ -26,10 +16,7 @@ export default function HomeBody() {
             <p className="max-w-5xl font-editorial text-3xl font-medium leading-[1.25] tracking-tight text-primaryNavy sm:text-4xl lg:text-5xl">
               {site.belief.replace('.', '')}
               <span className="text-illiniOrange">.</span>{' '}
-              <span className="text-slate-500">
-                For us, creativity means {creativeWays.slice(0, -1).join(', ')}, and {creativeWays.at(-1)}: any
-                unconventional way to help someone.
-              </span>
+              <span className="text-slate-500">Art is one tool. So are strategy, design, and organizing.</span>
             </p>
           </Reveal>
 
@@ -58,7 +45,7 @@ export default function HomeBody() {
               id="events-title"
               eyebrow="Events & experiences"
               title="Come to something."
-              intro="From our signature art contest to smaller socials. Dates are posted here once they’re confirmed."
+              intro="Exhibitions, art contests, and socials. Dates are posted here once they’re confirmed."
             />
             <ArrowLink href="/events" tone="dark">
               All events

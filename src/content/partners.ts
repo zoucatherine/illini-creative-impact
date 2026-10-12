@@ -17,16 +17,12 @@ export const partners: Partner[] = [
     projectSlug: 'trinity-community-food-pantry',
   },
   {
-    // TODO: describe what ICI and Visionary Arts do together.
     name: 'Visionary Arts',
     status: 'active',
-    description: 'A local art studio we partner with.',
-  },
-  {
-    // TODO: confirm full name and describe the collaboration.
-    name: 'College of Fine + Applied Arts (FAA)',
-    status: 'active',
-    description: 'The University of Illinois college for art, design, and the creative disciplines.',
+    description:
+      'An art academy and creative leadership studio in San Jose, California. Together we ran the Earth Day Every Day art contest and exhibition.',
+    projectSlug: 'earth-day-every-day',
+    url: 'https://visionaryarts.net',
   },
   {
     name: 'Noshbox',

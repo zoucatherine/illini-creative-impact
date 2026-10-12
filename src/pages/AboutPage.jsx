@@ -16,7 +16,7 @@ import { PageHeader } from './Pages';
 const teams = [
   {
     name: 'Events',
-    description: 'Plan and run our exhibitions, the art contest, socials, and community events.',
+    description: 'Plan and run our exhibitions, art contests, socials, and community events.',
   },
   {
     name: 'Fundraising',
