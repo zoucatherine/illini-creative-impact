@@ -1,7 +1,7 @@
 import { communityPhotos, memberStories } from '../content/community';
 import { partners } from '../content/partners';
 import { joinHref, partnerHref, proposeHref, site } from '../content/site';
-import { ArrowLink, ButtonLink, Container, Eyebrow, Reveal, SectionHeading, StatusBadge } from './ui';
+import { ArrowLink, ButtonLink, Container, Eyebrow, Reveal, SectionHeading } from './ui';
 
 const pathways = [
   {
@@ -126,13 +126,7 @@ export function PartnersSection() {
               <li key={partner.name}>
                 <Reveal>
                   <article className="rounded-2xl bg-cream p-7 ring-1 ring-primaryNavy/10">
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <h3 className="font-editorial text-2xl font-bold text-primaryNavy sm:text-3xl">{partner.name}</h3>
-                      <StatusBadge
-                        label={partner.status === 'active' ? 'Active partner' : 'In development'}
-                        tone={partner.status === 'active' ? 'live' : 'muted'}
-                      />
-                    </div>
+                    <h3 className="font-editorial text-2xl font-bold text-primaryNavy sm:text-3xl">{partner.name}</h3>
                     <p className="mt-3 leading-7 text-slate-600">{partner.description}</p>
                     {(partner.projectSlug || partner.url) && (
                       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">

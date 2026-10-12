@@ -96,11 +96,11 @@ export const projects: Project[] = [
     partner: 'Visionary Arts',
     link: { href: 'https://earthdayeveryday.artcall.org/pages/web-gallery', label: 'View the online gallery' },
     summary:
-      'An Earth Day art contest and exhibition with Visionary Arts, open to artists of all ages. We brought the exhibition to the University of Illinois in April 2026.',
+      'An Earth Day art movement we helped start with Visionary Arts. It grew into a contest and exhibition with artists across the United States and in Europe.',
     // TODO: confirm this photo is from the Earth Day Every Day exhibition.
     cover: { photo: photos.artExhibition, caption: 'Exhibition at Illinois' },
     overview:
-      'Earth Day Every Day is an art contest and exhibition run with Visionary Arts, an art academy in San Jose, California. It is open to artists of all ages, and every submission is shown in an online gallery.',
+      'ICI helped start Earth Day Every Day with Visionary Arts, an art academy in San Jose, California. What began as an art contest became a movement that spread across the United States and into Europe. It is open to artists of all ages, and every submission is shown in an online gallery.',
     need:
       'Earth Day is one day on the calendar. This contest asks artists to keep the planet in view all year, and gives people of every age a public place to share that work, both online and in person.',
     contributions: [

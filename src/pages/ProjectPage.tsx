@@ -1,4 +1,4 @@
-import { ProjectCard, ProjectStatusBadge } from '../components/ProjectShowcase';
+import { ProjectCard } from '../components/ProjectShowcase';
 import { ArrowLink, ButtonLink, Container, ContentNeeded, Eyebrow, PhotoFrame, Reveal } from '../components/ui';
 import { getProject, projects } from '../content/projects';
 import { useDocumentMeta } from '../lib/router';
@@ -26,7 +26,6 @@ export default function ProjectPage({ slug }: { slug: string }) {
                 <span className="text-sm font-bold uppercase tracking-[0.16em] text-illiniOrange">
                   {project.category}
                 </span>
-                <ProjectStatusBadge project={project} />
               </div>
               <h1 className="mt-5 font-editorial text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
                 {project.title}
@@ -115,18 +114,12 @@ export default function ProjectPage({ slug }: { slug: string }) {
 
             <aside className="lg:col-span-4">
               <div className="space-y-6 lg:sticky lg:top-28">
-                <div className="rounded-2xl bg-white p-7 ring-1 ring-primaryNavy/10">
-                  <h2 className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Project status</h2>
-                  <div className="mt-3">
-                    <ProjectStatusBadge project={project} />
+                {project.partner && (
+                  <div className="rounded-2xl bg-white p-7 ring-1 ring-primaryNavy/10">
+                    <h2 className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Partner</h2>
+                    <p className="mt-2 font-semibold text-primaryNavy">{project.partner}</p>
                   </div>
-                  {project.partner && (
-                    <>
-                      <h2 className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Partner</h2>
-                      <p className="mt-2 font-semibold text-primaryNavy">{project.partner}</p>
-                    </>
-                  )}
-                </div>
+                )}
                 <div className="rounded-2xl bg-primaryNavy p-7 text-white">
                   <h2 className="font-editorial text-2xl font-bold">Get involved</h2>
                   <p className="mt-3 leading-7 text-white/80">{project.involvement}</p>

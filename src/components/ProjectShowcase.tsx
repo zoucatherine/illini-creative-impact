@@ -1,14 +1,5 @@
-import { projects, projectStatusLabel, type Project } from '../content/projects';
-import { ArrowLink, PhotoFrame, Reveal, StatusBadge } from './ui';
-
-export function ProjectStatusBadge({ project }: { project: Project }) {
-  return (
-    <StatusBadge
-      label={project.statusLabel ?? projectStatusLabel[project.status]}
-      tone={project.status === 'active' ? 'live' : project.status === 'in-development' ? 'muted' : 'neutral'}
-    />
-  );
-}
+import { projects, type Project } from '../content/projects';
+import { ArrowLink, PhotoFrame, Reveal } from './ui';
 
 /** Editorial, alternating rows: the main showcase on the homepage and /work. */
 export function ProjectShowcase({ items = projects }: { items?: Project[] }) {
@@ -41,7 +32,6 @@ export function ProjectShowcase({ items = projects }: { items?: Project[] }) {
                     <span className="text-sm font-bold uppercase tracking-[0.16em] text-slate-500">
                       {project.category}
                     </span>
-                    <ProjectStatusBadge project={project} />
                   </div>
                   <h3 className="mt-4 font-editorial text-3xl font-bold leading-tight tracking-tight text-primaryNavy sm:text-4xl">
                     <a href={`/work/${project.slug}`} className="hover:text-orangeInk">
@@ -89,7 +79,6 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">{project.category}</span>
-          <ProjectStatusBadge project={project} />
         </div>
         <h3 className="mt-3 font-editorial text-2xl font-bold text-primaryNavy">
           <a href={`/work/${project.slug}`} className="after:absolute after:inset-0 hover:text-orangeInk">

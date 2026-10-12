@@ -20,7 +20,7 @@ export const partners: Partner[] = [
     name: 'Visionary Arts',
     status: 'active',
     description:
-      'An art academy and creative leadership studio in San Jose, California. Together we ran the Earth Day Every Day art contest and exhibition.',
+      'An art academy and creative leadership studio in San Jose, California. Together we started Earth Day Every Day, an art movement that spread across the United States and into Europe.',
     projectSlug: 'earth-day-every-day',
     url: 'https://visionaryarts.net',
   },
