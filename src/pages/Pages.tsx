@@ -86,7 +86,7 @@ const pageContent: Record<string, PageContent> = {
     title: 'Questions welcome here.',
     highlight: 'welcome',
     description:
-      'Get a quick introduction to membership, meetings, and the ways you can participate in Illini Art & Business Collective.',
+      'Get a quick introduction to membership, meetings, and the ways you can participate in Illini Creative Impact.',
     cards: [
       { title: 'Who can join?', body: 'Any Illinois student interested in creativity, business, or community is welcome.' },
       { title: 'Do I need experience?', body: 'Not at all. We value curiosity and enthusiasm as much as previous experience.' },

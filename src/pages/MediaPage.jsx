@@ -64,7 +64,7 @@ export default function MediaPage() {
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-700">
             Follow the milestones, workshops, and gallery nights that have shaped
-            the Illini Art &amp; Business Collective.
+            Illini Creative Impact.
           </p>
         </header>
 

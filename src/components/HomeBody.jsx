@@ -45,7 +45,7 @@ export default function HomeBody() {
             </span>
           </h2>
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-700">
-            Illini Art &amp; Business Collective bridges art and business to help
+            Illini Creative Impact bridges art and business to help
             students transform creative thinking into meaningful action. We make
             room for experimentation, collaboration, and ideas that move
             communities forward.

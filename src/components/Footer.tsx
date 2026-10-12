@@ -13,7 +13,7 @@ export const Footer = () => {
             A creative community turning bold ideas into meaningful impact.
           </p>
           <p className="mt-6 text-sm text-slate-400">
-            &copy; {new Date().getFullYear()} Illini Art &amp; Business Collective. All rights reserved.
+            &copy; {new Date().getFullYear()} Illini Creative Impact. All rights reserved.
           </p>
         </div>
 

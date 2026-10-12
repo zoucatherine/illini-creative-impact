@@ -161,7 +161,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-700">
-              Illini Art &amp; Business Collective bridges creativity and business strategy through collaborative student projects, workshops, and community events. We create space for artists, strategists, organizers, and curious minds to build meaningful work together.
+              Illini Creative Impact bridges creativity and business strategy through collaborative student projects, workshops, and community events. We create space for artists, strategists, organizers, and curious minds to build meaningful work together.
             </p>
           </div>
         </div>
