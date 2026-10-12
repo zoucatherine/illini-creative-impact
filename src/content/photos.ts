@@ -9,12 +9,16 @@ import drawingTable from '../assets/photos/drawing-table.webp';
 import certificates from '../assets/photos/certificates.webp';
 import studentExpo from '../assets/photos/student-expo.webp';
 import valentinesSocial from '../assets/photos/valentines-social.webp';
+import trinityFlyer from '../assets/photos/trinity-flyer.webp';
+import trinityFlyerProcess from '../assets/photos/trinity-flyer-process.webp';
 
 export interface Photo {
   src: string;
   alt: string;
   /** CSS object-position for crops, e.g. 'center 20%' to keep faces in frame. */
   position?: string;
+  /** 'contain' shows the whole image (for flyers and artwork) instead of cropping. */
+  fit?: 'cover' | 'contain';
 }
 
 export const photos = {
@@ -55,5 +59,15 @@ export const photos = {
   valentinesSocial: {
     src: valentinesSocial,
     alt: 'Students making paper crafts together at tables during a club social',
+  },
+  trinityFlyer: {
+    src: trinityFlyer,
+    alt: 'Flyer for the Riverside High Snack Bag Food Drive for Trinity Community Food Pantry, listing items needed such as canned meat, peanut butter, and granola bars',
+    fit: 'contain',
+  },
+  trinityFlyerProcess: {
+    src: trinityFlyerProcess,
+    alt: 'Two versions of the Snack Bag Food Drive flyer side by side: a grayscale draft and the final color design',
+    fit: 'contain',
   },
 } satisfies Record<string, Photo>;

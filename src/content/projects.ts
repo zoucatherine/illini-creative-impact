@@ -61,7 +61,7 @@ export const projects: Project[] = [
     partner: 'Trinity Community Food Pantry',
     summary:
       'Students take on the pantry’s creative and promotional needs: branding, posters, signage, and the materials that help neighbors find and use it.',
-    cover: { placeholder: 'Pantry signage, posters, or students working with pantry staff' },
+    cover: { photo: photos.trinityFlyer, caption: 'Food drive flyer by Jasmine Liu' },
     overview:
       'ICI works with Trinity Community Food Pantry on the creative side of keeping a pantry running: how it presents itself, how people find it, and how information reaches the neighbors it serves.',
     need:
@@ -73,15 +73,14 @@ export const projects: Project[] = [
       'Other design requests as the pantry’s needs come up',
     ],
     gallery: [
-      { placeholder: 'Finished poster or flyer' },
-      { placeholder: 'Signage installed at the pantry' },
-      { placeholder: 'Students working on designs' },
+      { photo: photos.trinityFlyerProcess, caption: 'Snack Bag Food Drive flyer, draft and final, by Jasmine Liu' },
+      { photo: photos.trinityFlyer, caption: 'Final flyer by Jasmine Liu' },
+      { placeholder: 'Signage installed at the pantry, or students working on designs' },
     ],
     sections: [
       {
         title: 'Work samples',
-        placeholder:
-          'Add finished pieces (posters, signage, branding) once the pantry has approved sharing them.',
+        body: 'Jasmine Liu designed this flyer for the Riverside High Snack Bag Food Drive, listing the items the pantry needed most.',
       },
     ],
     involvement:

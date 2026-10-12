@@ -128,7 +128,7 @@ export function PhotoFrame({
           decoding="async"
           sizes={sizes}
           style={{ objectPosition: slot.photo.position }}
-          className="h-full w-full object-cover"
+          className={`h-full w-full ${slot.photo.fit === 'contain' ? 'object-contain p-4 sm:p-6' : 'object-cover'}`}
         />
         {showCaption && slot.caption && (
           <figcaption className="absolute bottom-3 left-3 rounded-full bg-primaryNavy/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
