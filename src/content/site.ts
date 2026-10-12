@@ -23,7 +23,7 @@ export const site = {
 export const nav = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Our Work' },
-  { href: '/events', label: 'Events' },
+  { href: '/events', label: 'Events & Projects' },
   { href: '/get-involved', label: 'Get Involved' },
   { href: '/about', label: 'About' },
 ];

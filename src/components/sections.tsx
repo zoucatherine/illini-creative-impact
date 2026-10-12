@@ -89,7 +89,7 @@ export function InDevelopmentStrip() {
           </li>
         ))}
       </ul>
-      <ArrowLink href="/work">All projects</ArrowLink>
+      <ArrowLink href="/events#projects">All projects</ArrowLink>
     </div>
   );
 }

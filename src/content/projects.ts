@@ -76,6 +76,7 @@ export const projects: Project[] = [
       'Posters and promotional materials',
       'Signage for the pantry space',
       'Other design requests as the pantry’s needs come up',
+      'Grant writing (now recruiting)',
     ],
     gallery: [
       { photo: photos.trinityFlyerProcess, caption: 'Snack Bag Food Drive flyer, draft and final, by Jasmine Liu' },

@@ -41,18 +41,6 @@ export interface ClubEvent {
 
 export const events: ClubEvent[] = [
   {
-    id: 'fall-exhibition',
-    title: 'It’s Okay to Fall: Exhibition & Art Market',
-    titleAccent: 'Fall',
-    status: 'dates-tba',
-    flagship: true,
-    when: 'Fall semester',
-    description:
-      'An exhibition and art market centered on mental health awareness, with a collaborative artwork attendees help create.',
-    link: { href: '/work/fall-exhibition', label: 'About the exhibition' },
-    photo: photos.drawingTable,
-  },
-  {
     id: 'creative-socials',
     title: 'Creative Socials',
     status: 'recurring',
@@ -60,14 +48,6 @@ export const events: ClubEvent[] = [
       'Relaxed nights to make something, meet members, and hear what projects are coming up. A good first event if you are new.',
     link: { href: 'https://discord.com/invite/9uBHgdJbQK', label: 'Get dates on Discord' },
     photo: photos.quadSelfie,
-  },
-  {
-    id: 'noshbox-event',
-    title: 'Community event with NoshBox',
-    status: 'in-development',
-    description:
-      'A creative event for the community that we are exploring with NoshBox. Format and timing are still being planned.',
-    link: { href: '/work/noshbox', label: 'About the collaboration' },
   },
   {
     id: 'earth-day-every-day-2026',

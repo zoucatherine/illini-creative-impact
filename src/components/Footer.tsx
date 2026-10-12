@@ -5,7 +5,7 @@ const columns = [
     title: 'Explore',
     links: [
       ['Our Work', '/work'],
-      ['Events', '/events'],
+      ['Events & Projects', '/events'],
       ['Our Community', '/community'],
       ['About', '/about'],
     ],

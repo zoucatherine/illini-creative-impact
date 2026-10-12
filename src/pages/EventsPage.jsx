@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { EventCard } from '../components/EventCard';
+import { ProjectCard } from '../components/ProjectShowcase';
+import { projects } from '../content/projects';
 import { ButtonLink, Container, Reveal } from '../components/ui';
 import { events } from '../content/events';
 import { site } from '../content/site';
@@ -43,8 +45,8 @@ function EventGroup({ id, title, intro, items }) {
 
 export default function EventsPage() {
   useDocumentMeta(
-    'Events',
-    'Upcoming and past events from Illini Creative Impact: the Earth Day Every Day art contest, the It’s Okay to Fall exhibition, creative socials, and community initiatives.',
+    'Events & Projects',
+    'Projects and events from Illini Creative Impact: It’s Okay to Fall, Earth Day Every Day, Trinity Community Food Pantry, NoshBox, and creative socials.',
   );
 
   const calendarId = import.meta.env.VITE_GOOGLE_CALENDAR_ID;
@@ -93,14 +95,29 @@ export default function EventsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Events & experiences"
+        eyebrow="Events & projects"
         title={
           <>
             Come make something <span className="italic text-illiniOrange">with us.</span>
           </>
         }
-        intro="Exhibitions, competitions, socials, and community events. They’re also the easiest way to meet us."
+        intro="What we’re working on now, what’s coming up, and what we’ve done."
       />
+
+      <section id="projects" aria-labelledby="projects-title" className="bg-white py-20 sm:py-24">
+        <Container>
+          <h2 id="projects-title" className="font-editorial text-3xl font-bold text-primaryNavy sm:text-4xl">
+            Projects
+          </h2>
+          <ul className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {projects.map((project) => (
+              <li key={project.slug}>
+                <ProjectCard project={project} />
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
 
       <div className="bg-cream py-20 sm:py-24">
         <Container>
@@ -125,8 +142,8 @@ export default function EventsPage() {
 
           <EventGroup
             id="planned"
-            title="Signature & recurring events"
-            intro="These are in the works. Dates and locations appear here once they’re confirmed."
+            title="Recurring"
+            intro="Dates appear here once they’re confirmed."
             items={planned}
           />
 

@@ -92,7 +92,7 @@ export function ProjectCard({ project }: { project: Project }) {
             <AccentTitle text={project.title} accent={project.titleAccent} />
           </a>
         </h3>
-        <p className="mt-3 flex-1 leading-7 text-slate-600">{project.summary}</p>
+        <p className="mt-3 flex-1 leading-7 text-slate-600">{project.teaser ?? project.summary}</p>
       </div>
     </article>
   );

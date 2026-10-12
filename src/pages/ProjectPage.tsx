@@ -17,7 +17,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
     <article>
       <header className="bg-primaryNavy pb-16 pt-36 text-white sm:pt-44">
         <Container>
-          <a href="/work" className="text-sm font-semibold text-white/70 hover:text-illiniOrange">
+          <a href="/events#projects" className="text-sm font-semibold text-white/70 hover:text-illiniOrange">
             ← All projects
           </a>
           <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-end">
@@ -139,7 +139,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
             <h2 id="more-projects" className="font-editorial text-3xl font-bold text-primaryNavy sm:text-4xl">
               More of our work
             </h2>
-            <ArrowLink href="/work">All projects</ArrowLink>
+            <ArrowLink href="/events#projects">All projects</ArrowLink>
           </div>
           <ul className="mt-10 grid gap-6 md:grid-cols-3">
             {others.map((item) => (
