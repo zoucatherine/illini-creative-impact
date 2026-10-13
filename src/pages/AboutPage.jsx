@@ -8,27 +8,31 @@ import alyanAjaniPortrait from '../assets/officer-portraits/alyan-ajani.webp';
 import praiseShimPortrait from '../assets/officer-portraits/praise-shim.webp';
 import christinaNasiosPortrait from '../assets/officer-portraits/christina-nasios.webp';
 import mayumiCaisipPortrait from '../assets/officer-portraits/mayumi-caisip.webp';
+import { site, joinHref, partnerHref } from '../content/site';
+import { ButtonLink } from '../components/ui';
+import { useDocumentMeta } from '../lib/router';
+import { PageHeader } from './Pages';
 
 const teams = [
   {
     name: 'Events',
-    description: 'Build welcoming gatherings, workshops, and experiences that bring the collective together.',
+    description: 'Plan and run our exhibitions, art contests, socials, and community events.',
   },
   {
     name: 'Fundraising',
-    description: 'Develop partnerships and campaigns that help creative projects grow sustainably.',
+    description: 'Raise the money that makes our projects and events possible.',
   },
   {
     name: 'Design & Artist Coordination',
-    description: 'Support artists and shape the visual direction of our projects and showcases.',
+    description: 'Handle design requests from partners and work with the artists in our events.',
   },
   {
     name: 'Marketing',
-    description: 'Share our story, connect with audiences, and make every initiative easy to discover.',
+    description: 'Get the word out so the right people find our events and projects.',
   },
   {
     name: 'Showcase Planning',
-    description: 'Turn finished work into memorable showcases that celebrate student creativity.',
+    description: 'Put student work in front of an audience at our exhibitions and showcases.',
   },
 ];
 
@@ -126,14 +130,14 @@ function OfficerCard({ officer }) {
         alt={`${officer.name}, ${officer.role}`}
         className="mb-5 h-24 w-24 rounded-full border-2 border-illiniOrange/40 object-cover"
       />
-      <p className="text-sm font-bold uppercase tracking-[0.12em] text-illiniOrange">{officer.role}</p>
+      <p className="text-sm font-bold uppercase tracking-[0.12em] text-orangeInk">{officer.role}</p>
       <h3 className="mt-2 font-editorial text-2xl font-bold text-[#131E38]">{officer.name}</h3>
       <div className="mt-4 flex flex-col gap-2 text-sm">
         {officer.contacts.map(([label, href]) => (
           <a
             key={href}
             href={href}
-            className="break-words text-illiniOrange transition-colors hover:text-[#131E38]"
+            className="break-words text-orangeInk transition-colors hover:text-[#131E38]"
           >
             {label}
           </a>
@@ -144,25 +148,46 @@ function OfficerCard({ officer }) {
 }
 
 export default function AboutPage() {
+  useDocumentMeta(
+    'About',
+    'Illini Creative Impact is a UIUC student organization that believes creativity can drive change in our communities. Meet our officers.',
+  );
   const branches = [...new Set(officers.map((officer) => officer.branch))];
 
   return (
     <div className="bg-[#FDFBF7] text-[#131E38]">
-      <section className="px-6 py-24 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-4xl">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-illiniOrange">
-              About us
+      <PageHeader
+        eyebrow="About ICI"
+        title={
+          <>
+            Students who think creativity should <span className="italic text-illiniOrange">help someone.</span>
+          </>
+        }
+        intro={site.belief}
+      />
+
+      <section className="px-6 py-20 sm:px-10 lg:px-16">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
+          <div className="space-y-6 text-lg leading-8 text-slate-700 lg:col-span-7">
+            <p>
+              Illini Creative Impact is a student organization at the University of Illinois Urbana-Champaign. We
+              look for places where students can be genuinely useful (a nonprofit that needs promotional materials, a
+              campus that could use a better art event, a cause that deserves more attention) and then we do the work.
             </p>
-            <h1 className="font-editorial text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              About the{' '}
-              <span className="box-decoration-clone rounded-sm bg-[#E87722]/35 px-1.5 py-0.5 italic">
-                Collective
-              </span>
-            </h1>
-            <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-700">
-              Illini Creative Impact bridges creativity and business strategy through collaborative student projects, workshops, and community events. We create space for artists, strategists, organizers, and curious minds to build meaningful work together.
+            <p>
+              Creativity, to us, isn’t limited to art. It’s problem solving, entrepreneurship, strategy, organizing,
+              design, and communication. We’re not just a volunteering club, an art club, or a consulting club; we
+              borrow from all three and keep the door open to anyone who wants to contribute.
             </p>
+            <p>
+              If you’re a business student looking for practical experience that matters, you’ll find it here. If
+              you’re not, you’re just as welcome. Every major, no experience required.
+            </p>
+          </div>
+          <div className="flex flex-col gap-4 lg:col-span-4 lg:col-start-9">
+            <ButtonLink href={joinHref}>Join ICI</ButtonLink>
+            <ButtonLink href="/work" variant="secondary">See our work</ButtonLink>
+            <ButtonLink href={partnerHref} variant="secondary">Partner with us</ButtonLink>
           </div>
         </div>
       </section>
@@ -170,12 +195,15 @@ export default function AboutPage() {
       <section className="border-t border-[#131E38]/10 px-6 py-20 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-2xl">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-illiniOrange">
-              How we work
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-orangeInk">
+              How we’re organized
             </p>
             <h2 className="font-editorial text-4xl font-extrabold italic tracking-tight sm:text-5xl">
-              Many paths, one <span className="text-illiniOrange">community.</span>
+              Teams that keep things <span className="text-orangeInk">moving.</span>
             </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-700">
+              Officers lead these teams, but members aren’t locked into one, so you can help wherever a project needs you.
+            </p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {teams.map((team) => (
@@ -189,17 +217,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="px-6 py-20 sm:px-10 lg:px-16">
+      <section id="officers" className="px-6 py-20 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-2xl">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-illiniOrange">
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-orangeInk">
               Meet the officers
             </p>
             <h2 className="font-editorial text-4xl font-extrabold tracking-tight sm:text-5xl">
               The people behind the <span className="italic">work.</span>
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-700">
-              Connect with the student leaders helping our creative community learn, collaborate, and grow.
+              The student leaders who coordinate our projects, events, and partnerships. Reach out directly; we’re happy to talk.
             </p>
           </div>
 

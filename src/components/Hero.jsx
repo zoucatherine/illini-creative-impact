@@ -1,71 +1,97 @@
 import { useEffect, useState } from 'react';
-import studentExpoImage from '../assets/hero-images/student-expo.jpg';
-import exhibitGroupImage from '../assets/hero-images/exibit-group.jpg';
-import quadDayImage from '../assets/hero-images/2026-quad-day.jpg';
-import valentinesSocialImage from '../assets/hero-images/valentines-social.jpg';
+import { photos } from '../content/photos';
+import { joinHref } from '../content/site';
 
 const backgroundImages = [
-  studentExpoImage,
-  exhibitGroupImage,
-  quadDayImage,
-  valentinesSocialImage,
+  { photo: photos.valentinesSocial, caption: 'Valentine’s social' },
+  { photo: photos.quadDay2026, caption: 'Quad Day 2026' },
+  { photo: photos.drawingTable, caption: 'Drawing together' },
+  { photo: photos.studentExpo, caption: 'Student expo' },
 ];
+
+function prefersReducedMotion() {
+  return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+}
 
 export default function Hero() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(prefersReducedMotion);
 
   useEffect(() => {
+    if (isPaused) return undefined;
     const intervalId = window.setInterval(() => {
       setActiveImageIndex((currentIndex) => (currentIndex + 1) % backgroundImages.length);
     }, 5000);
 
     return () => window.clearInterval(intervalId);
-  }, []);
+  }, [isPaused]);
+
+  const active = backgroundImages[activeImageIndex];
 
   return (
     <section
-      className="relative isolate flex min-h-[clamp(34rem,78svh,52rem)] items-center overflow-hidden bg-primaryNavy"
+      className="relative isolate flex min-h-[clamp(36rem,92svh,58rem)] items-end overflow-hidden bg-primaryNavy"
       aria-labelledby="hero-title"
     >
       <div className="absolute inset-0 -z-20 overflow-hidden" aria-hidden="true">
-        {backgroundImages.map((image, imageIndex) => (
+        {backgroundImages.map(({ photo }, imageIndex) => (
           <img
-            key={image}
-            src={image}
+            key={photo.src}
+            src={photo.src}
             alt=""
-            className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1200ms] ease-in-out"
-            style={{
-              opacity: imageIndex === activeImageIndex ? 1 : 0,
-              willChange: 'opacity',
-            }}
+            fetchPriority={imageIndex === 0 ? 'high' : 'low'}
+            className="absolute inset-0 h-full w-full scale-105 object-cover object-center transition-opacity duration-[1200ms] ease-in-out"
+            style={{ opacity: imageIndex === activeImageIndex ? 1 : 0, willChange: 'opacity' }}
           />
         ))}
       </div>
       <div
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-primaryNavy via-primaryNavy/95 to-primaryNavy/65"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-primaryNavy via-primaryNavy/80 to-primaryNavy/40 lg:bg-gradient-to-r lg:from-primaryNavy lg:via-primaryNavy/85 lg:to-primaryNavy/30"
         aria-hidden="true"
       />
 
-      <div className="mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-16">
-        <div className="max-w-3xl">
-          <p className="mb-5 text-sm font-bold uppercase tracking-[0.2em] text-illiniOrange">
-            Illini Creative Impact
+      <div className="mx-auto w-full max-w-7xl px-6 pb-16 pt-36 sm:px-10 sm:pb-24 lg:px-16">
+        <div className="max-w-4xl">
+          <p className="mb-6 text-sm font-bold uppercase tracking-[0.2em] text-illiniOrange">
+            Illini Creative Impact · UIUC
           </p>
           <h1
             id="hero-title"
-            className="max-w-2xl font-editorial text-5xl font-extrabold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-8xl"
+            className="font-editorial text-5xl font-bold leading-[0.98] tracking-tight text-white sm:text-7xl lg:text-8xl"
           >
-            Creativity meets <span className="italic">impact.</span>
+            Creativity can change our <span className="italic text-illiniOrange">communities.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-white/90 sm:text-xl">
-            Join a community of Illinois students turning bold ideas into meaningful change.
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl sm:leading-9">
+            Join students turning their ideas into action, from community partnerships to initiatives of their own.
           </p>
-          <a
-            href="/join"
-            className="mt-9 inline-flex items-center rounded-full bg-illiniOrange px-7 py-3.5 font-bold text-white shadow-lg shadow-black/20 transition-colors hover:bg-orange-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-illiniOrange"
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a
+              href={joinHref}
+              className="inline-flex items-center justify-center rounded-full bg-illiniOrange px-7 py-4 text-base font-bold text-primaryNavy shadow-lg shadow-black/20 transition-colors hover:bg-[#f08a3c]"
+            >
+              Join ICI
+            </a>
+            <a
+              href="/#work"
+              className="inline-flex items-center justify-center rounded-full border-2 border-white/40 px-7 py-4 text-base font-bold text-white transition-colors hover:border-white hover:bg-white/10"
+            >
+              Explore Our Work
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-14 flex items-center justify-between gap-4 border-t border-white/15 pt-5 text-sm text-white/70">
+          <p aria-live="off">
+            <span className="sr-only">Background photo: </span>
+            {active.caption}
+          </p>
+          <button
+            type="button"
+            onClick={() => setIsPaused((paused) => !paused)}
+            className="rounded-full px-3 py-1.5 font-semibold text-white/80 ring-1 ring-white/25 transition-colors hover:bg-white/10 hover:text-white"
           >
-            Join the movement
-          </a>
+            {isPaused ? 'Play slideshow' : 'Pause slideshow'}
+          </button>
         </div>
       </div>
     </section>
