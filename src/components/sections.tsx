@@ -4,6 +4,10 @@ import { projects } from '../content/projects';
 import { photos, type Photo } from '../content/photos';
 import { joinHref, pitchHref, site } from '../content/site';
 import { ArrowLink, ButtonLink, Container, Eyebrow, Reveal, SectionHeading } from './ui';
+import alexZhangPortrait from '../assets/officer-portraits/alex-zhang.webp';
+import alyanAjaniPortrait from '../assets/officer-portraits/alyan-ajani.webp';
+import ameliaCarpenterPortrait from '../assets/officer-portraits/amelia-carpenter.webp';
+import mayumiCaisipPortrait from '../assets/officer-portraits/mayumi-caisip.webp';
 
 // ---------------------------------------------------------------------------
 // Get Involved page pathways
@@ -317,6 +321,33 @@ const lifeGallery: Array<{ photo: Photo; caption: string; span: string }> = [
   { photo: photos.quadDay2026, caption: 'Quad Day 2026', span: 'col-span-2' },
 ];
 
+const initiativeLeads: Array<{ name: string; portrait: string; initiative: string; href?: string }> = [
+  {
+    name: 'Amelia Carpenter',
+    portrait: ameliaCarpenterPortrait,
+    initiative: 'It’s Okay to Fall, our combined art showcase',
+    href: '/work/fall-exhibition',
+  },
+  {
+    name: 'Alex Zhang',
+    portrait: alexZhangPortrait,
+    initiative: 'Earth Day Every Day',
+    href: '/work/earth-day-every-day',
+  },
+  {
+    name: 'Mayumi Caisip',
+    portrait: mayumiCaisipPortrait,
+    initiative: 'Hallo-Eve Art Mart, where artists table and sell their work',
+    href: '/work/hallo-eve-art-mart',
+  },
+  {
+    name: 'Alyan Ajani',
+    portrait: alyanAjaniPortrait,
+    initiative: 'Trinity Community Food Pantry',
+    href: '/work/trinity-community-food-pantry',
+  },
+];
+
 export function LifeSection() {
   return (
     <section id="community" aria-labelledby="community-title" className="bg-cream py-24 sm:py-32">
@@ -350,9 +381,39 @@ export function LifeSection() {
           ))}
         </ul>
 
+        <InitiativeLeads />
+
         <MemberStories />
       </Container>
     </section>
+  );
+}
+
+function InitiativeLeads() {
+  return (
+    <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {initiativeLeads.map((lead) => (
+        <li key={lead.name}>
+          <article className="flex h-full flex-col rounded-2xl bg-white p-6 ring-1 ring-primaryNavy/10">
+            <img
+              src={lead.portrait}
+              alt={lead.name}
+              loading="lazy"
+              decoding="async"
+              className="h-20 w-20 rounded-full border-2 border-illiniOrange/40 object-cover"
+            />
+            <h3 className="mt-5 font-editorial text-2xl font-bold text-primaryNavy">{lead.name}</h3>
+            <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-orangeInk">Leading</p>
+            <p className="mt-1 flex-1 leading-7 text-slate-700">{lead.initiative}</p>
+            {lead.href && (
+              <div className="mt-4">
+                <ArrowLink href={lead.href}>See the project</ArrowLink>
+              </div>
+            )}
+          </article>
+        </li>
+      ))}
+    </ul>
   );
 }
 
