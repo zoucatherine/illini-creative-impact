@@ -82,14 +82,12 @@ export function discordMessage(data) {
 }
 
 /**
- * Reads the webhook from the environment, forgiving copy/paste extras such as
- * surrounding spaces, quotes, backticks, or angle brackets. Exported for testing.
+ * Reads the webhook from the environment, pulling the Discord webhook URL out of whatever
+ * was pasted around it (spaces, quotes, backticks, or trailing notes). Exported for testing.
  */
 export function readWebhook(raw) {
-  const value = String(raw ?? '')
-    .trim()
-    .replace(/^[`'"<\s]+|[`'">\s]+$/g, '');
-  return /^https:\/\/(?:\w+\.)?discord(?:app)?\.com\/api\/webhooks\/\d+\/[\w-]+$/.test(value) ? value : null;
+  const match = String(raw ?? '').match(/https:\/\/(?:\w+\.)?discord(?:app)?\.com\/api\/webhooks\/\d+\/[\w-]+/);
+  return match ? match[0] : null;
 }
 
 export async function POST(request) {
