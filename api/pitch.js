@@ -81,9 +81,22 @@ export function discordMessage(data) {
   };
 }
 
+/**
+ * Reads the webhook from the environment, pulling the Discord webhook URL out of whatever
+ * was pasted around it (spaces, quotes, backticks, or trailing notes). Exported for testing.
+ */
+export function readWebhook(raw) {
+  const match = String(raw ?? '').match(/https:\/\/(?:\w+\.)?discord(?:app)?\.com\/api\/webhooks\/\d+\/[\w-]+/);
+  return match ? match[0] : null;
+}
+
 export async function POST(request) {
-  const webhook = process.env.DISCORD_PITCH_WEBHOOK;
-  if (!webhook) return json(500, { error: 'Pitch submissions are not configured.' });
+  if (!process.env.DISCORD_PITCH_WEBHOOK) return json(500, { error: 'Pitch submissions are not configured.' });
+  const webhook = readWebhook(process.env.DISCORD_PITCH_WEBHOOK);
+  if (!webhook) {
+    console.error('DISCORD_PITCH_WEBHOOK is not a valid Discord webhook URL.');
+    return json(500, { error: 'Pitch submissions are misconfigured.' });
+  }
 
   let body;
   try {
@@ -96,15 +109,23 @@ export async function POST(request) {
   if (result.spam) return json(200, { ok: true });
   if (result.error) return json(400, { error: result.error });
 
-  const response = await fetch(webhook, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(discordMessage(result.data)),
-  });
+  let response;
+  try {
+    response = await fetch(webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(discordMessage(result.data)),
+    });
+  } catch (error) {
+    console.error('Discord webhook request failed', error);
+    return json(502, { error: 'Could not deliver the pitch.' });
+  }
 
   if (!response.ok) {
+    // Discord's status (e.g. 401 bad token, 404 deleted webhook, 429 rate limited) is
+    // returned too, so failures can be diagnosed from the browser's network tab.
     console.error('Discord webhook failed', response.status, await response.text());
-    return json(502, { error: 'Could not deliver the pitch.' });
+    return json(502, { error: 'Could not deliver the pitch.', discordStatus: response.status });
   }
   return json(200, { ok: true });
 }
