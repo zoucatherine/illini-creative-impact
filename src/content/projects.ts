@@ -182,6 +182,37 @@ export const projects: Project[] = [
       'Help curate, recruit vendors, design the community artwork, or run the event. Artists interested in exhibiting or selling can reach out through the interest form.',
   },
   {
+    slug: 'hallo-eve-art-mart',
+    title: 'Hallo-Eve Art Mart',
+    titleAccent: 'Hallo-Eve',
+    category: 'Art market',
+    status: 'recurring',
+    // TODO: confirm whether this runs every year.
+    statusLabel: 'Fall semester event',
+    teaser: 'Student artists table and sell their work on the Main Quad. October 30, 10am to 3pm.',
+    summary:
+      'A student art market on the Main Quad, separate from It’s Okay to Fall, where artists table and sell their own work. October 30, 10am to 3pm, at the Union.',
+    cover: { photo: photos.halloEveFlyer },
+    overview:
+      'The Hallo-Eve Art Mart is an ICI event where student artists set up tables on the Main Quad and sell their work directly to visitors. All mediums are welcome.',
+    need: 'Student artists need places to show and sell what they make. A market gives them a table, an audience, and a chance to earn from their work.',
+    contributions: [
+      'Recruiting and coordinating artist tables',
+      'Event logistics and setup',
+      'Promotion',
+      'Running the market on the day',
+    ],
+    gallery: [{ placeholder: 'Artist tables' }, { placeholder: 'Visitors browsing the market' }],
+    sections: [
+      {
+        title: 'Take part',
+        body: 'October 30, 10am to 3pm, on the Main Quad by the Illini Union. Artists of all mediums can sign up to sell their work.',
+      },
+    ],
+    involvement:
+      'Help recruit artists, plan logistics, or run the market. Artists interested in a table can reach out through the interest form.',
+  },
+  {
     slug: 'noshbox',
     title: 'NoshBox Collaboration',
     category: 'Partnership in development',

@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import type { Photo } from '../content/photos';
+import { showPlaceholders } from '../lib/placeholders';
 import type { PhotoSlot } from '../content/projects';
 
 export function Container({ className = '', children }: { className?: string; children: React.ReactNode }) {
@@ -106,6 +108,15 @@ export function StatusBadge({
   );
 }
 
+function photoFitClass(photo: Photo) {
+  if (photo.fit !== 'contain') return 'object-cover';
+  return photo.background === 'white' ? 'object-contain p-10 sm:p-14' : 'object-contain p-4 sm:p-6';
+}
+
+function prefersReducedMotion() {
+  return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 /** A real photo, or a clearly labeled placeholder describing the photo that belongs there. */
 export function PhotoFrame({
   slot,
@@ -121,15 +132,30 @@ export function PhotoFrame({
   if (slot.photo) {
     return (
       <figure className={`relative overflow-hidden ${slot.photo.background === 'white' ? 'bg-white' : 'bg-sand'} ${className}`}>
-        <img
-          src={slot.photo.src}
-          alt={slot.photo.alt}
-          loading="lazy"
-          decoding="async"
-          sizes={sizes}
-          style={{ objectPosition: slot.photo.position }}
-          className={`h-full w-full ${slot.photo.fit === 'contain' ? (slot.photo.background === 'white' ? 'object-contain p-10 sm:p-14' : 'object-contain p-4 sm:p-6') : 'object-cover'}`}
-        />
+        {slot.photo.video ? (
+          <video
+            src={slot.photo.video}
+            poster={slot.photo.src}
+            aria-label={slot.photo.alt}
+            autoPlay={!prefersReducedMotion()}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            style={{ objectPosition: slot.photo.position }}
+            className={`h-full w-full ${photoFitClass(slot.photo)}`}
+          />
+        ) : (
+          <img
+            src={slot.photo.src}
+            alt={slot.photo.alt}
+            loading="lazy"
+            decoding="async"
+            sizes={sizes}
+            style={{ objectPosition: slot.photo.position }}
+            className={`h-full w-full ${photoFitClass(slot.photo)}`}
+          />
+        )}
         {showCaption && slot.caption && (
           <figcaption className="absolute bottom-3 left-3 rounded-full bg-primaryNavy/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
             {slot.caption}
@@ -138,6 +164,8 @@ export function PhotoFrame({
       </figure>
     );
   }
+
+  if (!showPlaceholders) return null;
 
   return (
     <div
@@ -153,6 +181,7 @@ export function PhotoFrame({
 
 /** Labeled block for content that still needs to be written or confirmed. */
 export function ContentNeeded({ children }: { children: React.ReactNode }) {
+  if (!showPlaceholders) return null;
   return (
     <div className="rounded-xl border border-dashed border-primaryNavy/25 bg-white/60 px-5 py-4 text-sm leading-6 text-slate-600">
       <span className="mr-2 font-bold uppercase tracking-[0.14em] text-slate-500">Content needed</span>

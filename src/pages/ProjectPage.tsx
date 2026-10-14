@@ -1,6 +1,7 @@
 import { ProjectCard } from '../components/ProjectShowcase';
 import { AccentTitle, ArrowLink, ButtonLink, Container, ContentNeeded, Eyebrow, PhotoFrame, Reveal } from '../components/ui';
 import { getProject, projects } from '../content/projects';
+import { showPlaceholders } from '../lib/placeholders';
 import { useDocumentMeta } from '../lib/router';
 import { NotFoundPage } from './Pages';
 
@@ -12,6 +13,9 @@ export default function ProjectPage({ slug }: { slug: string }) {
 
   const others = projects.filter((item) => item.slug !== project.slug);
   const joinLink = `/get-involved?interest=projects&project=${project.slug}#join`;
+  // On the deployed site, drop placeholder-only photos and sections instead of leaving empty slots.
+  const gallery = project.gallery.filter((slot) => slot.photo || showPlaceholders);
+  const sections = project.sections?.filter((section) => section.body || section.link || showPlaceholders);
 
   return (
     <article>
@@ -77,26 +81,28 @@ export default function ProjectPage({ slug }: { slug: string }) {
                 </ul>
               </section>
 
-              <section aria-labelledby="gallery">
-                <h2 id="gallery" className="font-editorial text-3xl font-bold text-primaryNavy">
-                  Photos & work samples
-                </h2>
-                <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-                  {project.gallery.map((slot, index) => (
-                    <li key={index} className={index === 0 ? 'sm:col-span-2' : ''}>
-                      <Reveal>
-                        <PhotoFrame
-                          slot={slot}
-                          showCaption
-                          className={`w-full rounded-2xl ${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'}`}
-                        />
-                      </Reveal>
-                    </li>
-                  ))}
-                </ul>
-              </section>
+              {gallery.length > 0 && (
+                <section aria-labelledby="gallery">
+                  <h2 id="gallery" className="font-editorial text-3xl font-bold text-primaryNavy">
+                    Photos & work samples
+                  </h2>
+                  <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {gallery.map((slot, index) => (
+                      <li key={index} className={index === 0 ? 'sm:col-span-2' : ''}>
+                        <Reveal>
+                          <PhotoFrame
+                            slot={slot}
+                            showCaption
+                            className={`w-full rounded-2xl ${index === 0 ? 'aspect-[16/9]' : 'aspect-[4/3]'}`}
+                          />
+                        </Reveal>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
 
-              {project.sections?.map((section) => (
+              {sections?.map((section) => (
                 <section key={section.title} aria-label={section.title}>
                   <h2 className="font-editorial text-3xl font-bold text-primaryNavy">{section.title}</h2>
                   <div className="mt-4">

@@ -10,6 +10,8 @@ import certificates from '../assets/photos/certificates.webp';
 import studentExpo from '../assets/photos/student-expo.webp';
 import valentinesSocial from '../assets/photos/valentines-social.webp';
 import noshboxLogo from '../assets/photos/noshbox-logo.webp';
+import halloEveFlyer from '../assets/photos/hallo-eve-flyer.webp';
+import halloEveFlyerVideo from '../assets/photos/hallo-eve-flyer.mp4';
 import trinityFlyer from '../assets/photos/trinity-flyer.webp';
 import trinityFlyerProcess from '../assets/photos/trinity-flyer-process.webp';
 
@@ -22,6 +24,8 @@ export interface Photo {
   fit?: 'cover' | 'contain';
   /** Frame background behind a 'contain' image, e.g. white for logos. */
   background?: 'white';
+  /** Short muted looping video shown in place of the image; `src` is used as its poster. */
+  video?: string;
 }
 
 export const photos = {
@@ -71,6 +75,12 @@ export const photos = {
   trinityFlyerProcess: {
     src: trinityFlyerProcess,
     alt: 'Two versions of the Snack Bag Food Drive flyer side by side: a grayscale draft and the final color design',
+    fit: 'contain',
+  },
+  halloEveFlyer: {
+    src: halloEveFlyer,
+    video: halloEveFlyerVideo,
+    alt: 'Animated flyer for the Illini Creative Impact Hallo-Eve Art Mart: sign up as an artist to sell your art on the Main Quad, all mediums welcomed, October 30, 10am to 3pm, Main Quad at the Union',
     fit: 'contain',
   },
   noshboxLogo: {
