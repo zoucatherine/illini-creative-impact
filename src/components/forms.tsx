@@ -261,7 +261,8 @@ export function JoinForm({ initialInterest, initialProject }: { initialInterest?
         majorYear: String(data.get('majorYear') ?? '').trim(),
         involvement,
         skills: data.getAll('skills').map(String),
-        projects: data.getAll('projects').map(String),
+        // Send readable project names, not slugs, so the Discord message is easy to scan.
+        projects: data.getAll('projects').map((slug) => projects.find((project) => project.slug === slug)?.title ?? String(slug)),
         message: String(data.get('message') ?? '').trim(),
       });
       setStatus('success');
@@ -578,7 +579,7 @@ export function IdeaForm() {
 
   if (status === 'success') {
     return (
-      <SuccessMessage title="Thanks for pitching your idea.">
+      <SuccessMessage title="Thanks for sharing your idea.">
         <p>
           We’ll read it and reach out to your Illinois email to talk it through. In the meantime, you can share it with
           members on our{' '}
@@ -638,7 +639,7 @@ export function IdeaForm() {
         configured={configured}
         notConfiguredMessage={
           <>
-            Online pitches aren’t connected yet. For now, share your idea on our{' '}
+            Online idea sharing isn’t connected yet. For now, share your idea on our{' '}
             <a href={site.social.discord} target="_blank" rel="noopener noreferrer" className="font-bold underline">
               Discord
             </a>{' '}
@@ -651,7 +652,7 @@ export function IdeaForm() {
         }
         errorMessage={
           <>
-            Something went wrong and your pitch wasn’t sent. Please try again, or share it on our{' '}
+            Something went wrong and your idea wasn’t sent. Please try again, or share it on our{' '}
             <a href={site.social.discord} target="_blank" rel="noopener noreferrer" className="font-bold underline">
               Discord
             </a>

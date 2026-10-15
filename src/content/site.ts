@@ -9,7 +9,8 @@ export const site = {
   },
   forms: {
     // See .env.example. Empty values disable submission with an explanatory notice.
-    joinEndpoint: import.meta.env.VITE_JOIN_FORM_ENDPOINT as string | undefined,
+    // Sign-ups go to our own relay (api/join.js), which posts them to Discord.
+    joinEndpoint: (import.meta.env.VITE_JOIN_FORM_ENDPOINT as string | undefined) || '/api/join',
     partnerEndpoint: import.meta.env.VITE_PARTNER_FORM_ENDPOINT as string | undefined,
     // Idea pitches go to our own relay (api/pitch.js), which posts them to Discord.
     ideaEndpoint: (import.meta.env.VITE_IDEA_FORM_ENDPOINT as string | undefined) || '/api/pitch',
@@ -25,5 +26,5 @@ export const nav = [
 ];
 
 export const joinHref = '/get-involved#join';
-export const pitchHref = '/pitch';
+export const pitchHref = '/share-an-idea';
 export const partnerHref = '/partner';

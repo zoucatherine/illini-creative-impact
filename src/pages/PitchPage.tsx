@@ -21,8 +21,8 @@ const steps = [
 
 export default function PitchPage() {
   useDocumentMeta(
-    'Pitch an Idea',
-    'Have a cause, event, or project you want to make happen? Pitch it to Illini Creative Impact and find students to build it with.',
+    'Share an Idea',
+    'Have a cause, event, or project you want to make happen? Share it with Illini Creative Impact and find students to build it with.',
   );
 
   return (
@@ -65,12 +65,12 @@ export default function PitchPage() {
         <Container>
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <Eyebrow>Pitch an idea</Eyebrow>
+              <Eyebrow>Share an idea</Eyebrow>
               <h2 id="pitch-title" className="font-editorial text-4xl font-bold leading-tight text-primaryNavy sm:text-5xl">
                 Start with a few sentences.
               </h2>
               <p className="mt-5 text-lg leading-8 text-slate-600">
-                No proposal or business plan needed. Early, rough ideas are exactly what this is for.
+                No proposal needed. Early, rough ideas are exactly what this is for.
               </p>
               <p className="mt-6 text-slate-600">
                 Don’t have an idea yet? <ArrowLink href={joinHref}>Join ICI instead</ArrowLink>

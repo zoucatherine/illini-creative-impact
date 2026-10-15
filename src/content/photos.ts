@@ -11,6 +11,7 @@ import studentExpo from '../assets/photos/student-expo.webp';
 import valentinesSocial from '../assets/photos/valentines-social.webp';
 import noshboxLogo from '../assets/photos/noshbox-logo.webp';
 import halloEveFlyer from '../assets/photos/hallo-eve-flyer.webp';
+import creativePlaybookCover from '../assets/photos/creative-playbook-cover.webp';
 import halloEveFlyerVideo from '../assets/photos/hallo-eve-flyer.mp4';
 import trinityFlyer from '../assets/photos/trinity-flyer.webp';
 import trinityFlyerProcess from '../assets/photos/trinity-flyer-process.webp';
@@ -82,6 +83,10 @@ export const photos = {
     video: halloEveFlyerVideo,
     alt: 'Animated flyer for the Illini Creative Impact Hallo-Eve Art Mart: sign up as an artist to sell your art on the Main Quad, all mediums welcomed, October 30, 10am to 3pm, Main Quad at the Union',
     fit: 'contain',
+  },
+  creativePlaybookCover: {
+    src: creativePlaybookCover,
+    alt: 'Typographic cover reading The Creative Playbook, a biweekly series from Illini Creative Impact, coming soon, with its four lenses: Identity, Strategy, Impact, and Takeaways',
   },
   noshboxLogo: {
     src: noshboxLogo,
