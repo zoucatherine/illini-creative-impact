@@ -90,6 +90,21 @@ export function readWebhook(raw) {
   return match ? match[0] : null;
 }
 
+/**
+ * Posts a message to a Discord webhook. Forum channels require every webhook message to start a
+ * new post with a title (`thread_name`), so if Discord says the channel is a forum (code 220001),
+ * the message is resent as a forum post. Text channels get the plain message.
+ */
+export async function postToDiscord(webhook, message, threadName) {
+  const send = (body) =>
+    fetch(webhook, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const response = await send(message);
+  if (response.status !== 400) return response;
+  const error = await response.clone().json().catch(() => null);
+  if (error?.code !== 220001) return response;
+  return send({ ...message, thread_name: threadName.slice(0, 100) });
+}
+
 export async function POST(request) {
   if (!process.env.DISCORD_PITCH_WEBHOOK) return json(500, { error: 'Pitch submissions are not configured.' });
   const webhook = readWebhook(process.env.DISCORD_PITCH_WEBHOOK);
@@ -111,11 +126,7 @@ export async function POST(request) {
 
   let response;
   try {
-    response = await fetch(webhook, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(discordMessage(result.data)),
-    });
+    response = await postToDiscord(webhook, discordMessage(result.data), `💡 ${result.data.idea}`);
   } catch (error) {
     console.error('Discord webhook request failed', error);
     return json(502, { error: 'Could not deliver the pitch.' });
