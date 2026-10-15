@@ -62,7 +62,7 @@ export interface Project {
   summary: string;
   /** One short line for the homepage showcase. */
   teaser?: string;
-  /** Small status pills shown on cards, e.g. ["Coming soon", "Recruiting contributors"]. */
+  /** Pills shown on cards: [project status, current opportunity], e.g. ["Active", "Seeking grant writers"]. */
   badges?: string[];
   /** Label for the card link. Defaults to "Read more". */
   ctaLabel?: string;
@@ -87,6 +87,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: 'trinity-community-food-pantry',
+    badges: ['Active', 'Seeking grant writers'],
     title: 'Trinity Community Food Pantry',
     category: 'Community partnership',
     status: 'active',
@@ -127,7 +128,105 @@ export const projects: Project[] = [
       'Join the project team if you want to design, write, or help manage requests from the pantry. No design portfolio required. There is room for people who can organize, communicate, and follow through.',
   },
   {
+    slug: 'fall-exhibition',
+    badges: ['In preparation', 'Seeking artists, performers & volunteers'],
+    title: 'It’s Okay to Fall',
+    titleAccent: 'Fall',
+    category: 'Fall exhibition',
+    status: 'recurring',
+    // TODO: confirm whether this runs every fall.
+    statusLabel: 'Fall semester event',
+    lead: leads.amelia,
+    teaser:
+      'A mental health exhibition built around one shared artwork that everyone adds to, because it’s okay to stumble and no one should have to get back up alone.',
+    summary:
+      'A mental health exhibition built around one shared artwork that every attendee adds to. A reminder that it’s okay to stumble, and an easy way into a conversation that matters.',
+    // Chosen to reflect the theme (making art together, no pressure), not taken at the exhibition.
+    cover: { photo: photos.drawingTable, caption: 'Making art together' },
+    overview:
+      'It’s Okay to Fall is our fall exhibition, organized around mental health awareness. The name plays on the season and on the idea that it’s okay to stumble. At its center is a collaborative community artwork: a piece that attendees add to themselves.',
+    need:
+      'Mental health is easier to talk about when there is a shared, easy way in. Making something together, and seeing what others contributed, opens that conversation.',
+    contributions: [
+      'Curating the exhibition and recruiting student artists',
+      'Designing and facilitating the collaborative artwork',
+      'Promotion, event logistics, and running the event',
+    ],
+    gallery: [
+      { placeholder: 'The collaborative community artwork' },
+      { placeholder: 'Student artwork on display' },
+      { placeholder: 'Attendees adding to the community piece' },
+    ],
+    sections: [
+      {
+        title: 'The community artwork',
+        body: 'Attendees are invited to add to a shared piece during the event. The finished artwork reflects everyone who took part, not a single artist.',
+      },
+      {
+        title: 'Take part',
+        placeholder: 'Add this year’s date, location, and how artists can submit work once confirmed.',
+      },
+    ],
+    involvement:
+      'Help curate, recruit artists, design the community artwork, or run the event. Artists interested in exhibiting can reach out through the interest form.',
+  },
+  {
+    slug: 'art-markets',
+    badges: ['Active', 'Seeking market volunteers'],
+    title: 'Student Art Markets',
+    titleAccent: 'Art',
+    category: 'Art markets',
+    lead: leads.mayumi,
+    status: 'recurring',
+    teaser:
+      'Markets where student artists sell their work to real buyers, every medium welcome. Next up: the Hallo-Eve Art Mart on the Main Quad, October 30, 10am to 3pm.',
+    summary:
+      'ICI runs art markets where student artists table and sell their own work, every medium welcome. Real buyers, a real audience, and a chance to earn from what you make. Next up: the Hallo-Eve Art Mart, October 30, 10am to 3pm, on the Main Quad at the Union.',
+    cover: { photo: photos.halloEveFlyer, caption: 'Hallo-Eve Art Mart, October 30' },
+    overview:
+      'Our art markets turn campus into a place where student artists can sell their work directly to visitors. We find the space, recruit the artists, and run the day, so artists can focus on what they make.',
+    need: 'Student artists need places to show and sell what they make. A market gives them a table, an audience, and a chance to earn from their work, and gives everyone else a reason to buy from the artists around them.',
+    contributions: [
+      'Recruiting and coordinating artist tables',
+      'Finding venues and planning logistics',
+      'Promotion and flyer design',
+      'Running the markets on the day',
+    ],
+    gallery: [{ placeholder: 'Artist tables' }, { placeholder: 'Visitors browsing the market' }],
+    sections: [
+      {
+        title: 'Next up: Hallo-Eve Art Mart',
+        body: 'October 30, 10am to 3pm, on the Main Quad by the Illini Union. Artists of all mediums can sign up to sell their work.',
+      },
+    ],
+    involvement:
+      'We’re recruiting people to help run our markets: recruit artists, plan logistics, promote, and staff the day. Artists interested in a table can reach out through the interest form.',
+  },
+  {
+    // Has its own page (src/pages/CreativePlaybookPage.tsx); series content lives in content/creativePlaybook.ts.
+    slug: 'creative-playbook',
+    title: 'The Creative Playbook',
+    category: 'Creative Research & Storytelling',
+    status: 'upcoming',
+    badges: ['Coming soon', 'Seeking researchers, writers & designers'],
+    ctaLabel: 'Explore initiative',
+    lead: leads.joseph,
+    teaser:
+      'A biweekly series exploring the creative minds behind influential ideas, brands, and cultural movements. Discover the strategies behind their work and the lessons we can apply to our own.',
+    summary:
+      'A biweekly series exploring the creative minds behind influential ideas, brands, and cultural movements. Discover the strategies behind their work and the lessons we can apply to our own.',
+    cover: { photo: photos.creativePlaybookCover },
+    overview:
+      'The Creative Playbook is an upcoming biweekly series exploring how remarkable individuals developed their creative identities, reached audiences, and turned ideas into cultural impact.',
+    need: 'We often recognize great creative work without understanding what made it possible. Studying the decisions behind it gives students useful ways of thinking, creating, and reaching people.',
+    contributions: ['Research & strategy', 'Writing & storytelling', 'Visual design', 'Content & distribution'],
+    gallery: [],
+    involvement:
+      'We’re building the founding team. Research, writing, design, or distribution: bring your curiosity, no expertise required.',
+  },
+  {
     slug: 'earth-day-every-day',
+    badges: ['Planning', 'Opportunities announced soon'],
     title: 'Earth Day Every Day Art Contest',
     category: 'Art contest & exhibition',
     status: 'active',
@@ -175,101 +274,6 @@ export const projects: Project[] = [
     ],
     involvement:
       'Help with the next round: promotion, outreach to student artists, and running the exhibition on campus. Follow ICI on Instagram or join the Discord to hear when it opens.',
-  },
-  {
-    slug: 'fall-exhibition',
-    title: 'It’s Okay to Fall',
-    titleAccent: 'Fall',
-    category: 'Fall exhibition',
-    status: 'recurring',
-    // TODO: confirm whether this runs every fall.
-    statusLabel: 'Fall semester event',
-    lead: leads.amelia,
-    teaser:
-      'A mental health exhibition built around one shared artwork that everyone adds to, because it’s okay to stumble and no one should have to get back up alone.',
-    summary:
-      'A mental health exhibition built around one shared artwork that every attendee adds to. A reminder that it’s okay to stumble, and an easy way into a conversation that matters.',
-    // Chosen to reflect the theme (making art together, no pressure), not taken at the exhibition.
-    cover: { photo: photos.drawingTable, caption: 'Making art together' },
-    overview:
-      'It’s Okay to Fall is our fall exhibition, organized around mental health awareness. The name plays on the season and on the idea that it’s okay to stumble. At its center is a collaborative community artwork: a piece that attendees add to themselves.',
-    need:
-      'Mental health is easier to talk about when there is a shared, easy way in. Making something together, and seeing what others contributed, opens that conversation.',
-    contributions: [
-      'Curating the exhibition and recruiting student artists',
-      'Designing and facilitating the collaborative artwork',
-      'Promotion, event logistics, and running the event',
-    ],
-    gallery: [
-      { placeholder: 'The collaborative community artwork' },
-      { placeholder: 'Student artwork on display' },
-      { placeholder: 'Attendees adding to the community piece' },
-    ],
-    sections: [
-      {
-        title: 'The community artwork',
-        body: 'Attendees are invited to add to a shared piece during the event. The finished artwork reflects everyone who took part, not a single artist.',
-      },
-      {
-        title: 'Take part',
-        placeholder: 'Add this year’s date, location, and how artists can submit work once confirmed.',
-      },
-    ],
-    involvement:
-      'Help curate, recruit artists, design the community artwork, or run the event. Artists interested in exhibiting can reach out through the interest form.',
-  },
-  {
-    slug: 'art-markets',
-    title: 'Student Art Markets',
-    titleAccent: 'Art',
-    category: 'Art markets',
-    lead: leads.mayumi,
-    status: 'recurring',
-    teaser:
-      'Markets where student artists sell their work to real buyers, every medium welcome. Next up: the Hallo-Eve Art Mart on the Main Quad, October 30, 10am to 3pm.',
-    summary:
-      'ICI runs art markets where student artists table and sell their own work, every medium welcome. Real buyers, a real audience, and a chance to earn from what you make. Next up: the Hallo-Eve Art Mart, October 30, 10am to 3pm, on the Main Quad at the Union.',
-    cover: { photo: photos.halloEveFlyer, caption: 'Hallo-Eve Art Mart, October 30' },
-    overview:
-      'Our art markets turn campus into a place where student artists can sell their work directly to visitors. We find the space, recruit the artists, and run the day, so artists can focus on what they make.',
-    need: 'Student artists need places to show and sell what they make. A market gives them a table, an audience, and a chance to earn from their work, and gives everyone else a reason to buy from the artists around them.',
-    contributions: [
-      'Recruiting and coordinating artist tables',
-      'Finding venues and planning logistics',
-      'Promotion and flyer design',
-      'Running the markets on the day',
-    ],
-    gallery: [{ placeholder: 'Artist tables' }, { placeholder: 'Visitors browsing the market' }],
-    sections: [
-      {
-        title: 'Next up: Hallo-Eve Art Mart',
-        body: 'October 30, 10am to 3pm, on the Main Quad by the Illini Union. Artists of all mediums can sign up to sell their work.',
-      },
-    ],
-    involvement:
-      'We’re recruiting people to help run our markets: recruit artists, plan logistics, promote, and staff the day. Artists interested in a table can reach out through the interest form.',
-  },
-  {
-    // Has its own page (src/pages/CreativePlaybookPage.tsx); series content lives in content/creativePlaybook.ts.
-    slug: 'creative-playbook',
-    title: 'The Creative Playbook',
-    category: 'Creative Research & Storytelling',
-    status: 'upcoming',
-    badges: ['Coming soon', 'Recruiting contributors'],
-    ctaLabel: 'Explore initiative',
-    lead: leads.joseph,
-    teaser:
-      'A biweekly series exploring the creative minds behind influential ideas, brands, and cultural movements. Discover the strategies behind their work and the lessons we can apply to our own.',
-    summary:
-      'A biweekly series exploring the creative minds behind influential ideas, brands, and cultural movements. Discover the strategies behind their work and the lessons we can apply to our own.',
-    cover: { photo: photos.creativePlaybookCover },
-    overview:
-      'The Creative Playbook is an upcoming biweekly series exploring how remarkable individuals developed their creative identities, reached audiences, and turned ideas into cultural impact.',
-    need: 'We often recognize great creative work without understanding what made it possible. Studying the decisions behind it gives students useful ways of thinking, creating, and reaching people.',
-    contributions: ['Research & strategy', 'Writing & storytelling', 'Visual design', 'Content & distribution'],
-    gallery: [],
-    involvement:
-      'We’re building the founding team. Research, writing, design, or distribution: bring your curiosity, no expertise required.',
   },
   {
     slug: 'noshbox',

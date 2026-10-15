@@ -17,39 +17,37 @@ import josephWangPortrait from '../assets/officer-portraits/joseph-wang.webp';
 const pathways = [
   {
     title: 'Join a project team',
-    body: 'Work alongside other students on real requests from real organizations.',
-    examples: ['Marketing', 'Outreach', 'Design', 'Strategy', 'Project management', 'Community partnerships'],
-    href: '/get-involved?interest=projects#join',
-    cta: 'I want to work on projects',
+    body: 'Work with other students on real challenges, from community partners to new initiatives.',
+    examples: ['Strategy', 'Research', 'Design', 'Community partnerships', 'Project management'],
+    href: '/events#projects',
+    cta: 'Explore open projects',
+  },
+  {
+    title: 'Join the Creatives Team',
+    body: 'Marketing, design, and storytelling for ICI. Create campaigns that get people involved.',
+    examples: ['Marketing', 'Graphic design', 'Social media', 'Content creation', 'Creative strategy'],
+    href: '#creative-team',
+    cta: 'Join the Creatives Team',
   },
   {
     title: 'Bring events to life',
-    body: 'Help plan and run the things people actually show up to.',
-    examples: ['Exhibitions', 'Art contests', 'Socials', 'Community experiences'],
-    href: '/get-involved?interest=events#join',
-    cta: 'I want to help with events',
-  },
-  {
-    title: 'Start an initiative',
-    body: 'Have an idea for a cause, partnership, or project? Share it, and find people to build it with.',
-    examples: ['A cause you care about', 'A partner you know', 'An event you wish existed'],
-    href: pitchHref,
-    cta: 'Share an idea',
+    body: 'Organize exhibitions, art markets, and gatherings that bring people together.',
+    examples: ['Event planning', 'Exhibitions', 'Art markets', 'Community experiences'],
+    href: '/events',
+    cta: 'Explore upcoming events',
   },
 ];
 
 export function Pathways({ headingLevel = 'h3' }: { headingLevel?: 'h2' | 'h3' }) {
   const Heading = headingLevel;
   return (
-    <ol className="grid gap-6 lg:grid-cols-3">
+    <ul className="grid gap-6 lg:grid-cols-3">
       {pathways.map((pathway, index) => (
         <li key={pathway.title}>
           <Reveal delay={index * 0.08} className="h-full">
             <article className="flex h-full flex-col rounded-2xl bg-white p-7 ring-1 ring-primaryNavy/10 sm:p-8">
-              <span className="font-editorial text-5xl font-bold italic text-illiniOrange" aria-hidden="true">
-                {index + 1}
-              </span>
-              <Heading className="mt-4 font-editorial text-2xl font-bold text-primaryNavy sm:text-3xl">
+              <div className="h-1 w-12 rounded-full bg-illiniOrange" aria-hidden="true" />
+              <Heading className="mt-6 font-editorial text-2xl font-bold text-primaryNavy sm:text-3xl">
                 {pathway.title}
               </Heading>
               <p className="mt-3 leading-7 text-slate-600">{pathway.body}</p>
@@ -67,7 +65,7 @@ export function Pathways({ headingLevel = 'h3' }: { headingLevel?: 'h2' | 'h3' }
           </Reveal>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 }
 
@@ -257,55 +255,6 @@ export function CreativesSection() {
         </div>
       </Container>
     </section>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Get Involved page: how different skills contribute
-// ---------------------------------------------------------------------------
-
-const skillRoles = [
-  {
-    name: 'Artists & Designers',
-    body: 'Create visuals, exhibitions, installations, and materials for community partners.',
-    example: { label: 'A food drive flyer for Trinity Community Food Pantry', href: '/work/trinity-community-food-pantry' },
-  },
-  { name: 'Filmmakers & Photographers', body: 'Capture stories, document events, and help organizations communicate visually.' },
-  { name: 'Writers & Storytellers', body: 'Develop campaigns, tell community stories, and help causes reach more people.' },
-  {
-    name: 'Marketers & Strategists',
-    body: 'Help organizations connect with audiences, plan outreach, and tackle communication challenges.',
-  },
-  {
-    name: 'Organizers & Leaders',
-    body: 'Coordinate events, lead teams, build partnerships, and turn ambitious ideas into real experiences.',
-    example: { label: 'The Earth Day Every Day exhibition', href: '/work/earth-day-every-day' },
-  },
-  {
-    name: 'Entrepreneurs & Problem Solvers',
-    body: 'Spot opportunities, propose initiatives, and find new ways to serve communities.',
-    example: { label: 'Exploring community events with NoshBox', href: '/work/noshbox' },
-  },
-];
-
-export function SkillRoles() {
-  return (
-    <ul className="grid gap-x-16 md:grid-cols-2">
-      {skillRoles.map((role) => (
-        <li key={role.name} className="border-t border-primaryNavy/15 py-7">
-          <h3 className="font-editorial text-2xl font-bold text-primaryNavy">{role.name}</h3>
-          <p className="mt-2 leading-7 text-slate-600">{role.body}</p>
-          {role.example && (
-            <p className="mt-3 text-sm">
-              <span className="mr-2 font-bold uppercase tracking-[0.14em] text-slate-500">In action</span>
-              <a href={role.example.href} className="font-semibold text-orangeInk underline-offset-4 hover:underline">
-                {role.example.label}
-              </a>
-            </p>
-          )}
-        </li>
-      ))}
-    </ul>
   );
 }
 

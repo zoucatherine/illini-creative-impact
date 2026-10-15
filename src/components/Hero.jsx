@@ -63,7 +63,7 @@ export default function Hero() {
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl sm:leading-9">
             Join students turning their ideas into action, from community partnerships to initiatives of their own.
-            <span className="mt-3 block font-bold text-illiniOrange">Unlock your creativity.</span>
+            <span className="mt-3 block text-xl font-bold text-illiniOrange sm:text-2xl">Unlock your creativity.</span>
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a

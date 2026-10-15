@@ -7,6 +7,7 @@ const LIMITS = { name: 100, email: 120, majorYear: 120, message: 1000, listItem:
 
 const INVOLVEMENT_LABELS = {
   projects: 'Project teams',
+  creative: 'Creatives Team',
   events: 'Event planning',
   initiative: 'Proposing an initiative',
   general: 'General involvement',

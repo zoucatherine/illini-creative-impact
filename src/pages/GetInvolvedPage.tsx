@@ -1,7 +1,8 @@
 import { JoinForm } from '../components/forms';
-import { Pathways, SkillRoles } from '../components/sections';
+import { CreativeTeamSection, IdeaInvitation } from '../components/CreativeTeam';
+import { Pathways } from '../components/sections';
 import { ArrowLink, Container, Eyebrow } from '../components/ui';
-import { site } from '../content/site';
+import { pitchHref, site } from '../content/site';
 import { useDocumentMeta } from '../lib/router';
 import { PageHeader } from './Pages';
 
@@ -51,22 +52,11 @@ export default function GetInvolvedPage({ search }: { search: string }) {
       <section aria-label="Ways to participate" className="bg-cream py-20 sm:py-24">
         <Container>
           <Pathways headingLevel="h2" />
+          <IdeaInvitation href={pitchHref} />
         </Container>
       </section>
 
-      <section aria-labelledby="skills-title" className="bg-white py-20 sm:py-24">
-        <Container>
-          <h2 id="skills-title" className="font-editorial text-4xl font-bold text-primaryNavy sm:text-5xl">
-            Where your skills fit
-          </h2>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
-            Examples, not departments. Most projects need a mix of all of these.
-          </p>
-          <div className="mt-10">
-            <SkillRoles />
-          </div>
-        </Container>
-      </section>
+      <CreativeTeamSection />
 
       <section id="join" aria-labelledby="join-title" className="bg-white py-20 sm:py-28">
         <Container>

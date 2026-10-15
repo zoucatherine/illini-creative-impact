@@ -207,7 +207,8 @@ const honeypot = (
 // ---------------------------------------------------------------------------
 
 const involvementOptions = [
-  { value: 'projects', label: 'Project teams', description: 'Marketing, design, outreach, strategy, partnerships' },
+  { value: 'projects', label: 'Project teams', description: 'Strategy, research, design, partnerships' },
+  { value: 'creative', label: 'Creatives Team', description: 'Marketing, design, content, storytelling' },
   { value: 'events', label: 'Event planning', description: 'Exhibitions, art contests, socials' },
   { value: 'initiative', label: 'Proposing an initiative', description: 'You have an idea to bring to life' },
   { value: 'general', label: 'General involvement', description: 'Not sure yet? We’ll show you around' },
