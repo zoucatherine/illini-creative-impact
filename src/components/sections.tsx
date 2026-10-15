@@ -8,6 +8,7 @@ import alexZhangPortrait from '../assets/officer-portraits/alex-zhang.webp';
 import alyanAjaniPortrait from '../assets/officer-portraits/alyan-ajani.webp';
 import ameliaCarpenterPortrait from '../assets/officer-portraits/amelia-carpenter.webp';
 import mayumiCaisipPortrait from '../assets/officer-portraits/mayumi-caisip.webp';
+import josephWangPortrait from '../assets/officer-portraits/joseph-wang.webp';
 
 // ---------------------------------------------------------------------------
 // Get Involved page pathways
@@ -30,10 +31,10 @@ const pathways = [
   },
   {
     title: 'Start an initiative',
-    body: 'Have an idea for a cause, partnership, or project? Pitch it, and find people to build it with.',
+    body: 'Have an idea for a cause, partnership, or project? Share it, and find people to build it with.',
     examples: ['A cause you care about', 'A partner you know', 'An event you wish existed'],
     href: pitchHref,
-    cta: 'Pitch an idea',
+    cta: 'Share an idea',
   },
 ];
 
@@ -137,7 +138,7 @@ export function IdeaSection() {
               Bring your idea to ICI. We’ll help you find collaborators and take the first steps.
             </p>
             <ButtonLink href={pitchHref} className="mt-9">
-              Pitch an Idea
+              Share an Idea
             </ButtonLink>
           </div>
 
@@ -337,14 +338,20 @@ const initiativeLeads: Array<{ name: string; portrait: string; initiative: strin
   {
     name: 'Mayumi Caisip',
     portrait: mayumiCaisipPortrait,
-    initiative: 'Hallo-Eve Art Mart, where artists table and sell their work',
-    href: '/work/hallo-eve-art-mart',
+    initiative: 'Student Art Markets, where artists table and sell their work',
+    href: '/work/art-markets',
   },
   {
     name: 'Alyan Ajani',
     portrait: alyanAjaniPortrait,
     initiative: 'Trinity Community Food Pantry',
     href: '/work/trinity-community-food-pantry',
+  },
+  {
+    name: 'Joseph Wang',
+    portrait: josephWangPortrait,
+    initiative: 'The Creative Playbook, our upcoming creative research series',
+    href: '/work/creative-playbook',
   },
 ];
 
@@ -391,7 +398,7 @@ export function LifeSection() {
 
 function InitiativeLeads() {
   return (
-    <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
       {initiativeLeads.map((lead) => (
         <li key={lead.name}>
           <article className="flex h-full flex-col rounded-2xl bg-white p-6 ring-1 ring-primaryNavy/10">
@@ -487,7 +494,7 @@ export function FinalCTA() {
               Join ICI
             </ButtonLink>
             <ButtonLink href={pitchHref} variant="secondary" className="border-primaryNavy/40 hover:bg-primaryNavy/5">
-              Pitch an Idea
+              Share an Idea
             </ButtonLink>
           </div>
         </div>

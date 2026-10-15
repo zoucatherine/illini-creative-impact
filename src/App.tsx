@@ -11,6 +11,7 @@ import ProjectPage from './pages/ProjectPage';
 import GetInvolvedPage from './pages/GetInvolvedPage';
 import PartnerPage from './pages/PartnerPage';
 import PitchPage from './pages/PitchPage';
+import CreativePlaybookPage from './pages/CreativePlaybookPage';
 import { NotFoundPage } from './pages/Pages';
 import { useDocumentMeta, useLocation } from './lib/router';
 import './index.css';
@@ -31,6 +32,8 @@ function HomePage() {
 
 function renderRoute(path: string, search: string) {
   const projectMatch = path.match(/^\/work\/([\w-]+)$/);
+  // The Creative Playbook has its own editorial page instead of the standard project template.
+  if (projectMatch?.[1] === 'creative-playbook') return <CreativePlaybookPage />;
   if (projectMatch) return <ProjectPage slug={projectMatch[1]} />;
 
   switch (path) {
@@ -46,6 +49,7 @@ function renderRoute(path: string, search: string) {
     case '/teams':
     case '/faq':
       return <GetInvolvedPage search={search} />;
+    case '/share-an-idea':
     case '/pitch':
     case '/propose':
       return <PitchPage />;

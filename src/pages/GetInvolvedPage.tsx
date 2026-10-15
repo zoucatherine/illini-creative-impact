@@ -23,7 +23,7 @@ const faqs = [
   {
     question: 'I have an idea for a project. What happens next?',
     answer:
-      'Pitch it on our Pitch an Idea page. We’ll talk it through with you, and if it fits, help you find members to build it with.',
+      'Share it on our Share an Idea page. We’ll talk it through with you, and if it fits, help you find members to build it with.',
   },
 ];
 

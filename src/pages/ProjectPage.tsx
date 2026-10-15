@@ -1,6 +1,7 @@
 import { ProjectCard } from '../components/ProjectShowcase';
 import { AccentTitle, ArrowLink, ButtonLink, Container, ContentNeeded, Eyebrow, PhotoFrame, Reveal } from '../components/ui';
 import { getProject, projects } from '../content/projects';
+import { site } from '../content/site';
 import { showPlaceholders } from '../lib/placeholders';
 import { useDocumentMeta } from '../lib/router';
 import { NotFoundPage } from './Pages';
@@ -129,7 +130,10 @@ export default function ProjectPage({ slug }: { slug: string }) {
                 <div className="rounded-2xl bg-primaryNavy p-7 text-white">
                   <h2 className="font-editorial text-2xl font-bold">Get involved</h2>
                   <p className="mt-3 leading-7 text-white/80">{project.involvement}</p>
-                  <ButtonLink href={joinLink} className="mt-6 w-full">
+                  <ButtonLink href={site.social.discord} className="mt-6 w-full">
+                    Join on Discord
+                  </ButtonLink>
+                  <ButtonLink href={joinLink} variant="onDark" className="mt-3 w-full">
                     I’m interested
                   </ButtonLink>
                 </div>

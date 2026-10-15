@@ -1,5 +1,6 @@
 import { projects, type Project } from '../content/projects';
-import { AccentTitle, ArrowLink, PhotoFrame, Reveal } from './ui';
+import { site } from '../content/site';
+import { AccentTitle, ArrowLink, ButtonLink, PhotoFrame, Reveal, StatusBadge } from './ui';
 
 /**
  * Editorial, alternating rows: the main showcase on the homepage and /work.
@@ -36,6 +37,7 @@ export function ProjectShowcase({ items = projects, compact = false }: { items?:
                       {project.category}
                     </span>
                   </div>
+                  <ProjectBadges project={project} className="mt-4" />
                   <h3 className="mt-4 font-editorial text-3xl font-bold leading-tight tracking-tight text-primaryNavy sm:text-4xl">
                     <a href={`/work/${project.slug}`} className="hover:text-orangeInk">
                       <AccentTitle text={project.title} accent={project.titleAccent} />
@@ -44,6 +46,7 @@ export function ProjectShowcase({ items = projects, compact = false }: { items?:
                   <p className="mt-4 text-lg leading-8 text-slate-600">
                     {compact ? (project.teaser ?? project.summary) : project.summary}
                   </p>
+                  {project.lead && <LeadBubble lead={project.lead} className="mt-6" />}
                   {!compact && (
                     <div className="mt-6 border-t border-primaryNavy/10 pt-5">
                       <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
@@ -61,10 +64,15 @@ export function ProjectShowcase({ items = projects, compact = false }: { items?:
                       </ul>
                     </div>
                   )}
-                  <div className="mt-7">
+                  <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
+                    <ButtonLink href={site.social.discord}>
+                      <span>
+                        Join<span className="sr-only"> {project.title}</span> on Discord
+                      </span>
+                    </ButtonLink>
                     <ArrowLink href={`/work/${project.slug}`}>
                       <span>
-                        Read more<span className="sr-only"> about {project.title}</span>
+                        {project.ctaLabel ?? 'Read more'}<span className="sr-only"> about {project.title}</span>
                       </span>
                     </ArrowLink>
                   </div>
@@ -78,6 +86,33 @@ export function ProjectShowcase({ items = projects, compact = false }: { items?:
   );
 }
 
+function LeadBubble({ lead, className = '' }: { lead: NonNullable<Project['lead']>; className?: string }) {
+  return (
+    <div className={`inline-flex max-w-full items-center gap-3 rounded-full bg-white py-1.5 pl-1.5 pr-5 ring-1 ring-primaryNavy/10 ${className}`}>
+      <img src={lead.portrait} alt="" loading="lazy" decoding="async" className="h-10 w-10 shrink-0 rounded-full object-cover" />
+      <p className="min-w-0 text-sm leading-5">
+        <span className="block text-slate-600">
+          Led by <span className="font-bold text-primaryNavy">{lead.name}</span>
+        </span>
+        <a href={`mailto:${lead.email}`} className="block truncate text-orangeInk hover:underline">
+          {lead.email}
+        </a>
+      </p>
+    </div>
+  );
+}
+
+function ProjectBadges({ project, className = '' }: { project: Project; className?: string }) {
+  if (!project.badges?.length) return null;
+  return (
+    <div className={`flex flex-wrap gap-2 ${className}`}>
+      {project.badges.map((badge, index) => (
+        <StatusBadge key={badge} label={badge} tone={index === 0 ? 'neutral' : 'muted'} />
+      ))}
+    </div>
+  );
+}
+
 /** Compact card used for "more projects" lists. */
 export function ProjectCard({ project }: { project: Project }) {
   return (
@@ -87,6 +122,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">{project.category}</span>
         </div>
+        <ProjectBadges project={project} className="mt-3" />
         <h3 className="mt-3 font-editorial text-2xl font-bold text-primaryNavy">
           <a href={`/work/${project.slug}`} className="after:absolute after:inset-0 hover:text-orangeInk">
             <AccentTitle text={project.title} accent={project.titleAccent} />

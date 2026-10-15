@@ -14,7 +14,7 @@ export default function HomeBody() {
           <SectionHeading
             id="work-title"
             eyebrow="Our work"
-            title="What we’re building."
+            title="Our current initiatives."
             intro="Every project is student led, from first idea to finished work."
           />
           <ProjectShowcase items={featuredProjects} compact />

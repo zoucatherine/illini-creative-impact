@@ -13,7 +13,7 @@ export const partners: Partner[] = [
   {
     name: 'Trinity Community Food Pantry',
     status: 'active',
-    description: 'Students handle branding, posters, signage, and promotional materials for the pantry.',
+    description: 'A food pantry feeding hungry kids and families in Jacksonville, Florida. Students handle its flyers, signage, and promotional materials.',
     projectSlug: 'trinity-community-food-pantry',
   },
   {
