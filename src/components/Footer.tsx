@@ -14,6 +14,7 @@ const columns = [
     title: 'Participate',
     links: [
       ['Join ICI', joinHref],
+      ['Creatives Team', '/get-involved#creative-team'],
       ['Share an idea', pitchHref],
       ['Partner with ICI', partnerHref],
     ],
