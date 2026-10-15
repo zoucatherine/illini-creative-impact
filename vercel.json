@@ -1,3 +1,14 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/join", "destination": "/get-involved" },
+    { "source": "/teams", "destination": "/get-involved" },
+    { "source": "/faq", "destination": "/get-involved" },
+    { "source": "/pitch", "destination": "/share-an-idea" },
+    { "source": "/propose", "destination": "/share-an-idea" },
+    { "source": "/contact", "destination": "/partner" },
+    { "source": "/media", "destination": "/community" },
+    { "source": "/work/hallo-eve-art-mart", "destination": "/work/art-markets" }
+  ]
 }
