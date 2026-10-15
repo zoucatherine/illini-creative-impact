@@ -1,7 +1,7 @@
 // Vercel serverless function: receives "Join ICI" membership interest submissions and posts them
 // to a Discord channel. Uses DISCORD_JOIN_WEBHOOK, or falls back to DISCORD_PITCH_WEBHOOK so
 // sign-ups still arrive somewhere until a dedicated channel is set up.
-import { escapeMarkdown, readWebhook } from './pitch.js';
+import { escapeMarkdown, postToDiscord, readWebhook } from './pitch.js';
 
 const LIMITS = { name: 100, email: 120, majorYear: 120, message: 1000, listItem: 80, listLength: 12 };
 
@@ -103,11 +103,7 @@ export async function POST(request) {
 
   let response;
   try {
-    response = await fetch(webhook, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(discordMessage(result.data)),
-    });
+    response = await postToDiscord(webhook, discordMessage(result.data), `🙋 Sign-up: ${result.data.name}`);
   } catch (error) {
     console.error('Discord webhook request failed', error);
     return json(502, { error: 'Could not deliver the sign-up.' });
