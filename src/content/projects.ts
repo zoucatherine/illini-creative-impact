@@ -106,7 +106,7 @@ export interface Project {
   eventDetails?: { date: string; time: string; location: string };
   /** Form for clubs and organizations that want to partner, shown in the Get involved card. */
   collaborationForm?: { href: string; label: string };
-  /** Form for artists submitting work to display, shown in the Get involved card. */
+  /** Artist sign-up form (artwork submissions, market tables). Shown next to "Join on Discord" and in the Get involved card. */
   submissionForm?: { href: string; label: string };
 }
 
@@ -231,6 +231,7 @@ export const projects: Project[] = [
       'Markets where student artists sell their work to real buyers, every medium welcome. Next up: the Hallo-Eve Art Mart on the Main Quad, October 30, 10am to 3pm.',
     summary:
       'ICI runs art markets where student artists table and sell their own work, every medium welcome. Real buyers, a real audience, and a chance to earn from what you make. Next up: the Hallo-Eve Art Mart, October 30, 10am to 3pm, on the Main Quad at the Union.',
+    submissionForm: { href: 'https://docs.google.com/forms/d/e/1FAIpQLSewwR-QWpApMmooVtEdaPmULEsUOOasinmm0f9Qmkfe3QSNoQ/viewform', label: 'Sign up to table' },
     cover: { photo: photos.halloEveFlyer, caption: 'Hallo-Eve Art Mart, October 30' },
     overview:
       'Our art markets turn campus into a place where student artists can sell their work directly to visitors. We find the space, recruit the artists, and run the day, so artists can focus on what they make.',
@@ -246,6 +247,7 @@ export const projects: Project[] = [
       {
         title: 'Next up: Hallo-Eve Art Mart',
         body: 'October 30, 10am to 3pm, on the Main Quad by the Illini Union. Artists of all mediums can sign up to sell their work.',
+        link: { href: 'https://docs.google.com/forms/d/e/1FAIpQLSewwR-QWpApMmooVtEdaPmULEsUOOasinmm0f9Qmkfe3QSNoQ/viewform', label: 'Sign up to table' },
       },
     ],
     involvement:
