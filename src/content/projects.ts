@@ -1,6 +1,7 @@
 // Project content. Edit this file to update the Our Work showcase and project pages.
 // Anything not yet confirmed is left as a `placeholder` so the page labels it clearly
 // instead of inventing details. Replace placeholders with real content when you have it.
+import { earthDayArtworks, earthDayGalleryUrl, type Artwork } from './earthDayGallery';
 import { photos, type Photo } from './photos';
 import alexZhangPortrait from '../assets/officer-portraits/alex-zhang.webp';
 import alyanAjaniPortrait from '../assets/officer-portraits/alyan-ajani.webp';
@@ -49,6 +50,23 @@ export interface ProjectSection {
   placeholder?: string;
 }
 
+/** A headline piece shown in its own band right under the project header. */
+export interface ProjectFeature {
+  eyebrow: string;
+  title: string;
+  body: string;
+  /** Sketch rendered with the feature. `canvas-on-stands`: one long canvas across a row of display boards. */
+  diagram?: 'canvas-on-stands';
+}
+
+/** Artwork the project plans to show, rendered as a gallery band. */
+export interface ProjectExhibit {
+  title: string;
+  body: string;
+  artworks: Artwork[];
+  link?: { href: string; label: string };
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -77,11 +95,15 @@ export interface Project {
   gallery: PhotoSlot[];
   /** Extra project-specific sections (gallery, submissions, etc.). */
   sections?: ProjectSection[];
+  feature?: ProjectFeature;
+  exhibit?: ProjectExhibit;
   /** How a student can get involved with this project specifically. */
   involvement: string;
   partner?: string;
   /** Main external link, e.g. a contest website or gallery. */
   link?: { href: string; label: string };
+  /** Form for clubs and organizations that want to partner, shown in the Get involved card. */
+  collaborationForm?: { href: string; label: string };
 }
 
 export const projects: Project[] = [
@@ -157,18 +179,32 @@ export const projects: Project[] = [
       { placeholder: 'Student artwork on display' },
       { placeholder: 'Attendees adding to the community piece' },
     ],
+    feature: {
+      eyebrow: 'The centerpiece',
+      title: 'The community artwork',
+      body: 'One very long canvas, mounted across a row of big vertical display boards. Attendees add a message, a drawing, or a mark of support, and together it becomes a wall of encouragement: a reminder that it’s okay to fall, and that no one has to get back up alone.',
+      diagram: 'canvas-on-stands',
+      // TODO: add the canvas size and number of boards once confirmed.
+    },
+    // Placeholder lineup from Earth Day Every Day until exhibition artists are confirmed.
+    exhibit: {
+      title: 'Artwork we plan to show',
+      body: 'A first look at the kind of work we want on the walls, selected from our Earth Day Every Day contest. The exhibition lineup is still being curated.',
+      artworks: earthDayArtworks,
+      link: { href: earthDayGalleryUrl, label: 'See every Earth Day entry' },
+    },
     sections: [
-      {
-        title: 'The community artwork',
-        body: 'Attendees are invited to add to a shared piece during the event. The finished artwork reflects everyone who took part, not a single artist.',
-      },
       {
         title: 'Take part',
         placeholder: 'Add this year’s date, location, and how artists can submit work once confirmed.',
       },
     ],
     involvement:
-      'Help curate, recruit artists, design the community artwork, or run the event. Artists interested in exhibiting can reach out through the interest form.',
+      'Help curate, recruit artists, design the community artwork, or run the event. Artists interested in exhibiting can reach out through the interest form. Clubs that want to collaborate can use the club form.',
+    collaborationForm: {
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLSekWqZDva0h-gnXA1xIhm3r8aJs-jF73u1RCO7mJqYqs7Uyug/viewform',
+      label: 'Club collaboration form',
+    },
   },
   {
     slug: 'art-markets',

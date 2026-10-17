@@ -1,3 +1,4 @@
+import { ProjectExhibitBand, ProjectFeatureBand } from '../components/ProjectBands';
 import { ProjectCard } from '../components/ProjectShowcase';
 import { AccentTitle, ArrowLink, ButtonLink, Container, ContentNeeded, Eyebrow, PhotoFrame, Reveal } from '../components/ui';
 import { getProject, projects } from '../content/projects';
@@ -48,6 +49,8 @@ export default function ProjectPage({ slug }: { slug: string }) {
           </div>
         </Container>
       </header>
+
+      {project.feature && <ProjectFeatureBand feature={project.feature} />}
 
       <div className="bg-cream py-20 sm:py-28">
         <Container>
@@ -136,12 +139,19 @@ export default function ProjectPage({ slug }: { slug: string }) {
                   <ButtonLink href={joinLink} variant="onDark" className="mt-3 w-full">
                     I’m interested
                   </ButtonLink>
+                  {project.collaborationForm && (
+                    <ButtonLink href={project.collaborationForm.href} variant="onDark" className="mt-3 w-full">
+                      {project.collaborationForm.label}
+                    </ButtonLink>
+                  )}
                 </div>
               </div>
             </aside>
           </div>
         </Container>
       </div>
+
+      {project.exhibit && <ProjectExhibitBand exhibit={project.exhibit} />}
 
       <section aria-labelledby="more-projects" className="bg-white py-20 sm:py-24">
         <Container>

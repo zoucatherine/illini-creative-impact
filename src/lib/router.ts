@@ -7,7 +7,26 @@ export interface Location {
   hash: string;
 }
 
+// During the build-time prerender (scripts/prerender.mjs) there is no window, so the
+// prerender sets the URL being rendered and collects that page's title and description.
+let serverLocation: Location = { path: '/', search: '', hash: '' };
+export const serverMeta: { title: string; description: string } = { title: '', description: '' };
+
+export function setServerLocation(path: string) {
+  serverLocation = { path, search: '', hash: '' };
+}
+
+function recordServerMeta(title: string, description: string) {
+  serverMeta.title = title;
+  serverMeta.description = description;
+}
+
+function fullTitle(title: string | null) {
+  return title ? `${title} · ${site.name}` : `${site.name} · UIUC`;
+}
+
 function readLocation(): Location {
+  if (typeof window === 'undefined') return serverLocation;
   return {
     path: window.location.pathname.replace(/\/+$/, '') || '/',
     search: window.location.search,
@@ -89,17 +108,14 @@ function setMeta(selector: string, attribute: 'name' | 'property', key: string, 
 
 /** Sets the page title, description, and matching social tags for the current route. */
 export function useDocumentMeta(title: string | null, description: string) {
+  if (typeof window === 'undefined') recordServerMeta(fullTitle(title), description);
   React.useEffect(() => {
-    const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · UIUC`;
-    document.title = fullTitle;
+    document.title = fullTitle(title);
     setMeta('meta[name="description"]', 'name', 'description', description);
-    setMeta('meta[property="og:title"]', 'property', 'og:title', fullTitle);
+    setMeta('meta[property="og:title"]', 'property', 'og:title', fullTitle(title));
     setMeta('meta[property="og:description"]', 'property', 'og:description', description);
-    setMeta(
-      'meta[property="og:url"]',
-      'property',
-      'og:url',
-      site.url + window.location.pathname,
-    );
+    const url = site.url + (window.location.pathname.replace(/\/+$/, '') || '/');
+    setMeta('meta[property="og:url"]', 'property', 'og:url', url);
+    document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute('href', url);
   }, [title, description]);
 }

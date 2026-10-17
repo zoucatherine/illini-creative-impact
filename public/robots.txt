@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://illini-creative-impact.vercel.app/sitemap.xml
