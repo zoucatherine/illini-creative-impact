@@ -153,6 +153,11 @@ export default function ProjectPage({ slug }: { slug: string }) {
                   <ButtonLink href={joinLink} variant="onDark" className="mt-3 w-full">
                     I’m interested
                   </ButtonLink>
+                  {project.submissionForm && (
+                    <ButtonLink href={project.submissionForm.href} variant="onDark" className="mt-3 w-full">
+                      {project.submissionForm.label}
+                    </ButtonLink>
+                  )}
                   {project.collaborationForm && (
                     <ButtonLink href={project.collaborationForm.href} variant="onDark" className="mt-3 w-full">
                       {project.collaborationForm.label}

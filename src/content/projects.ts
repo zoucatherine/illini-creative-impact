@@ -106,6 +106,8 @@ export interface Project {
   eventDetails?: { date: string; time: string; location: string };
   /** Form for clubs and organizations that want to partner, shown in the Get involved card. */
   collaborationForm?: { href: string; label: string };
+  /** Form for artists submitting work to display, shown in the Get involved card. */
+  submissionForm?: { href: string; label: string };
 }
 
 export const projects: Project[] = [
@@ -198,12 +200,20 @@ export const projects: Project[] = [
     },
     sections: [
       {
-        title: 'Take part',
-        placeholder: 'Add how artists can submit work once confirmed.',
+        title: 'Show your work',
+        body: 'Student artists can submit work to be displayed at the exhibition.',
+        link: {
+          href: 'https://docs.google.com/forms/d/e/1FAIpQLSdMsIZ6nAlQUgsdM1ZSw2zdMfN7KSnMi8G4BpeGr6NJr4ZLyQ/viewform',
+          label: 'Submit your artwork',
+        },
       },
     ],
     involvement:
-      'Help curate, recruit artists, design the community artwork, or run the event. Artists interested in exhibiting can reach out through the interest form. Clubs that want to collaborate can use the club form.',
+      'Help curate, recruit artists, design the community artwork, or run the event. Artists who want their work displayed can submit it through the artwork form. Clubs that want to collaborate can use the club form.',
+    submissionForm: {
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLSdMsIZ6nAlQUgsdM1ZSw2zdMfN7KSnMi8G4BpeGr6NJr4ZLyQ/viewform',
+      label: 'Submit your artwork',
+    },
     collaborationForm: {
       href: 'https://docs.google.com/forms/d/e/1FAIpQLSekWqZDva0h-gnXA1xIhm3r8aJs-jF73u1RCO7mJqYqs7Uyug/viewform',
       label: 'Club collaboration form',
