@@ -102,6 +102,8 @@ export interface Project {
   partner?: string;
   /** Main external link, e.g. a contest website or gallery. */
   link?: { href: string; label: string };
+  /** Confirmed event details, shown in the page header. */
+  eventDetails?: { date: string; time: string; location: string };
   /** Form for clubs and organizations that want to partner, shown in the Get involved card. */
   collaborationForm?: { href: string; label: string };
 }
@@ -163,6 +165,7 @@ export const projects: Project[] = [
       'A mental health exhibition built around one shared artwork that everyone adds to, because it’s okay to stumble and no one should have to get back up alone.',
     summary:
       'A mental health exhibition built around one shared artwork that every attendee adds to. A reminder that it’s okay to stumble, and an easy way into a conversation that matters.',
+    eventDetails: { date: 'November 10, 2026', time: '10am to 8pm', location: 'Illini Union, Ballroom C' },
     // Chosen to reflect the theme (making art together, no pressure), not taken at the exhibition.
     cover: { photo: photos.drawingTable, caption: 'Making art together' },
     overview:
@@ -196,7 +199,7 @@ export const projects: Project[] = [
     sections: [
       {
         title: 'Take part',
-        placeholder: 'Add this year’s date, location, and how artists can submit work once confirmed.',
+        placeholder: 'Add how artists can submit work once confirmed.',
       },
     ],
     involvement:
