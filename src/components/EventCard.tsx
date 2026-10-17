@@ -14,6 +14,10 @@ function formatDate(iso: string) {
   };
 }
 
+function formatTime(iso: string) {
+  return new Date(iso).toLocaleTimeString('en-US', { timeStyle: 'short', timeZone: 'America/Chicago' });
+}
+
 const statusTone = {
   upcoming: 'live',
   'dates-tba': 'neutral',
@@ -87,7 +91,15 @@ export function EventCard({ event, tone = 'light' }: { event: ClubEvent; tone?: 
             <dt className="font-semibold">When</dt>
             <dd>
               {date ? (
-                <time dateTime={event.date}>{date.full}</time>
+                <>
+                  <time dateTime={event.date}>{date.full}</time>
+                  {event.endDate && (
+                    <>
+                      {' to '}
+                      <time dateTime={event.endDate}>{formatTime(event.endDate)}</time>
+                    </>
+                  )}
+                </>
               ) : (
                 event.when ?? (event.status === 'past' ? 'Past event' : 'To be announced')
               )}

@@ -37,6 +37,20 @@ export default function ProjectPage({ slug }: { slug: string }) {
                 <AccentTitle text={project.title} accent={project.titleAccent} />
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80 sm:text-xl">{project.summary}</p>
+              {project.eventDetails && (
+                <dl className="mt-8 grid max-w-2xl gap-x-8 gap-y-4 sm:grid-cols-3">
+                  {[
+                    { label: 'Date', value: project.eventDetails.date },
+                    { label: 'Time', value: project.eventDetails.time },
+                    { label: 'Location', value: project.eventDetails.location },
+                  ].map((detail) => (
+                    <div key={detail.label} className="border-l-2 border-illiniOrange pl-4">
+                      <dt className="text-xs font-bold uppercase tracking-[0.16em] text-illiniOrange">{detail.label}</dt>
+                      <dd className="mt-1 font-semibold text-white">{detail.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
               {project.link && (
                 <ButtonLink href={project.link.href} className="mt-8">
                   {project.link.label}
@@ -139,6 +153,11 @@ export default function ProjectPage({ slug }: { slug: string }) {
                   <ButtonLink href={joinLink} variant="onDark" className="mt-3 w-full">
                     I’m interested
                   </ButtonLink>
+                  {project.submissionForm && (
+                    <ButtonLink href={project.submissionForm.href} variant="onDark" className="mt-3 w-full">
+                      {project.submissionForm.label}
+                    </ButtonLink>
+                  )}
                   {project.collaborationForm && (
                     <ButtonLink href={project.collaborationForm.href} variant="onDark" className="mt-3 w-full">
                       {project.collaborationForm.label}

@@ -30,6 +30,8 @@ export interface ClubEvent {
   description: string;
   /** ISO date-time, only once confirmed. */
   date?: string;
+  /** ISO date-time the event ends, shown after the start time. */
+  endDate?: string;
   /** Loose timing when there is no confirmed date, e.g. "Fall semester". */
   when?: string;
   location?: string;
@@ -41,6 +43,20 @@ export interface ClubEvent {
 }
 
 export const events: ClubEvent[] = [
+  {
+    id: 'its-okay-to-fall-2026',
+    title: 'It’s Okay to Fall',
+    titleAccent: 'Fall',
+    status: 'upcoming',
+    flagship: true,
+    date: '2026-11-10T10:00:00-06:00',
+    endDate: '2026-11-10T20:00:00-06:00',
+    location: 'Illini Union, Ballroom C',
+    description:
+      'Our fall mental health exhibition, built around one long community canvas that every attendee adds to. All drawing materials provided.',
+    link: { href: '/work/fall-exhibition', label: 'About the exhibition' },
+    photo: photos.drawingTable,
+  },
   {
     id: 'creative-socials',
     title: 'Creative Socials',

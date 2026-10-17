@@ -102,8 +102,12 @@ export interface Project {
   partner?: string;
   /** Main external link, e.g. a contest website or gallery. */
   link?: { href: string; label: string };
+  /** Confirmed event details, shown in the page header. */
+  eventDetails?: { date: string; time: string; location: string };
   /** Form for clubs and organizations that want to partner, shown in the Get involved card. */
   collaborationForm?: { href: string; label: string };
+  /** Artist sign-up form (artwork submissions, market tables). Shown next to "Join on Discord" and in the Get involved card. */
+  submissionForm?: { href: string; label: string };
 }
 
 export const projects: Project[] = [
@@ -163,6 +167,7 @@ export const projects: Project[] = [
       'A mental health exhibition built around one shared artwork that everyone adds to, because it’s okay to stumble and no one should have to get back up alone.',
     summary:
       'A mental health exhibition built around one shared artwork that every attendee adds to. A reminder that it’s okay to stumble, and an easy way into a conversation that matters.',
+    eventDetails: { date: 'November 10, 2026', time: '10am to 8pm', location: 'Illini Union, Ballroom C' },
     // Chosen to reflect the theme (making art together, no pressure), not taken at the exhibition.
     cover: { photo: photos.drawingTable, caption: 'Making art together' },
     overview:
@@ -195,12 +200,20 @@ export const projects: Project[] = [
     },
     sections: [
       {
-        title: 'Take part',
-        placeholder: 'Add this year’s date, location, and how artists can submit work once confirmed.',
+        title: 'Show your work',
+        body: 'Student artists can submit work to be displayed at the exhibition.',
+        link: {
+          href: 'https://docs.google.com/forms/d/e/1FAIpQLSdMsIZ6nAlQUgsdM1ZSw2zdMfN7KSnMi8G4BpeGr6NJr4ZLyQ/viewform',
+          label: 'Submit your artwork',
+        },
       },
     ],
     involvement:
-      'Help curate, recruit artists, design the community artwork, or run the event. Artists interested in exhibiting can reach out through the interest form. Clubs that want to collaborate can use the club form.',
+      'Help curate, recruit artists, design the community artwork, or run the event. Artists who want their work displayed can submit it through the artwork form. Clubs that want to collaborate can use the club form.',
+    submissionForm: {
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLSdMsIZ6nAlQUgsdM1ZSw2zdMfN7KSnMi8G4BpeGr6NJr4ZLyQ/viewform',
+      label: 'Submit your artwork',
+    },
     collaborationForm: {
       href: 'https://docs.google.com/forms/d/e/1FAIpQLSekWqZDva0h-gnXA1xIhm3r8aJs-jF73u1RCO7mJqYqs7Uyug/viewform',
       label: 'Club collaboration form',
@@ -218,6 +231,7 @@ export const projects: Project[] = [
       'Markets where student artists sell their work to real buyers, every medium welcome. Next up: the Hallo-Eve Art Mart on the Main Quad, October 30, 10am to 3pm.',
     summary:
       'ICI runs art markets where student artists table and sell their own work, every medium welcome. Real buyers, a real audience, and a chance to earn from what you make. Next up: the Hallo-Eve Art Mart, October 30, 10am to 3pm, on the Main Quad at the Union.',
+    submissionForm: { href: 'https://docs.google.com/forms/d/e/1FAIpQLSewwR-QWpApMmooVtEdaPmULEsUOOasinmm0f9Qmkfe3QSNoQ/viewform', label: 'Sign up to table' },
     cover: { photo: photos.halloEveFlyer, caption: 'Hallo-Eve Art Mart, October 30' },
     overview:
       'Our art markets turn campus into a place where student artists can sell their work directly to visitors. We find the space, recruit the artists, and run the day, so artists can focus on what they make.',
@@ -233,6 +247,7 @@ export const projects: Project[] = [
       {
         title: 'Next up: Hallo-Eve Art Mart',
         body: 'October 30, 10am to 3pm, on the Main Quad by the Illini Union. Artists of all mediums can sign up to sell their work.',
+        link: { href: 'https://docs.google.com/forms/d/e/1FAIpQLSewwR-QWpApMmooVtEdaPmULEsUOOasinmm0f9Qmkfe3QSNoQ/viewform', label: 'Sign up to table' },
       },
     ],
     involvement:
