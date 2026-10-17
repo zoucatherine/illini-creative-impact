@@ -65,11 +65,18 @@ export function ProjectShowcase({ items = projects, compact = false }: { items?:
                     </div>
                   )}
                   <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
-                    <ButtonLink href={site.social.discord}>
-                      <span>
-                        Join<span className="sr-only"> {project.title}</span> on Discord
-                      </span>
-                    </ButtonLink>
+                    <div className="flex flex-wrap gap-3">
+                      <ButtonLink href={site.social.discord}>
+                        <span>
+                          Join<span className="sr-only"> {project.title}</span> on Discord
+                        </span>
+                      </ButtonLink>
+                      {project.submissionForm && (
+                        <ButtonLink href={project.submissionForm.href} variant="secondary">
+                          {project.submissionForm.label}
+                        </ButtonLink>
+                      )}
+                    </div>
                     <ArrowLink href={`/work/${project.slug}`}>
                       <span>
                         {project.ctaLabel ?? 'Read more'}<span className="sr-only"> about {project.title}</span>
