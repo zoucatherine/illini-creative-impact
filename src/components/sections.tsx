@@ -275,13 +275,13 @@ const initiativeLeads: Array<{ name: string; portrait: string; initiative: strin
   {
     name: 'Amelia Carpenter',
     portrait: ameliaCarpenterPortrait,
-    initiative: 'It’s Okay to Fall, our combined art showcase',
+    initiative: 'It’s Okay to Fall, our campus-wide mental health art initiative, co-led with Alex Zhang',
     href: '/work/fall-exhibition',
   },
   {
     name: 'Alex Zhang',
     portrait: alexZhangPortrait,
-    initiative: 'Earth Day Every Day',
+    initiative: 'Earth Day Every Day, and co-leading It’s Okay to Fall',
     href: '/work/earth-day-every-day',
   },
   {

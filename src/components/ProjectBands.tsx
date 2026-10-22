@@ -7,7 +7,7 @@ const BOARD = { width: 190, top: 30, bottom: 330 };
 const BOARD_XS = [100, 290, 480, 670];
 const CANVAS = { x: 118, y: 52, width: 724, height: 256 };
 
-type DoodleKind = 'heart' | 'star' | 'sun' | 'flower' | 'leaf' | 'spiral' | 'smiley' | 'rainbow' | 'squiggle';
+export type DoodleKind = 'heart' | 'star' | 'sun' | 'flower' | 'leaf' | 'spiral' | 'smiley' | 'rainbow' | 'squiggle';
 
 // Example marks attendees might add, drawn in a 48×48 box. Fuller on the left, open on the right.
 const DOODLES: { kind: DoodleKind; x: number; y: number; scale: number; color: string; rotate?: number }[] = [
@@ -29,7 +29,7 @@ const DOODLES: { kind: DoodleKind; x: number; y: number; scale: number; color: s
 const LEAF_PATH =
   'M12 2l1.6 3.6 2.6-1.2-.6 3.4 3.4-.8-1.6 3 2.6 1.2-3.6 1.6.8 2.4-3.4-1-.4 3.4-1.4-1.8V22h-1v-4.2l-1.4 1.8-.4-3.4-3.4 1 .8-2.4L4 13.2l2.6-1.2-1.6-3 3.4.8-.6-3.4 2.6 1.2z';
 
-function DoodleShape({ kind, color }: { kind: DoodleKind; color: string }) {
+export function DoodleShape({ kind, color }: { kind: DoodleKind; color: string }) {
   const line = { fill: 'none', stroke: color, strokeWidth: 3.5, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
   switch (kind) {
     case 'heart':
