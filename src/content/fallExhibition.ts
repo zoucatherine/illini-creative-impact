@@ -185,7 +185,7 @@ export const openingMoment: {
   status: 'planning',
 };
 
-/** The planned opening, 10:00 to 10:15 AM. Times are a draft, like `schedule`. */
+/** The planned opening, 10:00 to 10:30 AM. Times are a draft, like `schedule`. */
 export const openingTimeline = [
   {
     time: '10:00 AM',
@@ -193,12 +193,12 @@ export const openingTimeline = [
     body: 'A brief welcome and a few words on creativity, mental health, and community.',
   },
   {
-    time: '10:05 AM',
+    time: '10:10 AM',
     title: 'The first marks',
     body: 'Invited campus leaders and student representatives make the first contributions to the artwork together.',
   },
   {
-    time: '10:15 AM',
+    time: '10:30 AM',
     title: 'The artwork opens to everyone',
     body: 'Students, faculty, staff, and community members keep building it for the rest of the day.',
   },
@@ -219,7 +219,7 @@ export const artistThemes = ['Emotion', 'Resilience', 'Identity', 'Personal expe
 /** The day’s timeline, shown under the opening section. Times are a draft until `scheduleTentative` is false. */
 export const schedule: { time: string; title: string; note?: string }[] = [
   { time: '10:00 AM', title: 'Opening', note: 'Campus leaders make the first marks' },
-  { time: '10:15 AM', title: 'Artwork opens to everyone' },
+  { time: '10:30 AM', title: 'Artwork opens to everyone' },
   { time: 'All day', title: 'Student art exhibition and activities' },
   { time: '7:30 PM', title: 'Last marks on the artwork' },
   { time: '8:00 PM', title: 'Event closes' },
