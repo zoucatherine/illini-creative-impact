@@ -149,7 +149,11 @@ export interface Collaborator {
 }
 
 /** Confirmed collaborating organizations only. McKinley Health Center: add only once they confirm. */
-export const collaborators: Collaborator[] = [{ name: 'Creative Collective (ClubHub)' }, { name: 'Game Builders' }];
+export const collaborators: Collaborator[] = [
+  { name: 'Creative Collective (ClubHub)' },
+  { name: 'Game Builders' },
+  { name: 'Life Drawing' },
+];
 
 export const openingMoment: {
   status: 'planning' | 'confirmed';
