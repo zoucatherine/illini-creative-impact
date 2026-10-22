@@ -53,7 +53,7 @@ export const events: ClubEvent[] = [
     endDate: '2026-11-10T20:00:00-06:00',
     location: 'Illini Union, Ballroom C',
     description:
-      'Our fall mental health exhibition, built around one long community canvas that every attendee adds to. All drawing materials provided.',
+      'A campus-wide mental health art initiative built around one collective artwork, across a row of tall display boards, that everyone adds to throughout the day. All drawing materials provided.',
     link: { href: '/work/fall-exhibition', label: 'About the exhibition' },
     photo: photos.drawingTable,
   },

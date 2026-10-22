@@ -1,7 +1,8 @@
 // Project content. Edit this file to update the Our Work showcase and project pages.
 // Anything not yet confirmed is left as a `placeholder` so the page labels it clearly
 // instead of inventing details. Replace placeholders with real content when you have it.
-import { earthDayArtworks, earthDayGalleryUrl, type Artwork } from './earthDayGallery';
+import type { Artwork } from './earthDayGallery';
+import { calendarHref } from './fallExhibition';
 import { photos, type Photo } from './photos';
 import alexZhangPortrait from '../assets/officer-portraits/alex-zhang.webp';
 import alyanAjaniPortrait from '../assets/officer-portraits/alyan-ajani.webp';
@@ -84,8 +85,12 @@ export interface Project {
   badges?: string[];
   /** Label for the card link. Defaults to "Read more". */
   ctaLabel?: string;
+  /** Main button on showcase cards. Defaults to joining on Discord. */
+  primaryAction?: { href: string; label: string };
   /** Student leading this initiative, shown as a "Led by" bubble. */
   lead?: ProjectLead;
+  /** Second lead for a co-led initiative, shown beside `lead`. */
+  coLead?: ProjectLead;
   cover: PhotoSlot;
   overview: string;
   /** The community need or opportunity being addressed. */
@@ -111,6 +116,68 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    // Has its own page (src/pages/FallExhibitionPage.tsx); event content lives in content/fallExhibition.ts.
+    slug: 'fall-exhibition',
+    primaryAction: { href: calendarHref, label: 'Add it to your calendar' },
+    ctaLabel: 'See the event',
+    title: 'It’s Okay to Fall',
+    titleAccent: 'Fall',
+    category: 'Fall exhibition',
+    status: 'recurring',
+    // TODO: confirm whether this runs every fall.
+    statusLabel: 'Fall semester event',
+    lead: leads.alex,
+    coLead: leads.amelia,
+    teaser:
+      'A campus-wide mental health art initiative built around one collective artwork that everyone adds to, because it’s okay to stumble and no one should have to get back up alone.',
+    summary:
+      'A campus-wide mental health art initiative built around one collective artwork that students, faculty, and visitors add to throughout the day. November 10, 2026, Illini Union, Ballroom C.',
+    eventDetails: { date: 'November 10, 2026', time: '10am to 8pm', location: 'Illini Union, Ballroom C' },
+    // Chosen to reflect the theme (making art together, no pressure), not taken at the exhibition.
+    cover: { photo: photos.drawingTable, caption: 'Making art together' },
+    overview:
+      'It’s Okay to Fall is our fall exhibition, organized around mental health awareness. The name plays on the season and on the idea that it’s okay to stumble. At its center is a collaborative community artwork: a piece that attendees add to themselves.',
+    need:
+      'Mental health is easier to talk about when there is a shared, easy way in. Making something together, and seeing what others contributed, opens that conversation.',
+    contributions: [
+      'Curating the exhibition and recruiting student artists',
+      'Designing and facilitating the collaborative artwork',
+      'Promotion, event logistics, and running the event',
+    ],
+    gallery: [
+      { placeholder: 'The collaborative community artwork' },
+      { placeholder: 'Student artwork on display' },
+      { placeholder: 'Attendees adding to the community piece' },
+    ],
+    feature: {
+      eyebrow: 'The centerpiece',
+      title: 'The community artwork',
+      body: 'One very long canvas, mounted across a row of big vertical display boards. Attendees add a message, a drawing, or a mark of support, and together it becomes a wall of encouragement: a reminder that it’s okay to fall, and that no one has to get back up alone.',
+      diagram: 'canvas-on-stands',
+      // TODO: add the canvas size and number of boards once confirmed.
+    },
+    sections: [
+      {
+        title: 'Show your work',
+        body: 'Student artists can submit work to be displayed at the exhibition.',
+        link: {
+          href: 'https://docs.google.com/forms/d/e/1FAIpQLSdMsIZ6nAlQUgsdM1ZSw2zdMfN7KSnMi8G4BpeGr6NJr4ZLyQ/viewform',
+          label: 'Submit your artwork',
+        },
+      },
+    ],
+    involvement:
+      'Help curate, recruit artists, design the community artwork, or run the event. Artists who want their work displayed can submit it through the artwork form. Clubs that want to collaborate can use the club form.',
+    submissionForm: {
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLSdMsIZ6nAlQUgsdM1ZSw2zdMfN7KSnMi8G4BpeGr6NJr4ZLyQ/viewform',
+      label: 'Submit your artwork',
+    },
+    collaborationForm: {
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLSekWqZDva0h-gnXA1xIhm3r8aJs-jF73u1RCO7mJqYqs7Uyug/viewform',
+      label: 'Club collaboration form',
+    },
+  },
   {
     slug: 'trinity-community-food-pantry',
     badges: ['Active', 'Seeking grant writers'],
@@ -154,73 +221,16 @@ export const projects: Project[] = [
       'Join the project team if you want to design, write, or help manage requests from the pantry. No design portfolio required. There is room for people who can organize, communicate, and follow through.',
   },
   {
-    slug: 'fall-exhibition',
-    badges: ['In preparation', 'Seeking artists, performers & volunteers'],
-    title: 'It’s Okay to Fall',
-    titleAccent: 'Fall',
-    category: 'Fall exhibition',
-    status: 'recurring',
-    // TODO: confirm whether this runs every fall.
-    statusLabel: 'Fall semester event',
-    lead: leads.amelia,
-    teaser:
-      'A mental health exhibition built around one shared artwork that everyone adds to, because it’s okay to stumble and no one should have to get back up alone.',
-    summary:
-      'A mental health exhibition built around one shared artwork that every attendee adds to. A reminder that it’s okay to stumble, and an easy way into a conversation that matters.',
-    eventDetails: { date: 'November 10, 2026', time: '10am to 8pm', location: 'Illini Union, Ballroom C' },
-    // Chosen to reflect the theme (making art together, no pressure), not taken at the exhibition.
-    cover: { photo: photos.drawingTable, caption: 'Making art together' },
-    overview:
-      'It’s Okay to Fall is our fall exhibition, organized around mental health awareness. The name plays on the season and on the idea that it’s okay to stumble. At its center is a collaborative community artwork: a piece that attendees add to themselves.',
-    need:
-      'Mental health is easier to talk about when there is a shared, easy way in. Making something together, and seeing what others contributed, opens that conversation.',
-    contributions: [
-      'Curating the exhibition and recruiting student artists',
-      'Designing and facilitating the collaborative artwork',
-      'Promotion, event logistics, and running the event',
-    ],
-    gallery: [
-      { placeholder: 'The collaborative community artwork' },
-      { placeholder: 'Student artwork on display' },
-      { placeholder: 'Attendees adding to the community piece' },
-    ],
-    feature: {
-      eyebrow: 'The centerpiece',
-      title: 'The community artwork',
-      body: 'One very long canvas, mounted across a row of big vertical display boards. Attendees add a message, a drawing, or a mark of support, and together it becomes a wall of encouragement: a reminder that it’s okay to fall, and that no one has to get back up alone.',
-      diagram: 'canvas-on-stands',
-      // TODO: add the canvas size and number of boards once confirmed.
-    },
-    // Placeholder lineup from Earth Day Every Day until exhibition artists are confirmed.
-    exhibit: {
-      title: 'Artwork we plan to show',
-      body: 'A first look at the kind of work we want on the walls, selected from our Earth Day Every Day contest. The exhibition lineup is still being curated.',
-      artworks: earthDayArtworks,
-      link: { href: earthDayGalleryUrl, label: 'See every Earth Day entry' },
-    },
-    sections: [
-      {
-        title: 'Show your work',
-        body: 'Student artists can submit work to be displayed at the exhibition.',
-        link: {
-          href: 'https://docs.google.com/forms/d/e/1FAIpQLSdMsIZ6nAlQUgsdM1ZSw2zdMfN7KSnMi8G4BpeGr6NJr4ZLyQ/viewform',
-          label: 'Submit your artwork',
-        },
-      },
-    ],
-    involvement:
-      'Help curate, recruit artists, design the community artwork, or run the event. Artists who want their work displayed can submit it through the artwork form. Clubs that want to collaborate can use the club form.',
-    submissionForm: {
-      href: 'https://docs.google.com/forms/d/e/1FAIpQLSdMsIZ6nAlQUgsdM1ZSw2zdMfN7KSnMi8G4BpeGr6NJr4ZLyQ/viewform',
-      label: 'Submit your artwork',
-    },
-    collaborationForm: {
-      href: 'https://docs.google.com/forms/d/e/1FAIpQLSekWqZDva0h-gnXA1xIhm3r8aJs-jF73u1RCO7mJqYqs7Uyug/viewform',
-      label: 'Club collaboration form',
-    },
-  },
-  {
     slug: 'art-markets',
+    primaryAction: {
+      href:
+        'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        `&text=${encodeURIComponent('Hallo-Eve Art Mart')}` +
+        '&dates=20261030T100000/20261030T150000&ctz=America/Chicago' +
+        `&location=${encodeURIComponent('Main Quad, by the Illini Union, Urbana, IL')}` +
+        `&details=${encodeURIComponent('Student art market from Illini Creative Impact. All mediums welcome.')}`,
+      label: 'Add it to your calendar',
+    },
     badges: ['Active', 'Seeking market volunteers'],
     title: 'Student Art Markets',
     titleAccent: 'Art',

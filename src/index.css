@@ -59,3 +59,71 @@ html {
     transform: translate(-0.08em, 0.12em) rotate(14deg);
   }
 }
+
+/* It’s Okay to Fall collective artwork illustration (src/components/CommunityWall.tsx). */
+.wall-mark {
+  opacity: 0;
+  transform: scale(0.6);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.wall-mark.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.wall-thread {
+  transition: stroke-dashoffset 0.4s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wall-intro .wall-mark.is-on {
+    animation: wall-mark-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .wall-intro .wall-thread {
+    animation: wall-thread-in 2.4s ease-out 0.2s both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wall-mark,
+  .wall-thread {
+    transition: none;
+  }
+}
+
+@keyframes wall-mark-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4) rotate(-8deg);
+  }
+}
+
+@keyframes wall-thread-in {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+/* It’s Okay to Fall hero: the campus photo settles in, then the thread draws across it. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-photo {
+    animation: hero-photo-in 1.6s ease-out both;
+  }
+
+  .hero-thread path {
+    animation: wall-thread-in 2.8s ease-out 0.5s both;
+  }
+}
+
+@keyframes hero-photo-in {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
