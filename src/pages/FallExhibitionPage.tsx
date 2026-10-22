@@ -9,14 +9,20 @@ import {
   artistThemes,
   audiences,
   calendarHref,
+  campusResources,
   collaborators,
+  crisisResources,
   contributions,
   fallExhibition as event,
   faqs,
+  finishStrongUrl,
   leadMailto,
-  openingAsks,
+  markJourney,
   openingMoment,
+  openingTimeline,
   program,
+  rsvpLaterHref,
+  rsvpOpeningHref,
   schedule,
   scheduleTentative,
 } from '../content/fallExhibition';
@@ -187,7 +193,7 @@ export default function FallExhibitionPage() {
           </a>
           <div className="flex-1" />
           <p className="mt-40 text-sm font-bold uppercase tracking-[0.2em] text-illiniOrange lg:mt-16">
-            A campus-wide mental health art initiative
+            A community art event for mental health
           </p>
           <h1 className="mt-4 max-w-5xl font-editorial text-6xl font-bold leading-[0.95] tracking-tight sm:text-8xl lg:text-[8.5rem]">
             <AccentTitle text={event.title} accent="Fall" />
@@ -196,11 +202,12 @@ export default function FallExhibitionPage() {
           <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
             <div className="lg:col-span-6">
               <p className="font-editorial text-2xl italic leading-snug text-white sm:text-3xl">
-                One campus. Many stories. One artwork.
+                You don’t have to finish the semester alone.
               </p>
               <p className="mt-5 max-w-xl text-lg leading-8 text-white/85">
-                A mental health art event where students, faculty, and visitors add drawings, colors, and words to
-                one shared artwork throughout the day.
+                The end of the semester can feel heavy. Take a break from it: add a drawing, a color, or a few words
+                to one shared artwork, and see how many people are carrying the same things you are. Hard stretches
+                pass, and no one has to get through them alone.
               </p>
             </div>
             <div className="lg:col-span-6 lg:justify-self-end">
@@ -464,7 +471,7 @@ export default function FallExhibitionPage() {
             </figure>
 
             <div className="lg:col-span-7">
-              <Eyebrow>An invitation to campus leaders · {event.shortDate}, {schedule[0]?.time ?? event.timeLabel}</Eyebrow>
+              <Eyebrow>Opening ceremony · 10:00–10:15 AM</Eyebrow>
               <h2
                 id="opening-title"
                 className="font-editorial text-5xl font-bold leading-[1] tracking-tight text-primaryNavy sm:text-7xl"
@@ -472,31 +479,37 @@ export default function FallExhibitionPage() {
                 Make the first <span className="italic text-orangeInk">mark.</span>
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
-                We want to open the day with leaders from across Illinois: deans and department heads, faculty, student
-                government, organization presidents, wellness staff, and community partners. Each of you adds one of the
-                first marks to a blank artwork, then hands the markers to the rest of campus.
+                Before the rest of campus adds their voices, we’re inviting leaders from across Illinois to make the
+                first contributions to a collective artwork for mental health awareness.
               </p>
-              <p className="mt-4 max-w-2xl font-editorial text-2xl italic leading-snug text-primaryNavy">
-                When students see their leaders go first, it tells them what this day is about: no one here stands
-                alone.
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-700">
+                One small mark. A few minutes of your time. A reminder that no one in our community stands alone.
               </p>
 
-              <ol className="mt-10 grid gap-6 border-t border-primaryNavy/15 pt-8 sm:grid-cols-3">
-                {openingAsks.map((ask, index) => (
-                  <li key={ask.title}>
-                    <span className="font-editorial text-2xl font-bold italic text-orangeInk" aria-hidden="true">
-                      {number(index)}
-                    </span>
-                    <p className="mt-2 font-editorial text-xl font-bold text-primaryNavy">{ask.title}</p>
-                    <p className="mt-2 leading-7 text-slate-600">{ask.body}</p>
+              <ol className="mt-10 border-t border-primaryNavy/15">
+                {openingTimeline.map((step) => (
+                  <li
+                    key={step.time}
+                    className="grid gap-1 border-b border-primaryNavy/15 py-5 sm:grid-cols-[7rem_1fr] sm:gap-6"
+                  >
+                    <p className="font-editorial text-xl font-bold tabular-nums text-orangeInk">{step.time}</p>
+                    <div>
+                      <p className="font-editorial text-xl font-bold text-primaryNavy">{step.title}</p>
+                      <p className="mt-1 leading-7 text-slate-600">{step.body}</p>
+                    </div>
                   </li>
                 ))}
               </ol>
 
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <ButtonLink href={leadMailto('joining the opening')} variant="navy">
-                  Join the opening
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <ButtonLink href={rsvpOpeningHref} variant="navy">
+                  RSVP to make your mark
                 </ButtonLink>
+                <ButtonLink href={rsvpLaterHref} variant="secondary">
+                  Contribute later in the day
+                </ButtonLink>
+              </div>
+              <div className="mt-4 text-sm">
                 <ArrowLink href={leadMailto('a leader to invite to the opening')}>Suggest someone to invite</ArrowLink>
               </div>
 
@@ -514,6 +527,41 @@ export default function FallExhibitionPage() {
               )}
             </div>
           </div>
+
+          {/* For leaders who can't be there at 10 AM, and for spreading the invitation on from there. */}
+          <div className="mt-16 grid gap-10 rounded-2xl bg-white/70 p-7 ring-1 ring-primaryNavy/10 sm:p-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-5">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orangeInk">Can’t make the opening?</p>
+              <h3 className="mt-3 font-editorial text-3xl font-bold leading-tight text-primaryNavy sm:text-4xl">
+                Your mark still matters.
+              </h3>
+              <p className="mt-4 leading-7 text-slate-700">
+                Stop by any time from 10 AM to 8 PM to add to the growing artwork. It takes a few minutes, and no art
+                experience is needed.
+              </p>
+              <p className="mt-4 leading-7 text-slate-700">
+                Bring your community along. Whether you represent a college, department, student organization, or
+                campus office, encourage the people you work with to add their voices too.
+              </p>
+            </div>
+            <ol className="lg:col-span-7 lg:border-l lg:border-primaryNavy/10 lg:pl-14">
+              {markJourney.map((step, index) => (
+                <li key={step.title} className="grid grid-cols-[2.5rem_1fr] gap-3 py-4 first:pt-0 last:pb-0">
+                  <span className="font-editorial text-xl font-bold italic text-orangeInk" aria-hidden="true">
+                    {number(index)}
+                  </span>
+                  <div>
+                    <p className="font-editorial text-xl font-bold text-primaryNavy">{step.title}</p>
+                    <p className="mt-1 leading-7 text-slate-600">{step.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <p className="mx-auto mt-16 max-w-3xl text-balance text-center font-editorial text-3xl italic leading-snug text-primaryNavy sm:text-4xl">
+            The first marks begin the story. The rest of campus makes it ours.
+          </p>
 
           {schedule.length > 0 && (
             <div id="timeline" className="mt-20 border-t border-primaryNavy/15 pt-12">
@@ -703,7 +751,90 @@ export default function FallExhibitionPage() {
                   </a>
                   , the Suicide &amp; Crisis Lifeline, any time.
                 </p>
+                <div className="mt-4">
+                  <ArrowLink href="#resources">Campus resources</ArrowLink>
+                </div>
               </aside>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Campus resources */}
+      <section id="resources" aria-labelledby="resources-title" className="bg-cream py-20 sm:py-28">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <Eyebrow>Support</Eyebrow>
+              <h2
+                id="resources-title"
+                className="font-editorial text-4xl font-bold leading-[1.05] tracking-tight text-primaryNavy sm:text-5xl"
+              >
+                Campus resources
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-slate-600">
+                The end of the semester can be a lot, and you don’t have to handle it alone. These services are here for
+                UIUC students, on November 10 and every day after.
+              </p>
+              <div className="mt-10 border-l-2 border-illiniOrange pl-5">
+                <h3 className="font-editorial text-2xl font-bold text-primaryNavy">Finish Strong</h3>
+                <p className="mt-3 leading-7 text-slate-600">
+                  At the event, we’re handing out self-care packs from the Counseling Center’s Finish Strong campaign,
+                  which reminds students to take care of themselves as the semester ends. The Counseling Center hands
+                  out more packs around campus through December 10.
+                </p>
+                <div className="mt-4">
+                  <ArrowLink href={finishStrongUrl}>Finish Strong dates and tips</ArrowLink>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-orangeInk">On campus</h3>
+              <ul className="mt-5 grid gap-5 sm:grid-cols-2">
+                {campusResources.map((resource) => (
+                  <li key={resource.name} className="flex flex-col rounded-2xl bg-white p-6 shadow-sm">
+                    <p className="font-editorial text-2xl font-bold text-primaryNavy">{resource.name}</p>
+                    {resource.contacts.map((contact) => (
+                      <a
+                        key={contact.href}
+                        href={contact.href}
+                        className="mt-2 text-xl font-bold text-orangeInk underline-offset-4 hover:underline"
+                      >
+                        {contact.label}
+                      </a>
+                    ))}
+                    <p className="mt-3 leading-7 text-slate-600">{resource.body}</p>
+                    {resource.detail && <p className="mt-3 text-sm leading-6 text-slate-500">{resource.detail}</p>}
+                    {resource.link && (
+                      <div className="mt-auto pt-5">
+                        <ArrowLink href={resource.link.href}>{resource.link.label}</ArrowLink>
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="mt-12 text-xs font-bold uppercase tracking-[0.2em] text-orangeInk">Any time, day or night</h3>
+              <ul className="mt-2 divide-y divide-primaryNavy/10">
+                {crisisResources.map((resource) => (
+                  <li key={resource.name} className="grid gap-1 py-4 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
+                    <div>
+                      <p className="font-bold text-primaryNavy">{resource.name}</p>
+                      <p className="text-slate-600">{resource.body}</p>
+                    </div>
+                    {resource.contacts.map((contact) => (
+                      <a
+                        key={contact.href}
+                        href={contact.href}
+                        className="text-lg font-bold text-orangeInk underline-offset-4 hover:underline"
+                      >
+                        {contact.label}
+                      </a>
+                    ))}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </Container>
