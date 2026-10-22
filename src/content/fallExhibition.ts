@@ -7,6 +7,7 @@
 //   - Add people to `openingMoment.guests` as they confirm; the list appears once it has a name.
 //   - Edit `schedule` (shown under the opening). Set `scheduleTentative` to false once the times are final.
 //   - Add text to `accessibility` to show that section.
+//   - Campus resources (phone numbers, hours) are at the bottom. Recheck them each semester.
 // Only list what is confirmed. Nothing here should name a speaker, clinic, or performer before they agree.
 import { site } from './site';
 
@@ -53,9 +54,21 @@ export const calendarHref =
   `&location=${encodeURIComponent(`${fallExhibition.venue}, ${fallExhibition.address}`)}` +
   `&details=${encodeURIComponent(details)}`;
 
-export function leadMailto(subject: string) {
-  return `mailto:${fallExhibition.leads.map((lead) => lead.email).join(',')}?subject=${encodeURIComponent(`It’s Okay to Fall: ${subject}`)}`;
+export function leadMailto(subject: string, body?: string) {
+  const to = fallExhibition.leads.map((lead) => lead.email).join(',');
+  const query = `subject=${encodeURIComponent(`It’s Okay to Fall: ${subject}`)}${body ? `&body=${encodeURIComponent(body)}` : ''}`;
+  return `mailto:${to}?${query}`;
 }
+
+/** RSVPs for invited leaders go to the organizers by email, with a short template to fill in. */
+export const rsvpOpeningHref = leadMailto(
+  'RSVP for the opening',
+  'I’d like to make one of the first marks at the opening on November 10 at 10 AM.\n\nName:\nTitle and department or organization:\nAnyone joining me:\n',
+);
+export const rsvpLaterHref = leadMailto(
+  'Adding my mark later in the day',
+  'I can’t make the 10 AM opening, but I’d like to stop by later on November 10 to add my mark.\n\nName:\nTitle and department or organization:\nAbout what time:\n',
+);
 
 export interface ProgramItem {
   title: string;
@@ -172,11 +185,33 @@ export const openingMoment: {
   status: 'planning',
 };
 
-/** What the opening asks of invited campus leaders. */
-export const openingAsks = [
-  { title: 'Make one of the first marks', body: 'A few minutes at the start of the day, on a blank artwork.' },
-  { title: 'Stand with students', body: 'Be there as the doors open, so every student who walks in sees their leaders went first.' },
-  { title: 'Bring your community', body: 'Invite your department, team, or organization to come add their marks too.' },
+/** The planned opening, 10:00 to 10:15 AM. Times are a draft, like `schedule`. */
+export const openingTimeline = [
+  {
+    time: '10:00 AM',
+    title: 'A shared beginning',
+    body: 'A brief welcome and a few words on creativity, mental health, and community.',
+  },
+  {
+    time: '10:05 AM',
+    title: 'The first marks',
+    body: 'Invited campus leaders and student representatives make the first contributions to the artwork together.',
+  },
+  {
+    time: '10:15 AM',
+    title: 'The artwork opens to everyone',
+    body: 'Students, faculty, staff, and community members keep building it for the rest of the day.',
+  },
+];
+
+/** How an invited leader's mark can reach their own community. Sharing is optional. */
+export const markJourney = [
+  { title: 'Make your mark', body: 'Add a drawing, a color, or a few words to the collective artwork.' },
+  { title: 'Share the moment', body: 'Take a photo in front of the artwork. Our team is happy to take it for you.' },
+  {
+    title: 'Inspire the next',
+    body: 'If you’d like, post it to your story or your department’s channels, tag @uiuc_creativeimpact, and invite others to add theirs.',
+  },
 ];
 
 export const artistThemes = ['Emotion', 'Resilience', 'Identity', 'Personal experience', 'Recovery', 'Connection'];
@@ -215,5 +250,61 @@ export const faqs = [
   {
     q: 'How can my club or organization take part?',
     a: 'Student organizations can use the club collaboration form. Other organizations, faculty, and departments can email the organizers, Alex Zhang and Amelia Carpenter.',
+  },
+];
+
+export interface CampusResource {
+  name: string;
+  body: string;
+  /** Phone numbers or text lines, shown as tap-to-call links. */
+  contacts: { label: string; href: string }[];
+  /** e.g. hours or location. */
+  detail?: string;
+  link?: { href: string; label: string };
+}
+
+// Checked against counselingcenter.illinois.edu (home, /how-make-appointments, /crisis, /finish-strong)
+// and mckinley.illinois.edu/medical-services/mental-health on October 22, 2026. Recheck each semester.
+export const finishStrongUrl = 'https://counselingcenter.illinois.edu/finish-strong';
+
+/** On campus, during the week. */
+export const campusResources: CampusResource[] = [
+  {
+    name: 'Counseling Center',
+    body: 'Counseling for students, including same-day appointments by phone. For urgent needs, walk in during business hours, no appointment needed.',
+    contacts: [{ label: '217-333-3704', href: 'tel:+12173333704' }],
+    detail: 'Monday to Friday, 8 AM to 5 PM. 610 E. John St., Turner Student Services Building, second floor.',
+    link: { href: 'https://counselingcenter.illinois.edu/how-make-appointments', label: 'Make an appointment' },
+  },
+  {
+    name: 'McKinley Health Center',
+    body: 'The Mental Health Clinic offers evaluation, medication, and short-term therapy. Students in a mental health crisis can be seen on weekdays, 8 AM to 4 PM.',
+    contacts: [{ label: '217-333-2700', href: 'tel:+12173332700' }],
+    detail: 'Call during business hours to book. Dial-A-Nurse at the same number, 24/7. 1109 S. Lincoln Ave., Urbana.',
+    link: { href: 'https://mckinley.illinois.edu/medical-services/mental-health', label: 'Mental health at McKinley' },
+  },
+];
+
+/** Any time, day or night. */
+export const crisisResources: CampusResource[] = [
+  {
+    name: '988 Suicide & Crisis Lifeline',
+    body: 'Call or text, in English or Spanish.',
+    contacts: [{ label: 'Call or text 988', href: 'tel:988' }],
+  },
+  {
+    name: 'Rosecrance Crisis Line',
+    body: 'The Counseling Center’s after-hours line.',
+    contacts: [{ label: '815-720-4953', href: 'tel:+18157204953' }],
+  },
+  {
+    name: 'Crisis Text Line',
+    body: 'Text with a trained crisis counselor.',
+    contacts: [{ label: 'Text HOME to 741741', href: 'sms:741741?&body=HOME' }],
+  },
+  {
+    name: 'Emergency',
+    body: 'If someone is in immediate danger.',
+    contacts: [{ label: 'Call 911', href: 'tel:911' }],
   },
 ];
