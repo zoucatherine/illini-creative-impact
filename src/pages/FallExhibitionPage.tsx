@@ -471,7 +471,7 @@ export default function FallExhibitionPage() {
             </figure>
 
             <div className="lg:col-span-7">
-              <Eyebrow>Opening ceremony · 10:00–10:15 AM</Eyebrow>
+              <Eyebrow>Opening ceremony · 10:00–10:30 AM</Eyebrow>
               <h2
                 id="opening-title"
                 className="font-editorial text-5xl font-bold leading-[1] tracking-tight text-primaryNavy sm:text-7xl"
