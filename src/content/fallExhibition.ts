@@ -73,15 +73,21 @@ export const program: ProgramItem[] = [
     body: 'Add a drawing, a color, or a few words to the shared artwork, any time from 10 AM to 8 PM. Drawing materials are provided.',
   },
   {
+    title: 'Sit down and make something',
+    status: 'in-development',
+    body: 'Drawing and craft tables anyone can join, no art experience needed.',
+  },
+  {
     title: 'See work by student artists',
     status: 'open',
     body: 'Student art about mental health, on the walls all day.',
     link: { href: fallExhibition.forms.artwork, label: 'Submit your artwork' },
   },
   {
-    title: 'Sit down and make something',
-    status: 'in-development',
-    body: 'Drawing and craft tables anyone can join, no art experience needed.',
+    title: 'Take home a self-care pack',
+    status: 'confirmed',
+    body: 'Free packs from the Counseling Center’s Finish Strong campaign, with a few small gifts, tips for getting through stressful weeks, and where to reach out if you feel overwhelmed. While they last.',
+    link: { href: 'https://counselingcenter.illinois.edu/', label: 'Visit the Counseling Center' },
   },
   {
     title: 'Meet community and wellness organizations',
@@ -148,11 +154,12 @@ export interface Collaborator {
   href?: string;
 }
 
-/** Confirmed collaborating organizations only. McKinley Health Center: add only once they confirm. */
+/** Confirmed collaborating organizations only. */
 export const collaborators: Collaborator[] = [
   { name: 'Creative Collective (ClubHub)' },
   { name: 'Game Builders' },
   { name: 'Life Drawing' },
+  { name: 'McKinley Health Center' },
 ];
 
 export const openingMoment: {
