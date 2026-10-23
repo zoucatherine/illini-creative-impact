@@ -169,6 +169,7 @@ export interface Collaborator {
 
 /** Confirmed collaborating organizations only. */
 export const collaborators: Collaborator[] = [
+  { name: 'Amateur Artists' },
   { name: 'Creative Collective (ClubHub)' },
   { name: 'Game Builders' },
   { name: 'Life Drawing' },
