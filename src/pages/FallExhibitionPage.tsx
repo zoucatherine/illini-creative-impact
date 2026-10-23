@@ -9,6 +9,7 @@ import {
   artistThemes,
   audiences,
   calendarHref,
+  campusGuests,
   campusResources,
   collaborators,
   crisisResources,
@@ -18,13 +19,12 @@ import {
   finishStrongUrl,
   leadMailto,
   markJourney,
-  openingMoment,
+  openingTimeLabel,
   openingTimeline,
   program,
   rsvpLaterHref,
   rsvpOpeningHref,
   schedule,
-  scheduleTentative,
 } from '../content/fallExhibition';
 import { campusPhotos } from '../content/campusPhotos';
 import { earthDayArtworks, earthDayGalleryUrl } from '../content/earthDayGallery';
@@ -36,6 +36,8 @@ import ameliaCarpenterPortrait from '../assets/officer-portraits/amelia-carpente
 
 const description =
   'It’s Okay to Fall: a campus-wide mental health art initiative at UIUC. Add your mark to one collective artwork that grows all day. November 10, 2026, 10 AM to 8 PM, Illini Union, Ballroom C.';
+
+const confirmedGuests = campusGuests.filter((guest) => guest.status === 'confirmed');
 
 const number = (index: number) => String(index + 1).padStart(2, '0');
 
@@ -211,18 +213,28 @@ export default function FallExhibitionPage() {
               </p>
             </div>
             <div className="lg:col-span-6 lg:justify-self-end">
-              <dl className="grid gap-4 rounded-2xl bg-primaryNavy/70 p-5 ring-1 ring-white/15 backdrop-blur-md sm:grid-cols-3 sm:p-6">
-                {[
-                  { label: 'Date', value: event.dateLabel },
-                  { label: 'Time', value: event.timeLabel },
-                  { label: 'Where', value: event.venue },
-                ].map((detail) => (
-                  <div key={detail.label} className="border-l-2 border-illiniOrange pl-4">
-                    <dt className="text-xs font-bold uppercase tracking-[0.16em] text-illiniOrange">{detail.label}</dt>
-                    <dd className="mt-1 font-semibold leading-6 text-white">{detail.value}</dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="rounded-2xl bg-primaryNavy/70 p-5 ring-1 ring-white/15 backdrop-blur-md sm:p-6">
+                <dl className="grid gap-4 sm:grid-cols-3">
+                  {[
+                    { label: 'Date', value: event.dateLabel },
+                    { label: 'Time', value: event.timeLabel },
+                    { label: 'Where', value: event.venue },
+                  ].map((detail) => (
+                    <div key={detail.label} className="border-l-2 border-illiniOrange pl-4">
+                      <dt className="text-xs font-bold uppercase tracking-[0.16em] text-illiniOrange">{detail.label}</dt>
+                      <dd className="mt-1 font-semibold leading-6 text-white">{detail.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <ol className="mt-5 space-y-1.5 border-t border-white/15 pt-4 text-sm" aria-label="Schedule">
+                  {schedule.map((item) => (
+                    <li key={item.time} className="flex flex-wrap gap-x-3">
+                      <span className="font-semibold tabular-nums text-illiniOrange">{item.time}</span>
+                      <span className="text-white">{item.title}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href={calendarHref}>Add it to your calendar</ButtonLink>
                 <ButtonLink href="#take-part" variant="onDark">
@@ -279,6 +291,18 @@ export default function FallExhibitionPage() {
           </div>
         </Container>
         <GrowingWall />
+        <Container>
+          <div className="grid gap-4 border-t border-primaryNavy/15 py-14 sm:py-16 lg:grid-cols-12 lg:gap-10">
+            <h3 className="font-editorial text-3xl font-bold leading-tight text-primaryNavy sm:text-4xl lg:col-span-5">
+              A community-wide beginning
+            </h3>
+            <p className="max-w-2xl text-lg leading-8 text-slate-600 lg:col-span-7">
+              We’re bringing together students, faculty, university leaders, and community partners to begin a shared
+              work of art. Each contribution is a message of encouragement, connection, and support for mental health
+              across our campus.
+            </p>
+          </div>
+        </Container>
       </section>
 
       {/* Program */}
@@ -471,7 +495,7 @@ export default function FallExhibitionPage() {
             </figure>
 
             <div className="lg:col-span-7">
-              <Eyebrow>Opening ceremony · 10:00–10:30 AM</Eyebrow>
+              <Eyebrow>Opening ceremony · {openingTimeLabel}</Eyebrow>
               <h2
                 id="opening-title"
                 className="font-editorial text-5xl font-bold leading-[1] tracking-tight text-primaryNavy sm:text-7xl"
@@ -513,20 +537,37 @@ export default function FallExhibitionPage() {
                 <ArrowLink href={leadMailto('a leader to invite to the opening')}>Suggest someone to invite</ArrowLink>
               </div>
 
-              {openingMoment.guests && openingMoment.guests.length > 0 && (
-                <div className="mt-10">
-                  <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Joining the opening</h3>
-                  <ul className="mt-4 space-y-2">
-                    {openingMoment.guests.map((guest) => (
-                      <li key={guest.name} className="text-primaryNavy">
-                        <span className="font-bold">{guest.name}</span>, {guest.role}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
           </div>
+
+          {/* Confirmed campus leaders. Full width so the rows fill sideways as more names are added. */}
+          {confirmedGuests.length > 0 && (
+            <div className="mt-16 border-t border-primaryNavy/15">
+              {[
+                { id: 'opening', label: 'Making the first marks', guests: confirmedGuests.filter((g) => g.category === 'opening') },
+                { id: 'day', label: 'Joining us during the day', guests: confirmedGuests.filter((g) => g.category === 'day') },
+              ]
+                .filter((group) => group.guests.length > 0)
+                .map((group) => (
+                  <div key={group.id} className="grid gap-4 border-b border-primaryNavy/15 py-7 lg:grid-cols-12 lg:gap-10">
+                    <h3 className="pt-1 text-xs font-bold uppercase tracking-[0.2em] text-orangeInk lg:col-span-3">
+                      {group.label}
+                    </h3>
+                    <ul className="grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:col-span-9 lg:grid-cols-3">
+                      {group.guests.map((guest) => (
+                        <li key={guest.name}>
+                          <p className="font-editorial text-lg font-bold leading-snug text-primaryNavy">{guest.name}</p>
+                          <p className="mt-0.5 text-sm leading-snug text-slate-600">{guest.title}</p>
+                          {guest.arrival && (
+                            <p className="mt-1 text-sm font-semibold text-orangeInk">Around {guest.arrival}</p>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+            </div>
+          )}
 
           {/* For leaders who can't be there at 10 AM, and for spreading the invitation on from there. */}
           <div className="mt-16 grid gap-10 rounded-2xl bg-white/70 p-7 ring-1 ring-primaryNavy/10 sm:p-10 lg:grid-cols-12 lg:gap-14">
@@ -563,36 +604,6 @@ export default function FallExhibitionPage() {
             The first marks begin the story. The rest of campus makes it ours.
           </p>
 
-          {schedule.length > 0 && (
-            <div id="timeline" className="mt-20 border-t border-primaryNavy/15 pt-12">
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                <h3 className="font-editorial text-3xl font-bold text-primaryNavy sm:text-4xl">The day</h3>
-                <p className="text-sm text-slate-500">
-                  {event.dateLabel}
-                                  </p>
-              </div>
-              <ol className="relative mt-10 grid gap-8 lg:grid-cols-5 lg:gap-6">
-                {/* The line the stops sit on: across on wide screens, down on phones. */}
-                <span
-                  aria-hidden="true"
-                  className="absolute bottom-2 left-[7px] top-2 w-0.5 bg-illiniOrange/40 lg:bottom-auto lg:left-0 lg:right-0 lg:top-[7px] lg:h-0.5 lg:w-auto"
-                />
-                {schedule.map((row, index) => (
-                  <li key={row.time + row.title} className="relative pl-10 lg:pl-0 lg:pt-10">
-                    <span
-                      aria-hidden="true"
-                      className={`absolute left-0 top-1 h-4 w-4 rounded-full ring-4 ring-sand lg:top-0 ${
-                        index === 0 ? 'bg-illiniOrange' : 'bg-primaryNavy'
-                      }`}
-                    />
-                    <p className="font-editorial text-2xl font-bold tabular-nums text-orangeInk">{row.time}</p>
-                    <p className="mt-1 font-semibold leading-6 text-primaryNavy">{row.title}</p>
-                    {row.note && <p className="mt-1 leading-6 text-slate-600">{row.note}</p>}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          )}
         </Container>
       </section>
 
@@ -694,11 +705,6 @@ export default function FallExhibitionPage() {
                 <ArrowLink href={event.mapsHref}>Directions</ArrowLink>
               </div>
 
-              {schedule.length > 0 && (
-                <div className="mt-4">
-                  <ArrowLink href="#timeline">See the day’s timeline</ArrowLink>
-                </div>
-              )}
               {accessibility && (
                 <div className="mt-10">
                   <h3 className="font-editorial text-2xl font-bold text-primaryNavy">Accessibility</h3>
@@ -707,7 +713,6 @@ export default function FallExhibitionPage() {
               )}
               <div className="mt-4 space-y-3">
                 <ContentNeeded>Confirm admission and whether an RSVP is needed, then add them to the visit details.</ContentNeeded>
-                {scheduleTentative && <ContentNeeded>Timeline times are a draft. Confirm them, then set scheduleTentative to false.</ContentNeeded>}
                 {!accessibility && <ContentNeeded>Add accessibility information in content/fallExhibition.ts.</ContentNeeded>}
               </div>
             </div>
