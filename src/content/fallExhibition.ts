@@ -4,7 +4,7 @@
 //   - The page shows no status labels, so each program item's `body` must say in words if it is
 //     not confirmed yet. Update `status` and the wording together once something is confirmed.
 //   - Add organizations to `collaborators` once they have agreed to take part.
-//   - Add people to `openingMoment.guests` as they confirm; the list appears once it has a name.
+//   - Add campus leaders to `campusGuests` as they confirm; each group appears once it has a confirmed name.
 //   - Edit `schedule` (shown under the opening). Set `scheduleTentative` to false once the times are final.
 //   - Add text to `accessibility` to show that section.
 //   - Campus resources (phone numbers, hours) are at the bottom. Recheck them each semester.
@@ -175,15 +175,43 @@ export const collaborators: Collaborator[] = [
   { name: 'McKinley Health Center' },
 ];
 
-export const openingMoment: {
-  status: 'planning' | 'confirmed';
-  /** e.g. "10 AM". Shown once confirmed. */
-  time?: string;
-  /** Confirmed guests only. */
-  guests?: { name: string; role: string }[];
-} = {
-  status: 'planning',
-};
+/** The opening ceremony's time slot, shown wherever the opening is mentioned. */
+export const openingTimeLabel = '10:00–10:30 AM';
+
+export interface CampusGuest {
+  name: string;
+  title: string;
+  /** `opening`: attending the opening ceremony. `day`: visiting later, time not set unless `arrival` is given. */
+  category: 'opening' | 'day';
+  /** Only `confirmed` guests are shown on the page. */
+  status: 'confirmed' | 'tentative';
+  /** e.g. "2 PM". Leave out unless the guest has confirmed a time. */
+  arrival?: string;
+}
+
+// Campus leaders attending. This file is public on GitHub, so add tentative guests here only if
+// their name can be public; otherwise track them outside the repo until they confirm.
+// Don't describe anyone as speaking unless they have agreed to.
+export const campusGuests: CampusGuest[] = [
+  {
+    name: 'Robin Kaler',
+    title: 'Chief of Staff to the Chancellor and Vice Chancellor for Administrative Strategy',
+    category: 'opening',
+    status: 'confirmed',
+  },
+  {
+    name: 'Stephen Bryan',
+    title: 'Associate Vice Chancellor for Student Advocacy and Dean of Students',
+    category: 'opening',
+    status: 'confirmed',
+  },
+  {
+    name: 'Jacob D. Pinholster',
+    title: 'Dean and Professor, College of Fine and Applied Arts',
+    category: 'day',
+    status: 'confirmed',
+  },
+];
 
 /** The planned opening, 10:00 to 10:30 AM. Times are a draft, like `schedule`. */
 export const openingTimeline = [
@@ -216,16 +244,11 @@ export const markJourney = [
 
 export const artistThemes = ['Emotion', 'Resilience', 'Identity', 'Personal experience', 'Recovery', 'Connection'];
 
-/** The day’s timeline, shown under the opening section. Times are a draft until `scheduleTentative` is false. */
-export const schedule: { time: string; title: string; note?: string }[] = [
-  { time: '10:00 AM', title: 'Opening', note: 'Campus leaders make the first marks' },
-  { time: '10:30 AM', title: 'Artwork opens to everyone' },
-  { time: 'All day', title: 'Student art exhibition and activities' },
-  { time: '7:30 PM', title: 'Last marks on the artwork' },
-  { time: '8:00 PM', title: 'Event closes' },
+/** The day at a glance, shown in the hero. */
+export const schedule: { time: string; title: string }[] = [
+  { time: openingTimeLabel, title: 'Opening ceremony' },
+  { time: '10:30 AM–8:00 PM', title: 'Exhibition and collaborative artwork, open to all' },
 ];
-
-export const scheduleTentative = true;
 
 /** Accessibility information for the venue and activities. Shown once written. */
 export const accessibility: string | undefined = undefined;
