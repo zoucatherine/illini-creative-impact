@@ -173,6 +173,7 @@ export const collaborators: Collaborator[] = [
   { name: 'Game Builders' },
   { name: 'Life Drawing' },
   { name: 'McKinley Health Center' },
+  { name: 'Amateur Artists' },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
