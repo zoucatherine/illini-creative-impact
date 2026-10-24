@@ -169,11 +169,11 @@ export interface Collaborator {
 
 /** Confirmed collaborating organizations only. */
 export const collaborators: Collaborator[] = [
-  { name: 'Amateur Artists' },
   { name: 'Creative Collective (ClubHub)' },
   { name: 'Game Builders' },
   { name: 'Life Drawing' },
   { name: 'McKinley Health Center' },
+  { name: 'Amateur Artists' },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
