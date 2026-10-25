@@ -207,6 +207,12 @@ export const campusGuests: CampusGuest[] = [
     status: 'confirmed',
   },
   {
+    name: 'Lynford L. Goddard',
+    title: 'Professor of Electrical and Computer Engineering and Associate Dean for Diversity, Equity, and Inclusion, The Grainger College of Engineering',
+    category: 'opening',
+    status: 'confirmed',
+  },
+  {
     name: 'Jacob D. Pinholster',
     title: 'Dean and Professor, College of Fine and Applied Arts',
     category: 'day',
