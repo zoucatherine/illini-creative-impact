@@ -77,6 +77,8 @@ export interface Project {
   status: ProjectStatus;
   /** Overrides the default status label, e.g. "Fall semester event". */
   statusLabel?: string;
+  /** Hidden from the site (lists, project page, sitemap) but kept here to bring back later. */
+  archived?: boolean;
   /** One or two sentences for cards and the showcase. */
   summary: string;
   /** One short line for the homepage showcase. */
@@ -115,7 +117,7 @@ export interface Project {
   submissionForm?: { href: string; label: string };
 }
 
-export const projects: Project[] = [
+const allProjects: Project[] = [
   {
     // Has its own page (src/pages/FallExhibitionPage.tsx); event content lives in content/fallExhibition.ts.
     slug: 'fall-exhibition',
@@ -341,6 +343,7 @@ export const projects: Project[] = [
     title: 'NoshBox Collaboration',
     category: 'Partnership in development',
     status: 'in-development',
+    archived: true,
     partner: 'NoshBox',
     teaser: 'Exploring creative community events with a local restaurant pickup app.',
     summary:
@@ -361,6 +364,8 @@ export const projects: Project[] = [
       'Initiatives at an early stage are a good place to have real influence on what gets built. If you want to help shape this one, mention NoshBox in the interest form.',
   },
 ];
+
+export const projects = allProjects.filter((project) => !project.archived);
 
 // Old project URLs that should still resolve after a project was renamed.
 const slugAliases: Record<string, string> = { 'hallo-eve-art-mart': 'art-markets' };

@@ -4,12 +4,14 @@ export interface Partner {
   status: 'active' | 'in-development';
   description: string;
   projectSlug?: string;
+  /** Hidden from the site but kept here to bring back later. */
+  archived?: boolean;
   /** Optional logo; only add with the partner's permission. */
   logo?: string;
   url?: string;
 }
 
-export const partners: Partner[] = [
+const allPartners: Partner[] = [
   {
     name: 'Trinity Community Food Pantry',
     status: 'active',
@@ -27,9 +29,12 @@ export const partners: Partner[] = [
   {
     name: 'NoshBox',
     status: 'in-development',
+    archived: true,
     description:
       'A pickup app for restaurants in Champaign and Urbana. We are exploring creative events for the community together; details are still being planned.',
     projectSlug: 'noshbox',
     url: 'https://www.noshboxapp.com/',
   },
 ];
+
+export const partners = allPartners.filter((partner) => !partner.archived);
