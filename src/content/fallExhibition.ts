@@ -220,6 +220,12 @@ export const campusGuests: CampusGuest[] = [
     status: 'confirmed',
   },
   {
+    name: 'Domonic R. Cobb',
+    title: 'Assistant Vice Chancellor and Senior Diversity Officer, Student Success, Inclusion, and Belonging',
+    category: 'opening',
+    status: 'confirmed',
+  },
+  {
     name: 'Jacob D. Pinholster',
     title: 'Dean and Professor, College of Fine and Applied Arts',
     category: 'day',
