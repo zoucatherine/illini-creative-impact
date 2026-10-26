@@ -97,12 +97,6 @@ export const program: ProgramItem[] = [
     link: { href: fallExhibition.forms.artwork, label: 'Submit your artwork' },
   },
   {
-    title: 'Take home a self-care pack',
-    status: 'confirmed',
-    body: 'Free packs from the Counseling Center’s Finish Strong campaign, with a few small gifts, tips for getting through stressful weeks, and where to reach out if you feel overwhelmed. While they last.',
-    link: { href: 'https://counselingcenter.illinois.edu/', label: 'Visit the Counseling Center' },
-  },
-  {
     title: 'Meet community and wellness organizations',
     status: 'exploring',
     body: 'We’re inviting campus wellness groups, local counseling providers, and nonprofits to share information and resources.',
@@ -293,9 +287,8 @@ export interface CampusResource {
   link?: { href: string; label: string };
 }
 
-// Checked against counselingcenter.illinois.edu (home, /how-make-appointments, /crisis, /finish-strong)
+// Checked against counselingcenter.illinois.edu (home, /how-make-appointments, /crisis)
 // and mckinley.illinois.edu/medical-services/mental-health on October 22, 2026. Recheck each semester.
-export const finishStrongUrl = 'https://counselingcenter.illinois.edu/finish-strong';
 
 /** On campus, during the week. */
 export const campusResources: CampusResource[] = [
