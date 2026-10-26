@@ -16,7 +16,6 @@ import {
   contributions,
   fallExhibition as event,
   faqs,
-  finishStrongUrl,
   leadMailto,
   markJourney,
   openingTimeLabel,
@@ -781,17 +780,6 @@ export default function FallExhibitionPage() {
                 The end of the semester can be a lot, and you don’t have to handle it alone. These services are here for
                 UIUC students, on November 10 and every day after.
               </p>
-              <div className="mt-10 border-l-2 border-illiniOrange pl-5">
-                <h3 className="font-editorial text-2xl font-bold text-primaryNavy">Finish Strong</h3>
-                <p className="mt-3 leading-7 text-slate-600">
-                  At the event, we’re handing out self-care packs from the Counseling Center’s Finish Strong campaign,
-                  which reminds students to take care of themselves as the semester ends. The Counseling Center hands
-                  out more packs around campus through December 10.
-                </p>
-                <div className="mt-4">
-                  <ArrowLink href={finishStrongUrl}>Finish Strong dates and tips</ArrowLink>
-                </div>
-              </div>
             </div>
 
             <div className="lg:col-span-7">
