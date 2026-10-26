@@ -46,7 +46,7 @@ function EventGroup({ id, title, intro, items }) {
 export default function EventsPage() {
   useDocumentMeta(
     'Events & Projects',
-    'Projects and events from Illini Creative Impact: It’s Okay to Fall, Earth Day Every Day, Trinity Community Food Pantry, NoshBox, and creative socials.',
+    'Projects and events from Illini Creative Impact: It’s Okay to Fall, Earth Day Every Day, Trinity Community Food Pantry, and creative socials.',
   );
 
   const calendarId = import.meta.env.VITE_GOOGLE_CALENDAR_ID;
