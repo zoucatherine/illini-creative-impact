@@ -168,6 +168,7 @@ export const collaborators: Collaborator[] = [
   { name: 'Life Drawing' },
   { name: 'McKinley Health Center' },
   { name: 'Amateur Artists' },
+  { name: 'Kendrick Counseling' },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
@@ -203,6 +204,18 @@ export const campusGuests: CampusGuest[] = [
   {
     name: 'Lynford L. Goddard',
     title: 'Professor of Electrical and Computer Engineering and Associate Dean for Diversity, Equity, and Inclusion, The Grainger College of Engineering',
+    category: 'opening',
+    status: 'confirmed',
+  },
+  {
+    name: 'Mike Ross',
+    title: 'Director, Krannert Center for the Performing Arts, and Associate Dean, College of Fine and Applied Arts',
+    category: 'opening',
+    status: 'confirmed',
+  },
+  {
+    name: 'Shandra A. Summerville',
+    title: 'Cultural and Linguistic Competence Coordinator, Champaign County Mental Health Board',
     category: 'opening',
     status: 'confirmed',
   },
