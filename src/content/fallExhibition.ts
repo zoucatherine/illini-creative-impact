@@ -169,6 +169,7 @@ export const collaborators: Collaborator[] = [
   { name: 'McKinley Health Center' },
   { name: 'Amateur Artists' },
   { name: 'Kendrick Counseling' },
+  { name: 'Illini Union Board' },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
@@ -226,8 +227,26 @@ export const campusGuests: CampusGuest[] = [
     status: 'confirmed',
   },
   {
+    name: 'Diane M. Beck',
+    title: 'Head of Department and Professor, Department of Psychology',
+    category: 'opening',
+    status: 'confirmed',
+  },
+  {
+    name: 'Corky Emberson',
+    title: 'Superintendent of Recreation, Urbana Park District',
+    category: 'opening',
+    status: 'confirmed',
+  },
+  {
     name: 'Jacob D. Pinholster',
     title: 'Dean and Professor, College of Fine and Applied Arts',
+    category: 'day',
+    status: 'confirmed',
+  },
+  {
+    name: 'Wojtek Chodzko-Zajko',
+    title: 'Vice Provost for Graduate Education and Dean of the Graduate College',
     category: 'day',
     status: 'confirmed',
   },
