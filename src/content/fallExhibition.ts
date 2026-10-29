@@ -250,6 +250,13 @@ export const campusGuests: CampusGuest[] = [
     category: 'day',
     status: 'confirmed',
   },
+  {
+    name: 'Gioconda Guerra Pérez',
+    title: 'Interim Vice Chancellor and Executive Associate Vice Chancellor for ACRC',
+    category: 'day',
+    status: 'confirmed',
+    arrival: '12 PM',
+  },
 ];
 
 /** The planned opening, 10:00 to 10:30 AM. Times are a draft, like `schedule`. */
