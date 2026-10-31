@@ -234,22 +234,22 @@ export default function FallExhibitionPage() {
                     </li>
                   ))}
                 </ol>
+                <div className="mt-5 flex flex-col gap-4 border-t border-white/15 pt-5 sm:flex-row sm:items-center sm:gap-6">
+                  <ButtonLink href={event.forms.rsvp}>RSVP</ButtonLink>
+                  <ArrowLink href={calendarHref} tone="dark">
+                    Add it to your calendar
+                  </ArrowLink>
+                </div>
+                <p className="mt-3 text-sm text-white/80">Free and open to everyone. Drop in any time, RSVP optional.</p>
               </div>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <ButtonLink href={event.forms.rsvp}>RSVP</ButtonLink>
-                <ButtonLink href={calendarHref} variant="onDark">
-                  Add it to your calendar
-                </ButtonLink>
-                <ButtonLink href="#take-part" variant="onDark">
-                  How to take part
-                </ButtonLink>
-              </div>
-              <p className="mt-3 text-sm text-white/75">Free and open to everyone. Drop in any time, RSVP optional.</p>
             </div>
           </div>
 
           <div className="mt-10 flex flex-col gap-3 border-t border-white/15 pt-5 text-sm sm:flex-row sm:items-center sm:justify-between">
             <span className="flex flex-wrap gap-x-6 gap-y-2">
+              <ArrowLink href="#take-part" tone="dark">
+                How to take part
+              </ArrowLink>
               <ArrowLink href="#artists" tone="dark">
                 Artists: show your work
               </ArrowLink>
