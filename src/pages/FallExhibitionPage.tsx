@@ -37,6 +37,7 @@ const description =
   'It’s Okay to Fall: a campus-wide mental health art initiative at UIUC. Add your mark to one collective artwork that grows all day. November 10, 2026, 10 AM to 8 PM, Illini Union, Illini Room C (first floor).';
 
 const confirmedGuests = campusGuests.filter((guest) => guest.status === 'confirmed');
+const wellnessOrgs = collaborators.filter((org) => org.wellness);
 
 const number = (index: number) => String(index + 1).padStart(2, '0');
 
@@ -371,6 +372,49 @@ export default function FallExhibitionPage() {
           </div>
         </Container>
       </section>
+
+      {/* Health and counseling organizations taking part */}
+      {wellnessOrgs.length > 0 && (
+        <section id="support" aria-labelledby="support-title" className="bg-cream py-20 sm:py-28">
+          <Container>
+            <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
+              <div className="lg:col-span-6">
+                <Eyebrow>At the event</Eyebrow>
+                <h2
+                  id="support-title"
+                  className="font-editorial text-4xl font-bold leading-[1.05] tracking-tight text-primaryNavy sm:text-6xl"
+                >
+                  Mental health support
+                </h2>
+              </div>
+              <p className="max-w-2xl text-lg leading-8 text-slate-600 lg:col-span-6">
+                Come for the artwork and find out where to turn when things get hard. These health and counseling
+                organizations are part of the day, so you can learn what support is out there on campus and in
+                Champaign-Urbana.
+              </p>
+            </div>
+            <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {wellnessOrgs.map((org) => (
+                <li key={org.name} className="rounded-2xl border-t-4 border-illiniOrange bg-white p-7 shadow-sm">
+                  <p className="font-editorial text-2xl font-bold text-primaryNavy sm:text-3xl">
+                    {org.href ? (
+                      <a href={org.href} className="hover:text-orangeInk">
+                        {org.name}
+                      </a>
+                    ) : (
+                      org.name
+                    )}
+                  </p>
+                  {org.contribution && <p className="mt-2 leading-7 text-slate-600">{org.contribution}</p>}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <ArrowLink href="#resources">Campus resources you can reach any day</ArrowLink>
+            </div>
+          </Container>
+        </section>
+      )}
 
       {/* A campus-wide invitation */}
       <section id="invitation" aria-labelledby="invitation-title" className="bg-primaryNavy py-20 text-white sm:py-28">

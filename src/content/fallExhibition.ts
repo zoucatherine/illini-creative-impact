@@ -98,8 +98,9 @@ export const program: ProgramItem[] = [
   },
   {
     title: 'Meet community and wellness organizations',
-    status: 'exploring',
-    body: 'We’re inviting campus wellness groups, local counseling providers, and nonprofits to share information and resources.',
+    status: 'confirmed',
+    body: 'Learn about mental health support on campus and in Champaign-Urbana from health and counseling organizations.',
+    link: { href: '#support', label: 'See who’s taking part' },
   },
   {
     title: 'Student performances',
@@ -159,6 +160,8 @@ export interface Collaborator {
   /** What they are contributing, e.g. "Leading a drawing station". Leave out until it is decided. */
   contribution?: string;
   href?: string;
+  /** Health and counseling organizations, also featured in the page's mental health support section. */
+  wellness?: boolean;
 }
 
 /** Confirmed collaborating organizations only. */
@@ -166,11 +169,11 @@ export const collaborators: Collaborator[] = [
   { name: 'Creative Collective (ClubHub)' },
   { name: 'Game Builders' },
   { name: 'Life Drawing' },
-  { name: 'McKinley Health Center' },
+  { name: 'McKinley Health Center', wellness: true },
   { name: 'Amateur Artists' },
-  { name: 'Kendrick Counseling' },
+  { name: 'Kendrick Counseling', wellness: true },
   { name: 'Illini Union Board' },
-  { name: 'Champaign Counseling' },
+  { name: 'Champaign Counseling', wellness: true },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
