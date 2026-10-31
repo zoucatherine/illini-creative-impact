@@ -40,6 +40,8 @@ export const fallExhibition = {
   forms: {
     artwork: 'https://docs.google.com/forms/d/e/1FAIpQLSdMsIZ6nAlQUgsdM1ZSw2zdMfN7KSnMi8G4BpeGr6NJr4ZLyQ/viewform',
     clubs: 'https://docs.google.com/forms/d/e/1FAIpQLSekWqZDva0h-gnXA1xIhm3r8aJs-jF73u1RCO7mJqYqs7Uyug/viewform',
+    // Optional RSVP for anyone attending. Invited leaders RSVP by email instead (rsvpOpeningHref).
+    rsvp: 'https://docs.google.com/forms/d/e/1FAIpQLScaVXoz0nTNmk1w65HwKzlsopLykSLAXrWcA10ztYd5fb4tMw/viewform',
   },
   joinHref: '/get-involved?interest=projects&project=fall-exhibition#join',
   discord: site.social.discord,

@@ -235,12 +235,16 @@ export default function FallExhibitionPage() {
                   ))}
                 </ol>
               </div>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href={calendarHref}>Add it to your calendar</ButtonLink>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <ButtonLink href={event.forms.rsvp}>RSVP</ButtonLink>
+                <ButtonLink href={calendarHref} variant="onDark">
+                  Add it to your calendar
+                </ButtonLink>
                 <ButtonLink href="#take-part" variant="onDark">
                   How to take part
                 </ButtonLink>
               </div>
+              <p className="mt-3 text-sm text-white/75">Free and open to everyone. Drop in any time, RSVP optional.</p>
             </div>
           </div>
 
@@ -736,6 +740,7 @@ export default function FallExhibitionPage() {
                   { label: 'Date', value: event.dateLabel },
                   { label: 'Time', value: `${event.timeLabel}, the artwork grows all day` },
                   { label: 'Where', value: `${event.venue}, ${event.address}` },
+                  { label: 'Admission', value: 'Free and open to everyone. Drop in any time, RSVP optional.' },
                 ].map((detail) => (
                   <div key={detail.label} className="border-l-2 border-illiniOrange pl-4">
                     <dt className="text-xs font-bold uppercase tracking-[0.16em] text-orangeInk">{detail.label}</dt>
@@ -743,7 +748,10 @@ export default function FallExhibitionPage() {
                   </div>
                 ))}
               </dl>
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+              <ButtonLink href={event.forms.rsvp} variant="navy" className="mt-8">
+                RSVP
+              </ButtonLink>
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
                 <ArrowLink href={calendarHref}>Add to Google Calendar</ArrowLink>
                 <ArrowLink href={event.mapsHref}>Directions</ArrowLink>
               </div>
@@ -755,7 +763,6 @@ export default function FallExhibitionPage() {
                 </div>
               )}
               <div className="mt-4 space-y-3">
-                <ContentNeeded>Confirm admission and whether an RSVP is needed, then add them to the visit details.</ContentNeeded>
                 {!accessibility && <ContentNeeded>Add accessibility information in content/fallExhibition.ts.</ContentNeeded>}
               </div>
             </div>
