@@ -174,6 +174,7 @@ export const collaborators: Collaborator[] = [
   { name: 'Kendrick Counseling', wellness: true },
   { name: 'Illini Union Board' },
   { name: 'Champaign Counseling', wellness: true },
+  { name: 'Rooted Pathways' },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
