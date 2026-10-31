@@ -29,7 +29,7 @@ export const fallExhibition = {
   dateLabel: 'Tuesday, November 10, 2026',
   shortDate: 'Nov 10',
   timeLabel: '10 AM – 8 PM',
-  venue: 'Illini Union, Ballroom C',
+  venue: 'Illini Union, Illini Room C (first floor)',
   address: '1401 W Green St, Urbana, IL 61801',
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Illini+Union%2C+1401+W+Green+St%2C+Urbana%2C+IL',
   // Co-leads. Emails match the officer list on the About page.
@@ -170,6 +170,7 @@ export const collaborators: Collaborator[] = [
   { name: 'Amateur Artists' },
   { name: 'Kendrick Counseling' },
   { name: 'Illini Union Board' },
+  { name: 'Champaign Counseling' },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
@@ -256,6 +257,18 @@ export const campusGuests: CampusGuest[] = [
     category: 'day',
     status: 'confirmed',
     arrival: '12 PM',
+  },
+  {
+    name: 'Medra Roberts-Southerland',
+    title: 'Associate Director, Community and Strategic Engagements',
+    category: 'day',
+    status: 'confirmed',
+  },
+  {
+    name: 'Lowa Mwilambwe',
+    title: 'Associate Vice Chancellor for Auxiliary, Health & Wellbeing',
+    category: 'day',
+    status: 'confirmed',
   },
 ];
 
