@@ -134,8 +134,8 @@ const allProjects: Project[] = [
     teaser:
       'A campus-wide mental health art initiative built around one collective artwork that everyone adds to, because it’s okay to stumble and no one should have to get back up alone.',
     summary:
-      'A campus-wide mental health art initiative built around one collective artwork that students, faculty, and visitors add to throughout the day. November 10, 2026, Illini Union, Ballroom C.',
-    eventDetails: { date: 'November 10, 2026', time: '10am to 8pm', location: 'Illini Union, Ballroom C' },
+      'A campus-wide mental health art initiative built around one collective artwork that students, faculty, and visitors add to throughout the day. November 10, 2026, Illini Union, Illini Room C (first floor).',
+    eventDetails: { date: 'November 10, 2026', time: '10am to 8pm', location: 'Illini Union, Illini Room C (first floor)' },
     // Chosen to reflect the theme (making art together, no pressure), not taken at the exhibition.
     cover: { photo: photos.drawingTable, caption: 'Making art together' },
     overview:

@@ -68,7 +68,7 @@ export function ProjectShowcase({ items = projects, compact = false }: { items?:
                     </p>
                   )}
                   {/* The date panel sits on the photo, which is hidden from screen readers; say it here too. */}
-                  {fall && <p className="sr-only">November 10, 2026, 10 AM to 8 PM, Illini Union, Ballroom C.</p>}
+                  {fall && <p className="sr-only">November 10, 2026, 10 AM to 8 PM, Illini Union, Illini Room C (first floor).</p>}
                   <p className="mt-4 text-lg leading-8 text-slate-600">
                     {compact ? (project.teaser ?? project.summary) : project.summary}
                   </p>

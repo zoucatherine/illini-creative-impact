@@ -34,7 +34,7 @@ import alexZhangPortrait from '../assets/officer-portraits/alex-zhang.webp';
 import ameliaCarpenterPortrait from '../assets/officer-portraits/amelia-carpenter.webp';
 
 const description =
-  'It’s Okay to Fall: a campus-wide mental health art initiative at UIUC. Add your mark to one collective artwork that grows all day. November 10, 2026, 10 AM to 8 PM, Illini Union, Ballroom C.';
+  'It’s Okay to Fall: a campus-wide mental health art initiative at UIUC. Add your mark to one collective artwork that grows all day. November 10, 2026, 10 AM to 8 PM, Illini Union, Illini Room C (first floor).';
 
 const confirmedGuests = campusGuests.filter((guest) => guest.status === 'confirmed');
 
