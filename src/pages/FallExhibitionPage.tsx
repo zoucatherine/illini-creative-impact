@@ -192,12 +192,15 @@ export default function FallExhibitionPage() {
         />
         <HeroThread className="hero-thread top-[16%] h-20 lg:top-[9%] lg:h-28" />
 
-        <Container className="flex min-h-[100svh] flex-col pb-8 pt-28 sm:pt-32 lg:min-h-[92svh]">
+        <Container className="flex min-h-[100svh] flex-col pb-8 pt-28 sm:pt-32 lg:min-h-[80svh]">
           <a href="/events#projects" className="text-sm font-semibold text-white/80 hover:text-illiniOrange">
             ← All projects
           </a>
           <div className="flex-1" />
-          <h1 className="mt-40 max-w-5xl lg:mt-16 font-editorial text-6xl font-bold leading-[0.95] tracking-tight sm:text-8xl lg:text-[8.5rem]">
+          <p className="mt-40 text-base font-bold uppercase tracking-[0.16em] text-white sm:text-lg lg:mt-16">
+            A campuswide artwork for mental health
+          </p>
+          <h1 className="mt-4 max-w-5xl font-editorial text-6xl font-bold leading-[0.95] tracking-tight sm:text-8xl lg:text-[8.5rem]">
             <AccentTitle text={event.title} accent="Fall" />
           </h1>
           <p className="mt-6 text-lg font-semibold text-white sm:text-xl">
@@ -205,34 +208,42 @@ export default function FallExhibitionPage() {
             <span className="text-illiniOrange">{site.name}</span>
           </p>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
-            <div className="lg:col-span-6">
+          <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-16">
+            <div className="lg:col-span-7">
               <p className="font-editorial text-2xl italic leading-snug text-white sm:text-3xl">
-                Whatever you’re carrying, you’re not carrying it alone.
+                What if an entire campus came together to make one artwork?
               </p>
               <p className="mt-5 max-w-xl text-lg leading-8 text-white/85">
-                Add your mark to one campuswide artwork for mental health. See student art, join wellness activities,
-                and meet campus and local counseling organizations. Free, drop in any time, materials provided.
+                On November 10, add your mark to a collective artwork for mental health. Together, we’re making a
+                reminder that no one has to face hard things alone.
               </p>
+              <p className="mt-4 max-w-xl text-lg font-semibold leading-8 text-white">
+                Free to attend. No art experience needed.
+              </p>
+              <div className="mt-7">
+                <ButtonLink href="#take-part">How to take part</ButtonLink>
+              </div>
             </div>
-            <div className="lg:col-span-6 lg:justify-self-end">
-              <div className="rounded-2xl bg-primaryNavy/70 p-5 ring-1 ring-white/15 backdrop-blur-md sm:p-6">
+            <div className="lg:col-span-5 lg:justify-self-end">
+              <div className="rounded-2xl bg-primaryNavy/70 p-4 ring-1 ring-white/15 backdrop-blur-md sm:p-5">
                 <dl className="grid gap-4 sm:grid-cols-3">
                   {[
                     { label: 'Date', value: event.dateLabel },
                     { label: 'Time', value: event.timeLabel },
                     { label: 'Where', value: event.venue },
                   ].map((detail) => (
-                    <div key={detail.label} className="border-l-2 border-illiniOrange pl-4">
-                      <dt className="text-xs font-bold uppercase tracking-[0.16em] text-illiniOrange">{detail.label}</dt>
-                      <dd className="mt-1 font-semibold leading-6 text-white">{detail.value}</dd>
+                    <div key={detail.label} className="border-l-2 border-illiniOrange pl-3">
+                      <dt className="text-[11px] font-bold uppercase tracking-[0.16em] text-illiniOrange">{detail.label}</dt>
+                      <dd className="mt-1 text-sm font-semibold leading-5 text-white">{detail.value}</dd>
                     </div>
                   ))}
                 </dl>
-                <div className="mt-5 flex flex-col gap-4 border-t border-white/15 pt-5 sm:flex-row sm:items-center sm:gap-6">
-                  <ButtonLink href={event.forms.rsvp}>RSVP</ButtonLink>
+                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/15 pt-4 text-sm">
+                  <ArrowLink href={event.forms.rsvp} tone="dark">
+                    RSVP (optional)
+                  </ArrowLink>
                   <ArrowLink href={calendarHref} tone="dark">
-                    Add it to your calendar
+                    Add to calendar
                   </ArrowLink>
                 </div>
               </div>
@@ -241,9 +252,6 @@ export default function FallExhibitionPage() {
 
           <div className="mt-10 flex flex-col gap-3 border-t border-white/15 pt-5 text-sm sm:flex-row sm:items-center sm:justify-between">
             <span className="flex flex-wrap gap-x-6 gap-y-2">
-              <ArrowLink href="#take-part" tone="dark">
-                How to take part
-              </ArrowLink>
               <ArrowLink href="#artists" tone="dark">
                 Artists
               </ArrowLink>
