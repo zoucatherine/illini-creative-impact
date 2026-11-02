@@ -32,6 +32,8 @@ export const fallExhibition = {
   venue: 'Illini Union, Illini Room C (first floor)',
   address: '1401 W Green St, Urbana, IL 61801',
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Illini+Union%2C+1401+W+Green+St%2C+Urbana%2C+IL',
+  /** Co-hosting organization, shown in the hero, Plan your visit, and the event schema. */
+  coHost: 'Illini Union Board',
   // Co-leads. Emails match the officer list on the About page.
   leads: [
     { name: 'Alex Zhang', email: 'alexz10@illinois.edu' },
@@ -42,6 +44,8 @@ export const fallExhibition = {
     clubs: 'https://docs.google.com/forms/d/e/1FAIpQLSekWqZDva0h-gnXA1xIhm3r8aJs-jF73u1RCO7mJqYqs7Uyug/viewform',
     // Optional RSVP for anyone attending. Invited leaders RSVP by email instead (rsvpOpeningHref).
     rsvp: 'https://docs.google.com/forms/d/e/1FAIpQLScaVXoz0nTNmk1w65HwKzlsopLykSLAXrWcA10ztYd5fb4tMw/viewform',
+    // Volunteer shifts on the day (SignUpGenius).
+    volunteer: 'https://www.signupgenius.com/go/10C054AA9AB28A3F8C52-67196926-its',
   },
   joinHref: '/get-involved?interest=projects&project=fall-exhibition#join',
   discord: site.social.discord,
@@ -105,11 +109,6 @@ export const program: ProgramItem[] = [
     link: { href: '#support', label: 'See who’s taking part' },
   },
   {
-    title: 'Student performances',
-    status: 'exploring',
-    body: 'We’re inviting student performers to share their work.',
-  },
-  {
     title: 'An opening moment',
     status: 'planning',
     body: 'At 10 AM, campus leaders make the first marks on the artwork.',
@@ -121,7 +120,7 @@ export const program: ProgramItem[] = [
 export const contributions = [
   { title: 'Bring your members', body: 'Come together and add to the artwork as a group.' },
   { title: 'Lead an activity', body: 'Host a drawing or craft station that reflects your community.' },
-  { title: 'Contribute art or a performance', body: 'Share work from your members on the walls or on the floor.' },
+  { title: 'Contribute art', body: 'Share work from your members on the walls.' },
   { title: 'Share mental health resources', body: 'Help visitors find information and support.' },
   { title: 'Help spread the word', body: 'Share the invitation with your members, students, or colleagues.' },
 ];
@@ -138,7 +137,7 @@ export const audiences: Audience[] = [
     id: 'student-orgs',
     who: 'Student organizations',
     pitch:
-      'Host a drawing table, bring your members to add to the artwork, or share artwork or a performance.',
+      'Host a drawing table, bring your members to add to the artwork, or share artwork.',
     cta: { href: fallExhibition.forms.clubs, label: 'Club collaboration form' },
   },
   {
@@ -171,12 +170,13 @@ export const collaborators: Collaborator[] = [
   { name: 'Creative Collective (ClubHub)' },
   { name: 'Game Builders' },
   { name: 'Life Drawing' },
-  { name: 'McKinley Health Center', wellness: true },
+  { name: 'McKinley Health Center', href: 'https://mckinley.illinois.edu/', wellness: true },
   { name: 'Amateur Artists' },
-  { name: 'Kendrick Counseling', wellness: true },
-  { name: 'Illini Union Board' },
-  { name: 'Champaign Counseling', wellness: true },
-  { name: 'Rooted Pathways Counseling & Consulting', wellness: true },
+  { name: 'Kendrick Counseling', href: 'https://kendrickcounseling.com/', wellness: true },
+  { name: 'Illini Union Board', contribution: 'Co-hosting the event' },
+  { name: 'Champaign Counseling', href: 'https://www.champaigncounseling.com/', wellness: true },
+  { name: 'Rooted Pathways Counseling & Consulting', href: 'https://www.rootedpathwayscounseling.com/', wellness: true },
+  { name: 'Bodhi Counseling', href: 'https://www.bodhicounseling.care/', wellness: true },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
@@ -262,7 +262,6 @@ export const campusGuests: CampusGuest[] = [
     title: 'Interim Vice Chancellor and Executive Associate Vice Chancellor for ACRC',
     category: 'day',
     status: 'confirmed',
-    arrival: '12 PM',
   },
   {
     name: 'Medra Roberts-Southerland',

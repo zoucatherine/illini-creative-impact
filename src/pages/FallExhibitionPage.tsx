@@ -68,7 +68,10 @@ const eventSchema = {
       addressCountry: 'US',
     },
   },
-  organizer: { '@type': 'Organization', name: site.name, url: site.url },
+  organizer: [
+    { '@type': 'Organization', name: site.name, url: site.url },
+    { '@type': 'Organization', name: event.coHost },
+  ],
   url: `${site.url}/work/${event.slug}`,
   image: `${site.url}/og-image.jpg`,
 };
@@ -194,12 +197,13 @@ export default function FallExhibitionPage() {
             ← All projects
           </a>
           <div className="flex-1" />
-          <p className="mt-40 text-sm font-bold uppercase tracking-[0.2em] text-illiniOrange lg:mt-16">
-            A community art event for mental health
-          </p>
-          <h1 className="mt-4 max-w-5xl font-editorial text-6xl font-bold leading-[0.95] tracking-tight sm:text-8xl lg:text-[8.5rem]">
+          <h1 className="mt-40 max-w-5xl lg:mt-16 font-editorial text-6xl font-bold leading-[0.95] tracking-tight sm:text-8xl lg:text-[8.5rem]">
             <AccentTitle text={event.title} accent="Fall" />
           </h1>
+          <p className="mt-6 text-lg font-semibold text-white sm:text-xl">
+            Co-hosted by <span className="text-illiniOrange">{event.coHost}</span> and{' '}
+            <span className="text-illiniOrange">{site.name}</span>
+          </p>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
             <div className="lg:col-span-6">
@@ -207,9 +211,8 @@ export default function FallExhibitionPage() {
                 You don’t have to finish the semester alone.
               </p>
               <p className="mt-5 max-w-xl text-lg leading-8 text-white/85">
-                The end of the semester can feel heavy. Take a break from it: add a drawing, a color, or a few words
-                to one shared artwork, and see how many people are carrying the same things you are. Hard stretches
-                pass, and no one has to get through them alone.
+                Add your mark to one campuswide artwork for mental health. See student art, join wellness activities,
+                and meet campus and local counseling organizations. Free, drop in any time, materials provided.
               </p>
             </div>
             <div className="lg:col-span-6 lg:justify-self-end">
@@ -226,21 +229,12 @@ export default function FallExhibitionPage() {
                     </div>
                   ))}
                 </dl>
-                <ol className="mt-5 space-y-1.5 border-t border-white/15 pt-4 text-sm" aria-label="Schedule">
-                  {schedule.map((item) => (
-                    <li key={item.time} className="flex flex-wrap gap-x-3">
-                      <span className="font-semibold tabular-nums text-illiniOrange">{item.time}</span>
-                      <span className="text-white">{item.title}</span>
-                    </li>
-                  ))}
-                </ol>
                 <div className="mt-5 flex flex-col gap-4 border-t border-white/15 pt-5 sm:flex-row sm:items-center sm:gap-6">
                   <ButtonLink href={event.forms.rsvp}>RSVP</ButtonLink>
                   <ArrowLink href={calendarHref} tone="dark">
                     Add it to your calendar
                   </ArrowLink>
                 </div>
-                <p className="mt-3 text-sm text-white/80">Free and open to everyone. Drop in any time, RSVP optional.</p>
               </div>
             </div>
           </div>
@@ -251,10 +245,13 @@ export default function FallExhibitionPage() {
                 How to take part
               </ArrowLink>
               <ArrowLink href="#artists" tone="dark">
-                Artists: show your work
+                Artists
               </ArrowLink>
               <ArrowLink href="#invitation" tone="dark">
-                Organizations: help make it
+                Organizations
+              </ArrowLink>
+              <ArrowLink href={event.forms.volunteer} tone="dark">
+                Volunteer
               </ArrowLink>
             </span>
             <PhotoCredit photo={campusPhotos.unionQuadAutumn} label="The Illini Union from the Main Quad" tone="dark" />
@@ -740,6 +737,7 @@ export default function FallExhibitionPage() {
                   { label: 'Date', value: event.dateLabel },
                   { label: 'Time', value: `${event.timeLabel}, the artwork grows all day` },
                   { label: 'Where', value: `${event.venue}, ${event.address}` },
+                  { label: 'Co-hosted by', value: `${event.coHost} and ${site.name}` },
                   { label: 'Admission', value: 'Free and open to everyone. Drop in any time, RSVP optional.' },
                 ].map((detail) => (
                   <div key={detail.label} className="border-l-2 border-illiniOrange pl-4">
@@ -748,6 +746,14 @@ export default function FallExhibitionPage() {
                   </div>
                 ))}
               </dl>
+              <ol className="mt-8 space-y-2 border-t border-primaryNavy/10 pt-5" aria-label="Schedule">
+                {schedule.map((item) => (
+                  <li key={item.time} className="flex flex-wrap gap-x-3">
+                    <span className="font-semibold tabular-nums text-orangeInk">{item.time}</span>
+                    <span className="text-primaryNavy">{item.title}</span>
+                  </li>
+                ))}
+              </ol>
               <ButtonLink href={event.forms.rsvp} variant="navy" className="mt-8">
                 RSVP
               </ButtonLink>
@@ -891,13 +897,16 @@ export default function FallExhibitionPage() {
             <div className="lg:col-span-7">
               <Eyebrow tone="dark">Help make it happen</Eyebrow>
               <h2 id="team-title" className="font-editorial text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-                Join the organizing team
+                Volunteer or join the organizing team
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-white/80">
-                No experience needed.
+                Sign up for a shift on {event.shortDate}, or help plan the day with us. No experience needed.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href={event.joinHref}>Join the team</ButtonLink>
+                <ButtonLink href={event.forms.volunteer}>Volunteer on {event.shortDate}</ButtonLink>
+                <ButtonLink href={event.joinHref} variant="onDark">
+                  Join the team
+                </ButtonLink>
                 <ButtonLink href={event.discord} variant="onDark">
                   Join on Discord
                 </ButtonLink>
