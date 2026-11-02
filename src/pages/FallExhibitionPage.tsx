@@ -79,6 +79,48 @@ const eventSchema = {
 /** A label for each stage of the day, shown next to the clock as the illustration fills. */
 const beats = ['A blank beginning', 'Taking shape', 'Created together'];
 
+/** Small outline icons for the hero card list, drawn inline so no icon library is needed. */
+function CardIcon({ kind }: { kind: string }) {
+  const paths: Record<string, React.ReactNode> = {
+    palette: (
+      <>
+        <path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H13a1.5 1.5 0 0 1 0-3h2.5A5.5 5.5 0 0 0 21 7.5 5.5 5.5 0 0 0 12 3Z" />
+        <circle cx="7.5" cy="10.5" r="1" fill="currentColor" />
+        <circle cx="10" cy="7" r="1" fill="currentColor" />
+        <circle cx="14.5" cy="7" r="1" fill="currentColor" />
+      </>
+    ),
+    'heart-hands': (
+      <>
+        <path d="M19.5 12.6 12 20l-7.5-7.4A4.4 4.4 0 0 1 12 6.6a4.4 4.4 0 0 1 7.5 6Z" />
+        <path d="M12 6.6 9.2 9.4a1.6 1.6 0 0 0 2.3 2.3l1.5-1.5 2.5 2.5" />
+      </>
+    ),
+    people: (
+      <>
+        <circle cx="9" cy="8" r="3.2" />
+        <path d="M3 20a6 6 0 0 1 12 0" />
+        <path d="M16 5.2a3.2 3.2 0 0 1 0 5.6" />
+        <path d="M17 14.4a6 6 0 0 1 4 5.6" />
+      </>
+    ),
+  };
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-5 w-5 shrink-0 text-illiniOrange"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {paths[kind]}
+    </svg>
+  );
+}
+
 function clockLabel(progress: number) {
   const minutes = 10 * 60 + Math.round((progress * 600) / 15) * 15;
   const hour = Math.floor(minutes / 60);
@@ -159,7 +201,7 @@ export default function FallExhibitionPage() {
           </a>
           <div className="flex-1" />
           <p className="mt-40 text-base font-bold uppercase tracking-[0.16em] text-white sm:text-lg lg:mt-16">
-            A campuswide artwork for mental health
+            A community event for mental health
           </p>
           <h1 className="mt-4 max-w-5xl font-editorial text-6xl font-bold leading-[0.95] tracking-tight sm:text-8xl lg:text-[8.5rem]">
             <AccentTitle text={event.title} accent="Fall" />
@@ -169,8 +211,8 @@ export default function FallExhibitionPage() {
             <span className="text-illiniOrange">{site.name}</span>
           </p>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-16">
-            <div className="lg:col-span-7">
+          <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-12">
+            <div className="lg:col-span-6">
               <p className="font-editorial text-2xl italic leading-snug text-white sm:text-3xl">
                 What if an entire campus came together to make one artwork?
               </p>
@@ -185,20 +227,40 @@ export default function FallExhibitionPage() {
                 <ButtonLink href="#take-part">How to take part</ButtonLink>
               </div>
             </div>
-            <div className="lg:col-span-5 lg:justify-self-end">
+            <div className="lg:col-span-6 lg:justify-self-end">
               <div className="rounded-2xl bg-primaryNavy/70 p-4 ring-1 ring-white/15 backdrop-blur-md sm:p-5">
                 <dl className="grid gap-4 sm:grid-cols-3">
                   {[
-                    { label: 'Date', value: event.dateLabel },
+                    { label: 'Date', value: `${event.shortDate}, 2026` },
                     { label: 'Time', value: event.timeLabel },
                     { label: 'Where', value: event.venue },
                   ].map((detail) => (
-                    <div key={detail.label} className="border-l-2 border-illiniOrange pl-3">
+                    <div key={detail.label}>
                       <dt className="text-[11px] font-bold uppercase tracking-[0.16em] text-illiniOrange">{detail.label}</dt>
                       <dd className="mt-1 text-sm font-semibold leading-5 text-white">{detail.value}</dd>
                     </div>
                   ))}
                 </dl>
+                <div className="mt-4 border-t border-white/15 pt-4">
+                  <h2 className="text-sm font-bold text-white">More to explore</h2>
+                  <ul className="mt-3 space-y-2.5">
+                    {[
+                      { title: 'Student art exhibition', icon: 'palette', href: '#artists' },
+                      { title: 'Wellness activities', icon: 'heart-hands', href: '#program' },
+                      { title: 'Student and community organizations', icon: 'people', href: '#invitation' },
+                    ].map((item) => (
+                      <li key={item.title}>
+                        <a
+                          href={item.href}
+                          className="flex items-center gap-3 text-sm font-semibold leading-5 text-white hover:text-illiniOrange"
+                        >
+                          <CardIcon kind={item.icon} />
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
                 <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/15 pt-4 text-sm">
                   <ArrowLink href={event.forms.rsvp} tone="dark">
                     RSVP (optional)
@@ -311,10 +373,6 @@ export default function FallExhibitionPage() {
                       />
                     </div>
                   </div>
-                  <figcaption className="mt-4 text-sm leading-6 text-slate-500">
-                    From past Illini Creative Impact events: members drawing together, and student artwork at an ICI
-                    exhibition.
-                  </figcaption>
                 </figure>
               </Reveal>
             </div>
