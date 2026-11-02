@@ -208,7 +208,7 @@ export default function FallExhibitionPage() {
           <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
             <div className="lg:col-span-6">
               <p className="font-editorial text-2xl italic leading-snug text-white sm:text-3xl">
-                You don’t have to finish the semester alone.
+                Whatever you’re carrying, you’re not carrying it alone.
               </p>
               <p className="mt-5 max-w-xl text-lg leading-8 text-white/85">
                 Add your mark to one campuswide artwork for mental health. See student art, join wellness activities,
