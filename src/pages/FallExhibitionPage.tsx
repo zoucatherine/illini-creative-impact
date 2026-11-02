@@ -76,20 +76,8 @@ const eventSchema = {
   image: `${site.url}/og-image.jpg`,
 };
 
-const beats = [
-  {
-    title: 'Pick up a marker',
-    body: 'Drawing materials are provided at the boards.',
-  },
-  {
-    title: 'Leave a mark',
-    body: 'Draw something, add a color, or write a few words. You don’t have to share anything personal.',
-  },
-  {
-    title: 'Watch it become one piece',
-    body: 'By 8 PM, everyone’s marks add up to one artwork.',
-  },
-];
+/** A label for each stage of the day, shown next to the clock as the illustration fills. */
+const beats = ['A blank beginning', 'Taking shape', 'Created together'];
 
 function clockLabel(progress: number) {
   const minutes = 10 * 60 + Math.round((progress * 600) / 15) * 15;
@@ -111,54 +99,27 @@ function GrowingWall() {
   const beat = progress < 0.34 ? 0 : progress < 0.72 ? 1 : 2;
 
   return (
-    <div ref={ref} className={reduceMotion ? '' : 'relative h-[230vh]'}>
-      <div className={reduceMotion ? 'py-12' : 'sticky top-0 flex min-h-svh flex-col justify-center pb-6 pt-20'}>
+    <div ref={ref} className={reduceMotion ? '' : 'relative h-[200vh]'}>
+      <div className={reduceMotion ? 'py-10' : 'sticky top-0 pb-6 pt-20'}>
         <Container>
           <figure>
-            <div className="flex items-end justify-between gap-4">
-              <p className="font-editorial text-3xl font-bold tabular-nums text-primaryNavy sm:text-5xl" aria-hidden="true">
-                {clockLabel(progress)}
-              </p>
-              <p className="text-right text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
-                November 10 · 10 AM to 8 PM
-              </p>
-            </div>
-            <div className="mt-3 h-1 overflow-hidden rounded-full bg-primaryNavy/10" aria-hidden="true">
-              <div className="h-full origin-left rounded-full bg-illiniOrange" style={{ transform: `scaleX(${progress})` }} />
-            </div>
-            <div className="mt-5 rounded-2xl bg-sand p-3 ring-1 ring-primaryNavy/10 sm:p-6">
-              {/* Sized to the viewport height so the clock, wall, and steps fit on screen while pinned. */}
-              <div className="mx-auto" style={{ width: 'min(100%, calc((100svh - 21rem) * 2.5))' }}>
+            <div className="rounded-2xl bg-sand p-4 ring-1 ring-primaryNavy/10 sm:p-6">
+              <div className="flex items-baseline justify-between gap-4 text-sm font-semibold text-primaryNavy sm:text-base">
+                <p key={reduceMotion ? beats.length - 1 : beat} className="wall-beat tabular-nums">
+                  {reduceMotion ? '8:00 PM' : clockLabel(progress)} · {beats[reduceMotion ? beats.length - 1 : beat]}
+                </p>
+                <p className="text-right text-slate-500">8 PM · Created together</p>
+              </div>
+              <div className="mt-2 h-1 overflow-hidden rounded-full bg-primaryNavy/10" aria-hidden="true">
+                <div className="h-full origin-left rounded-full bg-illiniOrange" style={{ transform: `scaleX(${progress})` }} />
+              </div>
+              {/* Sized to the viewport height so the whole panel fits on screen while pinned. */}
+              <div className="mx-auto mt-4" style={{ width: 'min(100%, calc((100svh - 16rem) * 2.5))' }}>
                 <CommunityWall id="growing-wall" progress={progress} />
               </div>
+              <figcaption className="mt-3 text-sm text-slate-500">Concept illustration.</figcaption>
             </div>
-            <figcaption className="mt-3 text-sm text-slate-500">
-              Concept illustration.
-            </figcaption>
           </figure>
-
-          <ol className="mt-6 grid gap-6 sm:grid-cols-3">
-            {beats.map((item, index) => (
-              <li
-                key={item.title}
-                className={`border-t-2 pt-4 transition-colors duration-500 ${
-                  reduceMotion || index <= beat ? 'border-illiniOrange' : 'border-primaryNavy/15'
-                }`}
-              >
-                <p
-                  className={`font-editorial text-xl font-bold transition-colors duration-500 sm:text-2xl ${
-                    reduceMotion || index === beat ? 'text-primaryNavy' : 'text-primaryNavy/45'
-                  }`}
-                >
-                  <span className="mr-2 italic text-illiniOrange" aria-hidden="true">
-                    {number(index)}
-                  </span>
-                  {item.title}
-                </p>
-                <p className="mt-2 hidden leading-7 text-slate-600 sm:block">{item.body}</p>
-              </li>
-            ))}
-          </ol>
         </Container>
       </div>
     </div>
@@ -270,36 +231,34 @@ export default function FallExhibitionPage() {
       {/* The centerpiece */}
       <section id="take-part" aria-labelledby="centerpiece-title" className="bg-cream pt-20 sm:pt-28">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-7">
-              <Eyebrow>The centerpiece</Eyebrow>
-              <h2
-                id="centerpiece-title"
-                className="font-editorial text-4xl font-bold leading-[1.05] tracking-tight text-primaryNavy sm:text-6xl"
-              >
-                The collective artwork
-              </h2>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-                The boards start the day blank. Everyone who comes adds a drawing, a color, or a few words. By 8 PM,
-                it’s one artwork made by everyone who came.
-              </p>
-            </div>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-5 lg:col-span-5">
-              {[
-                ['4–6', 'tall vertical boards'],
-                ['10 AM–8 PM', 'open all day'],
-                ['All', 'drawing materials provided'],
-                ['No', 'art experience needed'],
-              ].map(([figure, label]) => (
-                <li key={label} className="border-l-2 border-illiniOrange pl-4">
-                  <span className="block font-editorial text-3xl font-bold text-primaryNavy">{figure}</span>
-                  <span className="text-slate-600">{label}</span>
+          <div className="max-w-3xl">
+            <Eyebrow>The centerpiece</Eyebrow>
+            <h2
+              id="centerpiece-title"
+              className="font-editorial text-4xl font-bold leading-[1.05] tracking-tight text-primaryNavy sm:text-5xl"
+            >
+              Leave your mark on something bigger.
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-slate-600">
+              Throughout the day, the Illinois community turns blank boards into one collective artwork for mental
+              health. Add a drawing, a color, or a few words. Every contribution becomes part of something we make
+              together.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-slate-700">
+              {['Materials provided', 'No experience needed', 'Drop in any time'].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <svg viewBox="0 0 16 16" aria-hidden="true" className="h-4 w-4 text-orangeInk">
+                    <path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {item}
                 </li>
               ))}
             </ul>
           </div>
         </Container>
-        <GrowingWall />
+        <div className="-mt-10">
+          <GrowingWall />
+        </div>
         <Container>
           <div className="grid gap-4 border-t border-primaryNavy/15 py-14 sm:py-16 lg:grid-cols-12 lg:gap-10">
             <h3 className="font-editorial text-3xl font-bold leading-tight text-primaryNavy sm:text-4xl lg:col-span-5">

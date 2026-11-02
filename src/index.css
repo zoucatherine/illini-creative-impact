@@ -127,3 +127,21 @@ html {
     transform: scale(1.06);
   }
 }
+
+/* It’s Okay to Fall centerpiece: the line under the illustration fades in when the stage of the day changes. */
+.wall-beat {
+  animation: wall-beat-in 0.5s ease both;
+}
+
+@keyframes wall-beat-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wall-beat {
+    animation: none;
+  }
+}
