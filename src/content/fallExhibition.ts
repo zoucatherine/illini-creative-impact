@@ -181,7 +181,13 @@ export const collaborators: Collaborator[] = [
   { name: 'Kendrick Counseling', href: 'https://kendrickcounseling.com/', wellness: true },
   { name: 'Illini Union Board', contribution: 'Co-hosting the event' },
   { name: 'Champaign Counseling', href: 'https://www.champaigncounseling.com/', wellness: true },
-  { name: 'Rooted Pathways Counseling & Consulting', href: 'https://www.rootedpathwayscounseling.com/', wellness: true },
+  {
+    name: 'Rooted Pathways Counseling & Consulting',
+    href: 'https://www.rootedpathwayscounseling.com/',
+    wellness: true,
+    contribution:
+      'Mandala coloring with coloring sheets and small colored-pencil packs, information on how art and music connect to mental health, and candy, motivational notebooks, and stickers to take.',
+  },
   {
     name: 'Bodhi Counseling',
     href: 'https://www.bodhicounseling.care/',
@@ -191,6 +197,7 @@ export const collaborators: Collaborator[] = [
   },
   {
     name: 'Insight Therapy',
+    href: 'https://www.insighttherapyllc.com/',
     wellness: true,
     contribution:
       'Mental Battery Check-In, where you add an anonymous sticker for your energy level today, plus fidget spinners, Calm Strips, a self-care raffle basket, and information about free 30-minute consultations.',
