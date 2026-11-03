@@ -528,7 +528,6 @@ export default function FallExhibitionPage() {
                           org.name
                         )}
                       </p>
-                      {org.contribution && <p className="mt-1 text-white/70">{org.contribution}</p>}
                     </li>
                   ))}
                 </ul>
