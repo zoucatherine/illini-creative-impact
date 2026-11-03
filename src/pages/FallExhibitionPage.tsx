@@ -104,6 +104,14 @@ function CardIcon({ kind }: { kind: string }) {
         <path d="M17 14.4a6 6 0 0 1 4 5.6" />
       </>
     ),
+    gift: (
+      <>
+        <rect x="3" y="8" width="18" height="4" rx="1" />
+        <path d="M5 12v8h14v-8" />
+        <path d="M12 8v12" />
+        <path d="M12 8c-1.5-3-5-3.5-5-1s3.5 1 5 1Zm0 0c1.5-3 5-3.5 5-1s-3.5 1-5 1Z" />
+      </>
+    ),
   };
   return (
     <svg
@@ -221,7 +229,7 @@ export default function FallExhibitionPage() {
                 reminder that no one has to face hard things alone.
               </p>
               <p className="mt-4 max-w-xl text-lg font-semibold leading-8 text-white">
-                Free to attend. No art experience needed.
+                Free to attend, free giveaways, no art experience needed.
               </p>
               <div className="mt-7">
                 <ButtonLink href="#take-part">How to take part</ButtonLink>
@@ -247,6 +255,7 @@ export default function FallExhibitionPage() {
                     {[
                       { title: 'Student art exhibition', icon: 'palette', href: '#artists' },
                       { title: 'Wellness activities', icon: 'heart-hands', href: '#program' },
+                      { title: 'Giveaways and a self-care raffle', icon: 'gift', href: '#support' },
                       { title: 'Student and community organizations', icon: 'people', href: '#invitation' },
                     ].map((item) => (
                       <li key={item.title}>
@@ -763,7 +772,10 @@ export default function FallExhibitionPage() {
                   { label: 'Time', value: `${event.timeLabel}, the artwork grows all day` },
                   { label: 'Where', value: `${event.venue}, ${event.address}` },
                   { label: 'Co-hosted by', value: `${event.coHost} and ${site.name}` },
-                  { label: 'Admission', value: 'Free and open to everyone. Drop in any time, RSVP optional.' },
+                  {
+                    label: 'Admission',
+                    value: 'Free and open to everyone, with giveaways while they last. Drop in any time, RSVP optional.',
+                  },
                 ].map((detail) => (
                   <div key={detail.label} className="border-l-2 border-illiniOrange pl-4">
                     <dt className="text-xs font-bold uppercase tracking-[0.16em] text-orangeInk">{detail.label}</dt>
