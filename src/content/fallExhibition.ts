@@ -93,8 +93,8 @@ export const program: ProgramItem[] = [
   },
   {
     title: 'Sit down and make something',
-    status: 'in-development',
-    body: 'Drawing and craft tables anyone can join, no art experience needed.',
+    status: 'confirmed',
+    body: 'Tables anyone can join, no art experience needed: mandala coloring with colored pencils to keep, a sticker check-in for how your energy is today, and 3D-printed coping skill leaves to take home.',
   },
   {
     title: 'See work by student artists',
@@ -105,7 +105,7 @@ export const program: ProgramItem[] = [
   {
     title: 'Meet community and wellness organizations',
     status: 'confirmed',
-    body: 'Learn about mental health support on campus and in Champaign-Urbana from health and counseling organizations.',
+    body: 'Learn about mental health support on campus and in Champaign-Urbana from health and counseling organizations, and pick up free giveaways: fidget spinners, Calm Strips, stickers, notebooks, and candy, plus a self-care raffle basket.',
     link: { href: '#support', label: 'See who’s taking part' },
   },
   {
@@ -170,13 +170,38 @@ export const collaborators: Collaborator[] = [
   { name: 'Creative Collective (ClubHub)' },
   { name: 'Game Builders' },
   { name: 'Life Drawing' },
-  { name: 'McKinley Health Center', href: 'https://mckinley.illinois.edu/', wellness: true },
+  {
+    name: 'McKinley Health Center',
+    href: 'https://mckinley.illinois.edu/',
+    wellness: true,
+    contribution:
+      'Wellness education on emotions and finding the good in everyday life, with giveaways inspired by Action for Happiness’s New Ways November and resources on the 8 Dimensions of Wellness, stress management, and healthy habits.',
+  },
   { name: 'Amateur Artists' },
   { name: 'Kendrick Counseling', href: 'https://kendrickcounseling.com/', wellness: true },
   { name: 'Illini Union Board', contribution: 'Co-hosting the event' },
   { name: 'Champaign Counseling', href: 'https://www.champaigncounseling.com/', wellness: true },
-  { name: 'Rooted Pathways Counseling & Consulting', href: 'https://www.rootedpathwayscounseling.com/', wellness: true },
-  { name: 'Bodhi Counseling', href: 'https://www.bodhicounseling.care/', wellness: true },
+  {
+    name: 'Rooted Pathways Counseling & Consulting',
+    href: 'https://www.rootedpathwayscounseling.com/',
+    wellness: true,
+    contribution:
+      'Mandala coloring with coloring sheets and small colored-pencil packs, information on how art and music connect to mental health, and candy, motivational notebooks, and stickers to take.',
+  },
+  {
+    name: 'Bodhi Counseling',
+    href: 'https://www.bodhicounseling.care/',
+    wellness: true,
+    contribution:
+      '3D-printed coping skill leaves to pick and take home, with guides to coping skills, recognizing ADHD in college students, finding a therapist, and understanding insurance terms.',
+  },
+  {
+    name: 'Insight Therapy',
+    href: 'https://www.insighttherapyllc.com/',
+    wellness: true,
+    contribution:
+      'Mental Battery Check-In, where you add an anonymous sticker for your energy level today, plus fidget spinners, Calm Strips, a self-care raffle basket, and information about free 30-minute consultations.',
+  },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
