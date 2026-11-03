@@ -175,7 +175,7 @@ export const collaborators: Collaborator[] = [
     href: 'https://mckinley.illinois.edu/',
     wellness: true,
     contribution:
-      'Wellness education on emotions and finding the good in everyday life, with giveaways inspired by Action for Happiness’s New Ways November and resources on the 8 Dimensions of Wellness, stress management, and healthy habits.',
+      'Wellness education and giveaways on finding the good in everyday life.',
   },
   { name: 'Amateur Artists' },
   { name: 'Kendrick Counseling', href: 'https://kendrickcounseling.com/', wellness: true },
@@ -186,21 +186,21 @@ export const collaborators: Collaborator[] = [
     href: 'https://www.rootedpathwayscounseling.com/',
     wellness: true,
     contribution:
-      'Mandala coloring with coloring sheets and small colored-pencil packs, information on how art and music connect to mental health, and candy, motivational notebooks, and stickers to take.',
+      'Mandala coloring with colored pencils to keep, plus candy, notebooks, and stickers.',
   },
   {
     name: 'Bodhi Counseling',
     href: 'https://www.bodhicounseling.care/',
     wellness: true,
     contribution:
-      '3D-printed coping skill leaves to pick and take home, with guides to coping skills, recognizing ADHD in college students, finding a therapist, and understanding insurance terms.',
+      '3D-printed coping skill leaves to take home, plus guides to finding a therapist.',
   },
   {
     name: 'Insight Therapy',
     href: 'https://www.insighttherapyllc.com/',
     wellness: true,
     contribution:
-      'Mental Battery Check-In, where you add an anonymous sticker for your energy level today, plus fidget spinners, Calm Strips, a self-care raffle basket, and information about free 30-minute consultations.',
+      'Sticker energy check-in, fidget spinners, Calm Strips, and a self-care raffle basket.',
   },
 ];
 
