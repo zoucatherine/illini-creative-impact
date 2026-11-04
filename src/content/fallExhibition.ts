@@ -203,6 +203,11 @@ export const collaborators: Collaborator[] = [
     contribution:
       'Sticker energy check-in, fidget spinners, Calm Strips, and a self-care raffle basket.',
   },
+  {
+    name: 'Jamie Stevens Counseling',
+    wellness: true,
+    contribution: 'Educational brochures, with two of their team on hand from 4 to 6 PM.',
+  },
 ];
 
 /** The opening ceremony's time slot, shown wherever the opening is mentioned. */
