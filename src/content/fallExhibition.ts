@@ -178,6 +178,7 @@ export const collaborators: Collaborator[] = [
       'Wellness education and giveaways on finding the good in everyday life.',
   },
   { name: 'Amateur Artists' },
+  { name: 'The Collective', href: 'https://one.illinois.edu/TheCollectiveMagazine/' },
   { name: 'Kendrick Counseling', href: 'https://kendrickcounseling.com/', wellness: true },
   { name: 'Illini Union Board', contribution: 'Co-hosting the event' },
   { name: 'Champaign Counseling', href: 'https://www.champaigncounseling.com/', wellness: true },
