@@ -177,6 +177,11 @@ export const collaborators: Collaborator[] = [
     contribution:
       'Wellness education and giveaways on finding the good in everyday life.',
   },
+  {
+    name: 'Call to Care',
+    wellness: true,
+    contribution: 'MyIntent bracelet-making, a moment to reflect on your intentions and well-being.',
+  },
   { name: 'Amateur Artists' },
   { name: 'The Collective', href: 'https://one.illinois.edu/TheCollectiveMagazine/' },
   { name: 'Kendrick Counseling', href: 'https://kendrickcounseling.com/', wellness: true },
