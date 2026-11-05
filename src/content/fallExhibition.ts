@@ -184,7 +184,12 @@ export const collaborators: Collaborator[] = [
   },
   { name: 'Amateur Artists' },
   { name: 'The Collective', href: 'https://one.illinois.edu/TheCollectiveMagazine/' },
-  { name: 'Kendrick Counseling', href: 'https://kendrickcounseling.com/', wellness: true },
+  {
+    name: 'Kendrick Counseling',
+    href: 'https://kendrickcounseling.com/',
+    wellness: true,
+    contribution: 'Coloring calendars, mental health pamphlets, and a table where you can sit and talk with their staff.',
+  },
   { name: 'Illini Union Board', contribution: 'Co-hosting the event' },
   { name: 'Champaign Counseling', href: 'https://www.champaigncounseling.com/', wellness: true },
   {
