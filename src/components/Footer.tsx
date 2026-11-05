@@ -24,6 +24,7 @@ const columns = [
     links: [
       ['Discord', site.social.discord],
       ['Instagram', site.social.instagram],
+      ['illinicreativeimpact@gmail.com', 'mailto:illinicreativeimpact@gmail.com'],
     ],
   },
 ];
