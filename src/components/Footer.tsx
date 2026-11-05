@@ -25,7 +25,7 @@ const columns = [
       ['Discord', site.social.discord],
       ['Instagram', site.social.instagram],
       ['illinicreativeimpact@gmail.com', 'mailto:illinicreativeimpact@gmail.com'],
-      ['Tiktok', 'https://www.tiktok.com/@illini.creative.impact'],
+      ['Tiktok', 'https://www.tiktok.com/@illini.creative.i'],
     ],
   },
 ];
