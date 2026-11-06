@@ -256,12 +256,6 @@ export const campusGuests: CampusGuest[] = [
     status: 'confirmed',
   },
   {
-    name: 'Mike Ross',
-    title: 'Director, Krannert Center for the Performing Arts, and Associate Dean, College of Fine and Applied Arts',
-    category: 'opening',
-    status: 'confirmed',
-  },
-  {
     name: 'Shandra A. Summerville',
     title: 'Cultural and Linguistic Competence Coordinator, Champaign County Mental Health Board',
     category: 'opening',
