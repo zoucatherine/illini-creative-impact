@@ -191,7 +191,6 @@ export const collaborators: Collaborator[] = [
     contribution: 'Coloring calendars, mental health pamphlets, and a table where you can sit and talk with their staff.',
   },
   { name: 'Illini Union Board', contribution: 'Co-hosting the event' },
-  { name: 'Champaign Counseling', href: 'https://www.champaigncounseling.com/', wellness: true },
   {
     name: 'Rooted Pathways Counseling & Consulting',
     href: 'https://www.rootedpathwayscounseling.com/',
